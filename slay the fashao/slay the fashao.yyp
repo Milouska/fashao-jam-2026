@@ -25,6 +25,7 @@
     {"id":{"name":"obj_token","path":"objects/obj_token/obj_token.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"utils","path":"scripts/utils/utils.yy",},},
+    {"id":{"name":"spr_enemy","path":"sprites/spr_enemy/spr_enemy.yy",},},
     {"id":{"name":"spr_line_end","path":"sprites/spr_line_end/spr_line_end.yy",},},
     {"id":{"name":"spr_line","path":"sprites/spr_line/spr_line.yy",},},
     {"id":{"name":"spr_token","path":"sprites/spr_token/spr_token.yy",},},

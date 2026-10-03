@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_index, type, room_width / 2, room_height / 2 - enemy_y, enemy_scale, enemy_scale, enemy_rot, c_white, enemy_alpha);

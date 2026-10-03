@@ -1,0 +1,1 @@
+enemy_state = EnemyState.ATTACK;
