@@ -1,0 +1,1 @@
+x += sign(sign(other.x - x) + choose(-0.1, 0.1)) * 6;

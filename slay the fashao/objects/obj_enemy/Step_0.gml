@@ -1,3 +1,6 @@
+x = room_width / 2;
+y = room_height / 2;
+
 switch (enemy_state) {
 	case EnemyState.APPEAR:
 		enemy_alpha = approach(enemy_alpha, 1, 0.02 * 2);
