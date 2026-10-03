@@ -74,6 +74,19 @@ function end_player_turn() {
     }
     
     with(obj_token) instance_destroy()
+	
+	var max_shield_row = 9;
+	var shield_count = 0;
+	var row = 0;
+	repeat(turn_endurance) {
+		var shield = instance_create_depth(room_width / 2 + choose(-1, 1), room_height + 16, - 5, obj_shield);
+		if (shield_count = max_shield_row) {
+			row ++;
+			shield_count = 0;
+		}
+		shield.row = row;
+		shield_count ++;
+	}
     collided_tokens = []
 
     enemy.pending_slash = turn_strength;
