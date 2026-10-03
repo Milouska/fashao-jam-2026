@@ -1,0 +1,50 @@
+global.en = {
+    "event.combat.text": "Fight to the death",
+    "event.walk.text": "You can increment one stat",
+    "event.balance.text": "Add two points to a stat, but remove 2 points from another",
+    "event.chest.text": "You stumble upon a chest. It asks you to take one item",
+    "event.fountain.text": "You bathe in magical water. Choose if you wish to full heal or increment a single stat",
+    "event.fork.text": "It appears the road splits into two. Which way will you choose?",
+    "event.over.text": "You died. Again.",
+
+    "ui.strength": "Strength",
+    "ui.endurance": "Endurance",
+    "ui.stamina": "Stamina",
+    "ui.wisdom": "Wisdom",
+    "ui.intelligence": "Intelligence",
+    "ui.health": "Health",
+    "ui.inventory": "Inventory",
+
+    "item.bomb": "Bomb",
+    "item.healing_potion": "Healing Potion"
+}
+
+global.zh = {
+    "event.combat.text": "战斗至死",
+    "event.walk.text": "你可以提升一项属性",
+    "event.balance.text": "为一项属性加2点，但从另一项属性中扣除2点",
+    "event.chest.text": "你偶然发现了一个宝箱。它要求你拿走一件物品",
+    "event.fountain.text": "你在魔法泉水中沐浴。选择完全恢复生命，或提升一项属性",
+    "event.fork.text": "道路似乎分成了两条。你会选择哪一条？",
+    "event.over.text": "你死了。又一次。",
+
+    "ui.strength": "力量",
+    "ui.endurance": "耐力",
+    "ui.stamina": "体力",
+    "ui.wisdom": "智慧",
+    "ui.intelligence": "智力",
+    "ui.health": "生命值",
+    "ui.inventory": "背包",
+
+    "item.bomb": "炸弹",
+    "item.healing_potion": "治疗药水"
+}
+
+global.BABYMODE = true
+
+global.t = function(key) {
+    if (!struct_exists(global.en, key)) {
+        throw (string("Translation key {0} does not exist", key));
+    }
+    return struct_get(global.BABYMODE ? global.en : global.zh, key)
+}

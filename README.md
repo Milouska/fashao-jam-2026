@@ -3,19 +3,23 @@
 - [ ] General gameplay loop (fight -> walk -> XP -> Choice -> bossfight)
 - [ ] Balancing
 - [ ] Music and SFX
-
 - [ ] Items
-  - [ ]
-  - [ ]
-  - [ ]
-- [ ] Choice screen
+  - [ ] Bomb
+  - [ ] Healing potion - we should delete this if fountains exist
+  - [ ] Come up with something
+  - [ ] or scrap entire inventory 
+- [x] Choice screen
 - [ ] End screen
-  - [ ] Collect statistics
-- [ ] XP screen
-- [ ] Scale enemies after each bossfight
+- [ ] Collect statistics
+- [x] XP screen
+- [x] Translations
+- [ ] Change to pixel font which supports chinese
+- [ ] Token icons
+- [x] Scale enemies after each bossfight
 - [ ] Add bossifight after every X turns
   - [ ] Implement?
   - [ ] Design?
+  - [ ] Scale enemies under each bossfight
 - [ ] Intro screen
-  - [ ] Character choice screen
-  - [ ] Dimmed background art
+  - [ ] Character choice screen and defaults definitions
+  - [ ] + Dimmed background art

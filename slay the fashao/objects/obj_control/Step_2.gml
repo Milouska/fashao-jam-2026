@@ -15,7 +15,7 @@ if (mouse_check_button(mb_left) && !turn_finished) {
         collidee.selected = true 
         
         // WHile walking, we skip the check
-        if (game_state == GameState.WALK) {
+        if (game_state != GameState.COMBAT) {
             end_player_turn()
             return
         }
@@ -36,12 +36,12 @@ if (mouse_check_button(mb_left) && !turn_finished) {
 }
 
 if (mouse_check_button_released(mb_left) && !turn_finished) {
-    if (game_state != GameState.WALK) {     
+    if (game_state == GameState.COMBAT) {     
         end_player_turn()
     } else {
+        // In other states, we allow free drawing
         with(obj_line) disappear = true;
     }
-    
 }
 
 mouse_xprevious = mouse_x;

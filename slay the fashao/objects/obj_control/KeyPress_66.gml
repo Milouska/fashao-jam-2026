@@ -1,0 +1,1 @@
+global.BABYMODE = !global.BABYMODE

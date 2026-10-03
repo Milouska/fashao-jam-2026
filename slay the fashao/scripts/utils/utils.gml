@@ -64,4 +64,15 @@ function draw_circular_bar(xx, yy, value, _max, colour, radius, transparency, wi
 	    }
 	}
 }
-    
+
+function array_choose(array) {
+	var len = array_length(array)
+	
+	if (len == 0)
+		return undefined
+	
+	if (len == 1)
+		return array[0]
+	
+	return array[floor(irandom_range(0, len - 1))]
+}

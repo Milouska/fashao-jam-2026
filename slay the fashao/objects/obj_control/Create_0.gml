@@ -1,35 +1,59 @@
 depth = -1
 randomize()
 
+defaults = {
+    HP: 20,
+    STRENGHT: 3,
+    ENDURANCE: 3,
+    STAMINA: 5,
+    WISDOM: 0,
+    INTELLIGENCE: 0,
+}
+
+BABYMODE = false
+
 //////////////////////////////////////////
 /// Tokens
 //////////////////////////////////////////
-strength = 3;
+strength = defaults.STRENGHT;
 strength_col = make_colour_rgb(209, 15, 76);
-endurance = 3;
+endurance = defaults.ENDURANCE;
 endurance_col = make_colour_rgb(100, 164, 164);
-stamina = 5;
+stamina = defaults.STAMINA;
 stamina_col = make_colour_rgb(99, 179, 29);
-wisdom = 0;
+wisdom = defaults.WISDOM;
 wisdom_col = make_colour_rgb(254, 72, 222);
-inteligence = 0;
+inteligence = defaults.INTELLIGENCE;
 inteligence_col = make_colour_rgb(68, 48, 186);
-player_hp = 10;
+player_hp = defaults.HP;
+
+
+game_state = GameState.WALK
+game_rounds = 0
 
 var enemy = noone
 
+
+////////////// DO NOT REORDER THESE vvvvvv
 enum TokenType {
+    // THESE ICONS HAVE DIFFERENT SHAPES
     STRENGTH,
     ENDUREANCE,
     STAMINA,
     WISDOM,
     
-    // Other tokens
-    RANDOM,
-    //EVENT,
-    //COMBAT,
-    //CHEST,
+    // THESE ICONS ARE ROUND, WITH SOME ART IN IT
+    EVENT_FOUNTAIN,
+    EVENT_BALANCE,
+    EVENT_FORK,
+    EVENT_CHEST,
+    EVENT_WALK,
+    EVENT_HEAL,
+    EVENT_COMBAT,
+    ITEM_BOMB,
+    ITEM_HEALTH_POTION,
 }
+////////////// DO NOT REORDER THESE ^^^^^^
 
 // Handle player turn & token collisions
 collided_first_type = -1
@@ -57,8 +81,10 @@ function end_player_turn() {
     var turn_strength = 0
     var turn_fireball = 0
     var turn_endurance_temp = 0
+    var turn_stamina = 0
 
-    // Evaluate    
+    var token_event_type = -1
+    
     for (var i = 0; i < array_length(collided_tokens); i++) {
         var token = collided_tokens[i]
         switch(token.type) {
@@ -71,27 +97,52 @@ function end_player_turn() {
             case TokenType.WISDOM:
                 turn_fireball += token.value
                 break
+            case TokenType.STAMINA:
+                turn_fireball += token.value
+                break
+            // For heal event. We consume the token, heal player and get a random upcoming event
+            case TokenType.EVENT_HEAL:
+                player_hp = defaults.HP
+                token_event_type = get_random_weighted_event()
+                break
+            
+            // All non-value tokens aka EVENT tokens can just be saved
+            default:
+                token_event_type = get_token_event(token.type)
+                
         }
     }
     
     with(obj_token) instance_destroy()
+    collided_tokens = []
+        
+    // For events, we do not want to run code related to combat etc, 
+    // so after the switch we do our logic and cancel the rest of the method
+    if (token_event_type > -1) {
+        call_later(20, time_source_units_frames, method({ token_event_type, inst: id }, function() {
+            inst.start_event(token_event_type)
+        }))
+        
+        return
+    }
 
     // Up until here, we can treat WALK the same as COMBAT, however
     // there are no enemies. We simply change the global values here
-    // THIS MUST RUN BEFORE ANY OTHER COMBAT PROCESSING CODE
     if (game_state == GameState.WALK) {
         strength += turn_strength
         wisdom += turn_fireball
         endurance += turn_endurance_temp
+        stamina += turn_stamina
         
         // ENDS AND CHANGE STATE
-        call_later(1, time_source_units_seconds, method(self, function() {
+        call_later(20, time_source_units_frames, method(self, function() {
             start_random_event()
         }))
         
         return
     }
-    // HERE VVVVVVVVVVVVVVVVVVV 
+    
+    // PLACE ALL COMBAT RELATED CODE BELOW VVVVVVVVVVVVVVVVVVVVV
 	
 	var max_shield_row = 9;
 	var shield_count = 0;
@@ -106,7 +157,6 @@ function end_player_turn() {
 		shield_count ++;
 	}   
     
-    collided_tokens = []
     turn_endurance = turn_endurance_temp
 
     enemy.pending_slash = turn_strength;
@@ -114,9 +164,7 @@ function end_player_turn() {
     enemy.alarm[0] = 15
 }
 
-function spawn_token(token_type) {
-    var ang = random(360);
-    var len = random_range(0, 22);
+function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
     var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
     token.type = token_type
 }
@@ -142,14 +190,14 @@ inventory_col = make_colour_rgb(232, 234, 74);
 //////////////////////////////////////////
 
 enum GameState {
-    // Transition to next level
+    // Transition to next level and add one skill point 
     WALK, 
     // Combat, normal & boss (boss has its own flag)
     COMBAT,
     // Choose between two random items
     CHEST,
     // ADD 2 points to something, remove two points from something else
-    BALANCING,
+    BALANCE,
     // Choose if you full-heal, or gain a WALK,
     FOUNTAIN,
     // Player gets to choose between two random game events (COMBAT, CHEST, BALANCING, FORK, WALK, FOUNTAIN)
@@ -159,9 +207,6 @@ enum GameState {
     BOSS,
 }
 
-game_state = GameState.WALK
-game_rounds = 0
-
 // Place code initiating an event HERE, spawning enemy, creating choice, etc
 function start_event(state_type) {
     game_state = state_type
@@ -169,7 +214,7 @@ function start_event(state_type) {
     
     switch(game_state) {
         case GameState.COMBAT:
-            log("=== STARTING COMBAT ===")
+            log("=== COMBAT ===")
             // Spawn
             enemy = instance_create_depth(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
             enemy.on_death = method({ self }, function () {
@@ -177,6 +222,7 @@ function start_event(state_type) {
                 call_later(1, time_source_units_seconds, method(self, function() {
                     //start_player_turn()
                     start_event(GameState.WALK)
+                    enemy = noone
                 }))
             })
 
@@ -184,50 +230,61 @@ function start_event(state_type) {
             break 
         
         case GameState.WALK:
-            log("=== STARTING WALK ===")
-            // Walking to the next stage
-            //start_event(choose(GameState.COMBAT, GameState.CHOICE))
-            
-            // 1. spawn two random tokens
+            log("=== WALK ===")
             turn_finished = false
-            spawn_token(TokenType.STRENGTH)
-            spawn_token(TokenType.ENDUREANCE)
-            spawn_token(TokenType.WISDOM)
-            spawn_token(TokenType.STAMINA)
-            
-            // turn finished is
-
+            spawn_token(TokenType.STRENGTH, 180, 7)
+            spawn_token(TokenType.ENDUREANCE, 180, 20)
+            spawn_token(TokenType.WISDOM, 0, 7)
+            spawn_token(TokenType.STAMINA, 0, 20)
             break
         
         case GameState.FORK:
-            log("=== STARTING FORK ===")
-            // 1. Spawn 2-3 choice tokens
-            // 2. Allow player to only slash one
-            // 3. after some effect / timeout call start_event() based on player choice
+            log("=== FORK ===")
+            turn_finished = false
+            var first = get_random_weighted_event();
+            var second = get_random_weighted_event()
             
-            // choice
-            break    
+            while(second == first) {
+                second = get_random_weighted_event()
+            }
+
+            spawn_token(get_event_token(first), 180, 7)
+            spawn_token(get_event_token(second), 0, 7)
+            break
+            
+        case GameState.CHEST:
+            log("=== CHEST ===")
+            // TODO: same as fork, but only selects items
+            break
+        
+        case GameState.BALANCE:
+            log("=== BALANCE ===")
+            // TODO: implement adding and removing
+            break
+        
+        case GameState.FOUNTAIN:
+            log("=== FOUNTAIN ===")
+            turn_finished = false
+            spawn_token(TokenType.EVENT_WALK, 180, 7)
+            spawn_token(TokenType.EVENT_HEAL, 0, 7)
+            break
         
          case GameState.OVER:
             log("=== GAME OVER ===")
-            // game over screen
+            // TODO: implement game over screen
             break
         
         default:
             log("=== UNKNOWN EVENT ===")
+            log(game_state)
             
         
     }
 }
 
 function start_random_event() {
-    var new_event = choose(
-        GameState.FORK,
-        GameState.COMBAT,
-        GameState.BALANCING,
-        GameState.CHEST,
-        GameState.FORK,
-    )
+    var result = get_random_weighted_event()
+    start_event(result)
 }
 
-start_event(GameState.WALK)
+start_event(GameState.FORK)

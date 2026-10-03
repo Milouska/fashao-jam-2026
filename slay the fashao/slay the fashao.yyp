@@ -33,6 +33,8 @@
     {"id":{"name":"obj_slash","path":"objects/obj_slash/obj_slash.yy",},},
     {"id":{"name":"obj_token","path":"objects/obj_token/obj_token.yy",},},
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
+    {"id":{"name":"event_utils","path":"scripts/event_utils/event_utils.yy",},},
+    {"id":{"name":"translation","path":"scripts/translation/translation.yy",},},
     {"id":{"name":"utils","path":"scripts/utils/utils.yy",},},
     {"id":{"name":"spr_damage_border","path":"sprites/spr_damage_border/spr_damage_border.yy",},},
     {"id":{"name":"spr_damage","path":"sprites/spr_damage/spr_damage.yy",},},
