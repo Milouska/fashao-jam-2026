@@ -22,8 +22,9 @@ switch (enemy_state) {
 		enemy_scale = 1.4 - 0.4 * abs(enemy_attack_a / (pi/4*3));
 		
 		//attack player
-		if (enemy_a > 0) and (attacked = false) {
+		if (enemy_attack_a > 0) and (attacked = false) {
 			
+			with(obj_camera) hshake = 20;
 			attacked = true;
 		}
 		
