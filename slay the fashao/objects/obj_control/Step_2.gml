@@ -14,6 +14,12 @@ if (mouse_check_button(mb_left) && !turn_finished) {
         array_push(collided_tokens, collidee.id)
         collidee.selected = true 
         
+        // WHile walking, we skip the check
+        if (game_state == GameState.WALK) {
+            end_player_turn()
+            return
+        }
+        
         // If we were using strength OR endurance and the other is hit, we stop the movement
         for (var i = 0; i < array_length(collided_tokens); i++) {
             var element = collided_tokens[i]
@@ -30,7 +36,12 @@ if (mouse_check_button(mb_left) && !turn_finished) {
 }
 
 if (mouse_check_button_released(mb_left) && !turn_finished) {
-    end_player_turn()
+    if (game_state != GameState.WALK) {     
+        end_player_turn()
+    } else {
+        with(obj_line) disappear = true;
+    }
+    
 }
 
 mouse_xprevious = mouse_x;
