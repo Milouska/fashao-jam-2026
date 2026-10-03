@@ -18,6 +18,12 @@ enum TokenType {
     STRENGTH,
     ENDUREANCE,
     STAMINA,
+    
+    // Other tokens
+    RANDOM,
+    EVENT,
+    COMBAT,
+    CHEST,
 }
 
 // Handle player turn & token collisions
@@ -67,13 +73,21 @@ function end_player_turn() {
 
 function spawn_tokens() {
     with(obj_token) instance_destroy()
-    
-    repeat(5) {
-        var ang = random(360);
-   	    var len = random_range(0,16);
-   	    var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
-        token.type = round(random_range(0, 2))
-        // TODO: set token type & value
+        
+    if (game_state == GameState.COMBAT) {
+        repeat(5) {
+            var ang = random(360);
+       	    var len = random_range(0,16);
+       	    var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
+            token.type = choose(
+                TokenType.ENDUREANCE,
+                TokenType.STRENGTH,
+                TokenType.STAMINA,
+            )
+            // TODO: set token type & value
+        }
+    } else if (game_state == GameState.CHOICE) {
+        // Spanw choice tokens
     }
 }
 
@@ -111,22 +125,22 @@ enum GameState {
     OVER,
 }
 
-game_event = GameState.WALK 
+game_state = GameState.WALK
 
 // Place code initiating an event HERE, spawning enemy, creating choice, etc
-function start_event(event_type) {
-    game_event = event_type
+function start_event(state_type) {
+    game_state = state_type
     
-    switch(game_event) {
+    switch(game_state) {
         case GameState.COMBAT:
             // Spawn
             enemy = instance_create_layer(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
-            enemy.on_death = function () {
+            enemy.on_death = method({ self }, function () {
                 // Called when enemy dies
-            }
+                self.start_event(choose(GameState.COMBAT, GameState.CHOICE))
+            })
 
             start_player_turn()
-            
             break 
         
         case GameState.WALK:
@@ -134,6 +148,11 @@ function start_event(event_type) {
             break
         
         case GameState.CHOICE:
+            
+            // 1. Spawn choice tokens
+            // 2. Allow player to only slash one
+            // 3. after some effect / timeout call start_event() based on player choice
+            
             // choice
             break    
         
