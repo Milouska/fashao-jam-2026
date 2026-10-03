@@ -50,21 +50,21 @@ turn_count = 0; //which attack from enemy_attacks array to use this turn
 attacked = false; //if already attacked this is set to true
 intention_alpha = 0; //show intention of next attack
 
-//attack effect
+// attack effect
 attack_a = pi/2;
 enemy_scale = 0.5;
 enemy_rot = 0;
 enemy_a = pi / 4;
 enemy_attack_a = - pi / 4 * 3;
 
-//hit effect
+// hit effect
 enemy_shake = 0;
 shake_x = 0;
 shake_y = 0;
 
-//enemy appear effect
+// enemy appear effect
 enemy_alpha = 0;
 
-//getting attacked
+// getting attacked
 pending_slash = 0;
 pending_fireball = 0;

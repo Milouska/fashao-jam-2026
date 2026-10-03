@@ -4,7 +4,7 @@ if (mouse_check_button(mb_left) && !turn_finished) {
     
     if (dist < 10) return
     
-	var line = instance_create_depth(mouse_x, mouse_y, 0, obj_line);
+	var line = instance_create_depth(mouse_x, mouse_y, -1, obj_line);
 	line.image_angle = point_direction(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious);
 	line.image_xscale = dist
 	line.image_yscale = 3;

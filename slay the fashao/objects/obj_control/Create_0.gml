@@ -1,9 +1,12 @@
+depth = -1
+randomize()
+
 //////////////////////////////////////////
 /// Tokens
 //////////////////////////////////////////
-strength = 0;
+strength = 3;
 strength_col = make_colour_rgb(209, 15, 76);
-endurance = 0;
+endurance = 3;
 endurance_col = make_colour_rgb(100, 164, 164);
 stamina = 5;
 stamina_col = make_colour_rgb(99, 179, 29);
@@ -19,6 +22,7 @@ enum TokenType {
     STRENGTH,
     ENDUREANCE,
     STAMINA,
+    WISDOM,
     
     // Other tokens
     RANDOM,
@@ -37,8 +41,11 @@ turn_endurance = 0
 // Should be called when player can start turn
 function start_player_turn() {
     turn_endurance = 0
-    collided_tokens = []
     turn_finished = false
+    
+    repeat(strength) { spawn_token(TokenType.STRENGTH) }
+    repeat(endurance) { spawn_token(TokenType.ENDUREANCE) }
+    repeat(wisdom) { spawn_token(TokenType.WISDOM) }
 }
 
 function end_player_turn() {
@@ -48,6 +55,7 @@ function end_player_turn() {
     collided_first_type = -1
 
     var turn_strength = 0
+    var turn_fireball = 0
 
     // Evaluate    
     for (var i = 0; i < array_length(collided_tokens); i++) {
@@ -59,39 +67,26 @@ function end_player_turn() {
             case TokenType.STRENGTH:
                 turn_strength += token.value
                 break
+            case TokenType.WISDOM:
+                turn_fireball += token.value
+                break
         }
     }
-
-    // 1. Player finished turn [x]
-    // 2. We get the turn data
-    // 3. based on that, we change enemy variables
-    enemy.pending_slash = turn_strength;
-    //enemy.pending_fireball = 5
-    // 4. HAPPENS IN ENEMY - enemy DIES attacks BACK or ends its turn aka does nothing
-}
-
-function spawn_tokens() {
+    
     with(obj_token) instance_destroy()
-        
-    if (game_state == GameState.COMBAT) {
-        repeat(5) {
-            var ang = random(360);
-       	    var len = random_range(0,16);
-       	    var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
-            token.type = choose(
-                TokenType.ENDUREANCE,
-                TokenType.STRENGTH,
-                TokenType.STAMINA,
-            )
-            // TODO: set token type & value
-        }
-    } else if (game_state == GameState.CHOICE) {
-        // Spanw choice tokens
-    }
+    collided_tokens = []
+
+    enemy.pending_slash = turn_strength;
+    enemy.pending_fireball = turn_fireball;
+    enemy.alarm[0] = 15
 }
 
-// TODO: this needs to be called when COMBAT turn begins
-start_player_turn()
+function spawn_token(token_type) {
+    var ang = random(360);
+    var len = random_range(0, 15);
+    var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
+    token.type = token_type
+}
 
 mouse_xprevious = mouse_x;
 mouse_yprevious = mouse_y;
@@ -133,10 +128,13 @@ function start_event(state_type) {
     switch(game_state) {
         case GameState.COMBAT:
             // Spawn
-            enemy = instance_create_layer(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
+            enemy = instance_create_depth(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
             enemy.on_death = method({ self }, function () {
                 // Called when enemy dies
-                self.start_event(choose(GameState.COMBAT, GameState.CHOICE))
+                // FOR TESTING: we only start a new combat, but we SHOULD walk first
+                call_later(1, time_source_units_seconds, method(self, function() {
+                    start_player_turn()
+                }))
             })
 
             start_player_turn()
@@ -144,6 +142,8 @@ function start_event(state_type) {
         
         case GameState.WALK:
             // Walking to the next stage
+            start_event(choose(GameState.COMBAT, GameState.CHOICE))
+
             break
         
         case GameState.CHOICE:
@@ -161,3 +161,5 @@ function start_event(state_type) {
         
     }
 }
+
+start_event(GameState.COMBAT)

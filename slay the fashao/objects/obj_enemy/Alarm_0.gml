@@ -1,5 +1,3 @@
-alarm[0] = 15;
-
 if (pending_slash > 0) {
 	var ang = random(360);
 	var len = random_range(0,48);
@@ -12,6 +10,7 @@ if (pending_slash > 0) {
 					enemy_shake = 24;
                 }))
 	pending_slash = approach(pending_slash, 0, 1);
+    alarm[0] = 15;
 } else if (pending_fireball > 0) {
 	var ang = random_range(30, 60);
 	var len = 600;
@@ -30,4 +29,11 @@ if (pending_slash > 0) {
 					enemy_shake = 32;
                 }))
 	pending_fireball = approach(pending_fireball, 0, 1);
+    alarm[0] = 30;
+} else {
+    // Player's turn ended, enemy got hit. Now enemy's turn begins
+    call_later(1, time_source_units_seconds, method(self, function() {
+        enemy_state = EnemyState.ATTACK;
+        attacked = false
+    }))
 }

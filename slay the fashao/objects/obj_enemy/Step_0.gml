@@ -9,7 +9,6 @@ switch (enemy_state) {
 			enemy_state = EnemyState.IDLE;
 			enemy_scale = 1;
 			enemy_alpha = 1;
-			alarm[0] = 1;
 		}
 	break;
 	case EnemyState.IDLE:
@@ -39,6 +38,11 @@ switch (enemy_state) {
 			} else {
 				turn_count = 0;
 			}
+            
+            // Attack ended. We have to make sure player's turn starts again
+            call_later(1, time_source_units_seconds, method(self, function() {
+                obj_control.start_player_turn()
+            }))
 		}
 	break;
 	case EnemyState.DEATH:
