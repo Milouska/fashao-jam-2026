@@ -11,6 +11,7 @@ wisdom = 0;
 wisdom_col = make_colour_rgb(254, 72, 222);
 inteligence = 0;
 inteligence_col = make_colour_rgb(68, 48, 186);
+player_hp = 10;
 
 var enemy = noone
 
@@ -30,7 +31,6 @@ enum TokenType {
 collided_first_type = -1
 collided_tokens = []
 turn_finished = false
-turn_count = 0
 
 turn_endurance = 0
 
@@ -39,7 +39,6 @@ function start_player_turn() {
     turn_endurance = 0
     collided_tokens = []
     turn_finished = false
-    turn_count++
 }
 
 function end_player_turn() {

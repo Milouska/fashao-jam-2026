@@ -13,6 +13,7 @@ switch (enemy_state) {
 		}
 	break;
 	case EnemyState.IDLE:
+		intention_alpha = approach(intention_alpha, 1, 0.05);
 		enemy_a += 0.02;
 		enemy_rot = sin(enemy_a) * 5;
 	break;
@@ -23,7 +24,7 @@ switch (enemy_state) {
 		
 		//attack player
 		if (enemy_attack_a > 0) and (attacked = false) {
-			
+			obj_control.player_hp -= enemy_attacks[turn_count];
 			with(obj_camera) hshake = 20;
 			attacked = true;
 		}
@@ -33,10 +34,16 @@ switch (enemy_state) {
 			enemy_state = EnemyState.IDLE;
 			enemy_scale = 1;
 			attacked = false;
+			if (turn_count < array_length(enemy_attacks) - 1) {
+				turn_count ++;
+			} else {
+				turn_count = 0;
+			}
 		}
 	break;
 	case EnemyState.DEATH:
-		enemy_alpha = 0.2;
+		enemy_alpha = approach(enemy_alpha, 0, 0.05);
+		if (enemy_alpha = 0) instance_destroy();
 	break;
 }
 

@@ -28,7 +28,7 @@ type = choose(EnemyType.BABY,
 
 switch (type) {
 	case EnemyType.BABY:
-		enemy_attacks = [1, 1, 1, 1, 1];
+		enemy_attacks = [1, 1];
 		enemy_hp = 6
 	break;
 	case EnemyType.GIANT:
@@ -36,18 +36,19 @@ switch (type) {
 		enemy_hp = 15
 	break;
 	case EnemyType.MANTICORE:
-		enemy_attacks = [3, 0, 3, 0, 3, 0];
+		enemy_attacks = [2, 0];
 		enemy_hp = 8
 	break;
 	case EnemyType.NIGHTMARE:
-		enemy_attacks = [1, 0, 2, 0];
+		enemy_attacks = [0, 0, 3];
 		enemy_hp = 13
 	break;
 }
 
 
-enemy_attack = 0; //value of attack
+turn_count = 0; //which attack from enemy_attacks array to use this turn
 attacked = false; //if already attacked this is set to true
+intention_alpha = 0; //show intention of next attack
 
 //attack effect
 attack_a = pi/2;
@@ -65,5 +66,5 @@ shake_y = 0;
 enemy_alpha = 0;
 
 //getting attacked
-pending_slash = 10;
-pending_fireball = 0
+pending_slash = 0;
+pending_fireball = 0;
