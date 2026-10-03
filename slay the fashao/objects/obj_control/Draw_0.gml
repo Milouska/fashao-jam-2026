@@ -24,13 +24,19 @@ draw_text_color(t_x + 2, t_y + 80, "eligence", g_col, g_col, g_col, g_col, 1);
 //HP
 var t_hp_y = 86 + 48;
 var hp_text = "";
+var current_hp = 0;
 repeat(player_hp) {
 	hp_text += "*";
+	current_hp ++;
+	if (current_hp >= 10) {
+		hp_text += "\n";
+		current_hp = 0;
+	}
 }
-draw_text_color(t_x - 64, t_hp_y, "HEALTH: " + hp_text,strength_col,strength_col,strength_col,strength_col,1);
+draw_text_color(t_x - 64, t_hp_y, "HEALTH: \n" + hp_text,strength_col,strength_col,strength_col,strength_col,1);
 
 //INVENTORY
-var t_inv_y = 130 + 48;
+var t_inv_y = 130 + 48 + 24 * floor(player_hp / 10);
 
 draw_text(t_x - 48, t_inv_y, "INVENTORY");
 for (var i = 0; i < array_length(inventory); i++) {

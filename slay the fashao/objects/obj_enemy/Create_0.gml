@@ -45,6 +45,8 @@ switch (type) {
 	break;
 }
 
+max_enemy_hp = enemy_hp;
+
 
 turn_count = 0; //which attack from enemy_attacks array to use this turn
 attacked = false; //if already attacked this is set to true
