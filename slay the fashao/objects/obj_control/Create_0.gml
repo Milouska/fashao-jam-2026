@@ -12,6 +12,8 @@ wisdom_col = make_colour_rgb(254, 72, 222);
 inteligence = 0;
 inteligence_col = make_colour_rgb(68, 48, 186);
 
+var enemy = noone
+
 enum TokenType {
     STRENGTH,
     ENDUREANCE,
@@ -23,20 +25,14 @@ collided_first_type = -1
 collided_tokens = []
 turn_finished = false
 turn_count = 0
-turn_data = {
-    strength: 0,
-    endurance: 0,
-}
 
+turn_endurance = 0
 
 // Should be called when player can start turn
 function start_player_turn() {
+    turn_endurance = 0
     collided_tokens = []
     turn_finished = false
-    turn_data = {
-        strength: 0,
-        endurance: 0,
-    }
     turn_count++
 }
 
@@ -45,22 +41,28 @@ function end_player_turn() {
 
     turn_finished = true
     collided_first_type = -1
-    
+
+    var turn_strength = 0
+
+    // Evaluate    
     for (var i = 0; i < array_length(collided_tokens); i++) {
         var token = collided_tokens[i]
         switch(token.type) {
             case TokenType.ENDUREANCE:
-                turn_data.endurance += token.value
+                turn_endurance += token.value
                 break
             case TokenType.STRENGTH:
-                turn_data.strength += token.value
+                turn_strength += token.value
                 break
         }
     }
-    
-    log("END TURN")
-    log(string("Collected {0}", turn_data))
-    
+
+    // 1. Player finished turn [x]
+    // 2. We get the turn data
+    // 3. based on that, we change enemy variables
+    enemy.pending_slash = 3
+    enemy.pending_fireball = 5
+    // 4. HAPPENS IN ENEMY - enemy DIES attacks BACK or ends its turn aka does nothing
 }
 
 function spawn_tokens() {
@@ -118,11 +120,12 @@ function start_event(event_type) {
     switch(game_event) {
         case GameState.COMBAT:
             // Spawn
-            var enemy = instance_create_layer(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
-            
+            enemy = instance_create_layer(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
             enemy.on_death = function () {
                 // Called when enemy dies
             }
+
+            start_player_turn()
             
             break 
         
