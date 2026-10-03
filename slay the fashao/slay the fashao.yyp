@@ -20,6 +20,7 @@
   "name":"slay the fashao",
   "resources":[
     {"id":{"name":"obj_control","path":"objects/obj_control/obj_control.yy",},},
+    {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_line","path":"objects/obj_line/obj_line.yy",},},
     {"id":{"name":"obj_token","path":"objects/obj_token/obj_token.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
