@@ -1,7 +1,7 @@
 var g_col = make_color_rgb(120,120,120);
 
 var t_x = 64;
-var t_y = 0;
+var t_y = 12;
 
 //STATS
 draw_text(t_x - 48, t_y, "STATS");
@@ -21,8 +21,16 @@ draw_text_color(t_x + 2, t_y + 48, "centration", g_col, g_col, g_col, g_col, 1);
 draw_text_color(t_x + 2, t_y + 64, "dom", g_col, g_col, g_col, g_col, 1);
 draw_text_color(t_x + 2, t_y + 80, "eligence", g_col, g_col, g_col, g_col, 1);
 
+//HP
+var t_hp_y = 86 + 48;
+var hp_text = "";
+repeat(player_hp) {
+	hp_text += "*";
+}
+draw_text_color(t_x - 64, t_hp_y, "HEALTH: " + hp_text,strength_col,strength_col,strength_col,strength_col,1);
+
 //INVENTORY
-var t_inv_y = 96 + 48;
+var t_inv_y = 130 + 48;
 
 draw_text(t_x - 48, t_inv_y, "INVENTORY");
 for (var i = 0; i < array_length(inventory); i++) {
@@ -38,6 +46,7 @@ for (var i = 0; i < array_length(inventory); i++) {
 	
 	draw_text_color(t_x - 64, t_inv_y + 16 + i*16, inv_text, inventory_col, inventory_col, inventory_col, inventory_col, 1);
 }
+
 
 //DRAW CIRCULAR BAR AROUND MOUSE
 //draw_circular_bar(mouse_x,y,value, _max, colour, radius, transparency, width)

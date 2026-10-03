@@ -1,7 +1,8 @@
 if (pending_slash > 0) {
 	var ang = random(360);
 	var len = random_range(0,48);
-	instance_create_depth(x + lengthdir_x(len, ang), y + lengthdir_y(len, ang), -5, obj_slash);
+	var slash = instance_create_depth(x + lengthdir_x(len, ang), y + lengthdir_y(len, ang), -5, obj_slash);
+	slash.image_xscale = choose(-1,1);
 	call_later(10, time_source_units_frames, method(self, function() {
                     enemy_hp --;
                     if (enemy_hp <= 0) {

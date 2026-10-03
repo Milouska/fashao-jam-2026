@@ -20,18 +20,31 @@ switch (enemy_state) {
 		enemy_rot = sin(enemy_a) * 5;
 	break;
 	case EnemyState.ATTACK:
-		enemy_attack_a = approach(enemy_attack_a, pi / 4 * 3, 0.15);
-		enemy_y = sin(abs(enemy_attack_a) + pi/4) * 64;
-		enemy_scale = 1.4 - 0.4 * abs(enemy_attack_a / (pi/4*3));
+		if (enemy_attacks[turn_count] > 0) {
+			enemy_attack_a = approach(enemy_attack_a, pi / 4 * 3, 0.15);
+			enemy_y = sin(abs(enemy_attack_a) + pi/4) * 64;
+			enemy_scale = 1.4 - 0.4 * abs(enemy_attack_a / (pi/4*3));
 		
-		//attack player
-		if (enemy_attack_a > 0) and (attacked = false) {
-			obj_control.player_hp -= enemy_attacks[turn_count];
-			with(obj_camera) hshake = 20;
-			attacked = true;
+			//attack player
+			if (enemy_attack_a > 0) and (attacked = false) {
+				var damage = enemy_attacks[turn_count];
+				
+				with(obj_shield) {
+					if (damage > 0) {
+						image_index = 1;
+						image_xscale = 2;
+						image_yscale = 2;
+						damage --;
+					}
+				}
+				
+				obj_control.player_hp -= damage;
+				with(obj_camera) hshake = 20;
+				attacked = true;
+			}
 		}
 		
-		if (enemy_attack_a = pi / 4 * 3) {
+		if (enemy_attack_a = pi / 4 * 3) or (enemy_attacks[turn_count] = 0) {
 			enemy_attack_a = - pi / 4 * 3;
 			enemy_state = EnemyState.IDLE;
 			enemy_scale = 1;
@@ -45,6 +58,10 @@ switch (enemy_state) {
             // Attack ended. We have to make sure player's turn starts again
             call_later(1, time_source_units_seconds, method(self, function() {
                 obj_control.start_player_turn()
+				
+				with(obj_shield) {
+					gone = true;
+				}
             }))
 		}
 	break;

@@ -7,3 +7,5 @@ spd = 6;
 row = 0;
 
 shield_a = random(pi * 2);
+
+gone = false;
