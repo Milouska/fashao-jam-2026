@@ -1,2 +1,2 @@
 draw_self();
-if (!dissapear) draw_sprite(spr_line_end, 0, x, y)
+if (!disappear) draw_sprite(spr_line_end, 0, x, y)

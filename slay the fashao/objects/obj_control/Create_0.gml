@@ -1,9 +1,11 @@
-//stats
+//////////////////////////////////////////
+/// Tokens
+//////////////////////////////////////////
 strength = 0;
 strength_col = make_colour_rgb(209, 15, 76);
 endurance = 0;
 endurance_col = make_colour_rgb(100, 164, 164);
-stamina = 0;
+stamina = 5;
 stamina_col = make_colour_rgb(99, 179, 29);
 wisdom = 0;
 wisdom_col = make_colour_rgb(254, 72, 222);
@@ -16,31 +18,77 @@ enum TokenType {
     STAMINA,
 }
 
-// Handle collision with tokens when drawing
-turn_finished = false
+// Handle player turn & token collisions
 collided_first_type = -1
 collided_tokens = []
+turn_finished = false
+turn_stamina = 0
+turn_count = 0
+turn_data = {
+    strength: 0,
+    endurance: 0,
+}
+turn_timeout = 0
 
-function end_player_turn() {
-    turn_finished = true
-    collided_first_type = -1
-    // Code when player finished turn
+
+// Should be called when player can start turn
+function start_player_turn() {
+    collided_tokens = []
+    turn_finished = false
+    turn_stamina = stamina
+    turn_data = {
+        strength: 0,
+        endurance: 0,
+    }
+    turn_count++
     
-    with(obj_line) dissapear = true;
+    
 }
 
+function end_player_turn() {
+    with(obj_line) disappear = true;
 
-//line
+    turn_finished = true
+    collided_first_type = -1
+    
+    for (var i = 0; i < array_length(collided_tokens); i++) {
+        var token = collided_tokens[i]
+        switch(token.type) {
+            case TokenType.ENDUREANCE:
+                turn_data.endurance += token.value
+                break
+            case TokenType.STRENGTH:
+                turn_data.strength += token.value
+                break
+        }
+    }
+    
+    log("END TURN")
+    log(string("Collected {0}", turn_data))
+    
+}
+
+function spawn_tokens() {
+    with(obj_token) instance_destroy()
+    
+    repeat(5) {
+        var ang = random(360);
+   	    var len = random_range(0,16);
+   	    var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
+        token.type = round(random_range(0, 2))
+        // TODO: set token type & value
+    }
+}
+
+// TODO: this needs to be called when COMBAT turn begins
+start_player_turn()
+
 mouse_xprevious = mouse_x;
 mouse_yprevious = mouse_y;
 
-//events that happen in the dungeon
-enum EventState {
-    WALK, //walk to the next event
-    COMBAT, //combat event
-}
-
-//inventory
+//////////////////////////////////////////
+/// Inventory
+//////////////////////////////////////////
 enum InventoryItems {
     BOMB,
     HEAL_POTION,
@@ -50,3 +98,18 @@ inventory = [];
 array_push(inventory, InventoryItems.BOMB);
 array_push(inventory, InventoryItems.HEAL_POTION);
 inventory_col = make_colour_rgb(232, 234, 74);
+
+//////////////////////////////////////////
+/// GAME STATE
+//////////////////////////////////////////
+
+enum GameState {
+    // Transition to next level
+    WALK, 
+    // Combat, normal & boss (boss has its own flag)
+    COMBAT,
+    // Chest or some other non-combat event
+    EVENT,
+}
+
+game_state = GameState.WALK

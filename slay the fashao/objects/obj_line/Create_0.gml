@@ -1,1 +1,1 @@
-dissapear = false;
+disappear = false;

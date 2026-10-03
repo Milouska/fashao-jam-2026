@@ -1,7 +1,7 @@
 var g_col = make_color_rgb(120,120,120);
 
-var t_x = 86;
-var t_y = 32;
+var t_x = 64;
+var t_y = 0;
 
 //STATS
 draw_text(t_x - 48, t_y, "STATS");
@@ -22,7 +22,7 @@ draw_text_color(t_x + 2, t_y + 64, "dom", g_col, g_col, g_col, g_col, 1);
 draw_text_color(t_x + 2, t_y + 80, "eligence", g_col, g_col, g_col, g_col, 1);
 
 //INVENTORY
-var t_inv_y = 136 + 48;
+var t_inv_y = 96 + 48;
 
 draw_text(t_x - 48, t_inv_y, "INVENTORY");
 for (var i = 0; i < array_length(inventory); i++) {
