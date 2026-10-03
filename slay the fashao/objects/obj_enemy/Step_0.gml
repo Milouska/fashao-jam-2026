@@ -18,7 +18,7 @@ switch (enemy_state) {
 	case EnemyState.ATTACK:
 		enemy_attack_a = approach(enemy_attack_a, pi / 4 * 3, 0.1);
 		enemy_y = sin(abs(enemy_attack_a) + pi/4) * 64;
-		enemy_scale = 1.25 - 0.25 * abs(enemy_attack_a / (pi/4*3));
+		enemy_scale = 1.4 - 0.4 * abs(enemy_attack_a / (pi/4*3));
 		if (enemy_attack_a = pi / 4 * 3) {
 			enemy_attack_a = - pi / 4 * 3;
 			enemy_state = EnemyState.IDLE;

@@ -1,7 +1,9 @@
 //enemies
 enum EnemyType {
-	GHOST, //attack, dont attack
-	SPIKY, //always one attack
+	BABY,
+	GIANT,
+	MANTICORE,
+	NIGHTMARE
 } 
 
 death_callback = undefined
@@ -15,14 +17,22 @@ enum EnemyState {
 }
 
 enemy_state = EnemyState.APPEAR;
-type = choose(EnemyType.GHOST,
-			  EnemyType.SPIKY);
+type = choose(EnemyType.BABY,
+			  EnemyType.GIANT,
+			  EnemyType.MANTICORE,
+			  EnemyType.NIGHTMARE);
 
 switch (type) {
-	case EnemyType.GHOST:
+	case EnemyType.BABY:
 		enemy_attacks = [];
 	break;
-	case EnemyType.SPIKY:
+	case EnemyType.GIANT:
+		enemy_attacks = [];
+	break;
+	case EnemyType.MANTICORE:
+		enemy_attacks = [];
+	break;
+	case EnemyType.NIGHTMARE:
 		enemy_attacks = [];
 	break;
 	default:

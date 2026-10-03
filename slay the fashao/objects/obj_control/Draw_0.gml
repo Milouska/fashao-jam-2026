@@ -38,3 +38,6 @@ for (var i = 0; i < array_length(inventory); i++) {
 	
 	draw_text_color(t_x - 64, t_inv_y + 16 + i*16, inv_text, inventory_col, inventory_col, inventory_col, inventory_col, 1);
 }
+
+//DRAW CIRCULAR BAR AROUND MOUSE
+//draw_circular_bar(mouse_x,y,value, _max, colour, radius, transparency, width)
