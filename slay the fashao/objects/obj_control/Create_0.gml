@@ -27,8 +27,6 @@ function end_player_turn() {
     // Code when player finished turn
     
     with(obj_line) dissapear = true;
-    
-    log("SHOULD END NOW")
 }
 
 

@@ -19,14 +19,11 @@ if (mouse_check_button(mb_left) && !turn_finished) {
             var element = collided_tokens[i]
             
             if (element.type == TokenType.STRENGTH || element.type == TokenType.ENDUREANCE) {
-                show_debug_message(string("started with {0} and now has {1}", collided_first_type, element.type))
-                
                 if (collided_first_type > -1 && collided_first_type != element.type) {
-                    // End movement too
                     end_player_turn()
+                } else {
+                    collided_first_type = element.type
                 }
-                
-                collided_first_type = element.type
             }
         }
     }
