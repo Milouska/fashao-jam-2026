@@ -83,7 +83,7 @@ function end_player_turn() {
 
 function spawn_token(token_type) {
     var ang = random(360);
-    var len = random_range(0, 15);
+    var len = random_range(0, );
     var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
     token.type = token_type
 }
@@ -130,11 +130,13 @@ function start_event(state_type) {
             // Spawn
             enemy = instance_create_depth(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
             enemy.on_death = method({ self }, function () {
-                // Called when enemy dies
                 // FOR TESTING: we only start a new combat, but we SHOULD walk first
                 call_later(1, time_source_units_seconds, method(self, function() {
-                    start_player_turn()
+                    //start_player_turn()
+                    start_event(GameState.WALK)
+
                 }))
+                
             })
 
             start_player_turn()
@@ -142,7 +144,18 @@ function start_event(state_type) {
         
         case GameState.WALK:
             // Walking to the next stage
-            start_event(choose(GameState.COMBAT, GameState.CHOICE))
+            //start_event(choose(GameState.COMBAT, GameState.CHOICE))
+            
+            // 1. spawn two random tokens
+            repeat(2) {
+                //spawn_token(choose(
+                    //TokenType.EVENT,
+                    //TokenType.RANDOM,
+                    //TokenType.,
+                //))
+            }
+            // 2. player slashes one, something happens,
+            // 3. start_event based on result
 
             break
         
