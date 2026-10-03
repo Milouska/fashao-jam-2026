@@ -17,7 +17,19 @@ enum TokenType {
 }
 
 // Handle collision with tokens when drawing
+turn_finished = false
+collided_first_type = -1
 collided_tokens = []
+
+function end_player_turn() {
+    turn_finished = true
+    collided_first_type = -1
+    // Code when player finished turn
+    
+    with(obj_line) dissapear = true;
+    
+    log("SHOULD END NOW")
+}
 
 
 //line

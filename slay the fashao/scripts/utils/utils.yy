@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"help",
+  "%Name":"utils",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"help",
+  "name":"utils",
   "parent":{
     "name":"slay the fashao",
     "path":"slay the fashao.yyp",
