@@ -22,27 +22,22 @@ enum TokenType {
 collided_first_type = -1
 collided_tokens = []
 turn_finished = false
-turn_stamina = 0
 turn_count = 0
 turn_data = {
     strength: 0,
     endurance: 0,
 }
-turn_timeout = 0
 
 
 // Should be called when player can start turn
 function start_player_turn() {
     collided_tokens = []
     turn_finished = false
-    turn_stamina = stamina
     turn_data = {
         strength: 0,
         endurance: 0,
     }
     turn_count++
-    
-    
 }
 
 function end_player_turn() {
@@ -109,7 +104,39 @@ enum GameState {
     // Combat, normal & boss (boss has its own flag)
     COMBAT,
     // Chest or some other non-combat event
-    EVENT,
+    CHOICE,
+    // Game over screen
+    OVER,
 }
 
-game_state = GameState.WALK
+game_event = GameState.WALK 
+
+// Place code initiating an event HERE, spawning enemy, creating choice, etc
+function start_event(event_type) {
+    game_event = event_type
+    
+    switch(game_event) {
+        case GameState.COMBAT:
+            // Spawn
+            var enemy = instance_create_layer(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
+            
+            enemy.on_death = function () {
+                // Called when enemy dies
+            }
+            
+            break 
+        
+        case GameState.WALK:
+            // Walking to the next stage
+            break
+        
+        case GameState.CHOICE:
+            // choice
+            break    
+        
+         case GameState.OVER:
+            // game over screen
+            break
+        
+    }
+}

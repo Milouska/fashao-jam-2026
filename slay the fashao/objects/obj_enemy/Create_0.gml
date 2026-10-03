@@ -2,7 +2,9 @@
 enum EnemyType {
 	GHOST, //attack, dont attack
 	SPIKY, //always one attack
-}
+} 
+
+death_callback = undefined
 
 death_callback = undefined
 

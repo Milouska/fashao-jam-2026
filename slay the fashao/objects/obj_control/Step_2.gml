@@ -11,15 +11,6 @@ if (mouse_check_button(mb_left) && !turn_finished) {
 
     var collidee = collision_line(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious, obj_token, true, true)
     if (collidee && !array_contains(collided_tokens, collidee.id)) {
-        // If player runs out of stamina and tries to go over another token, end the turn.
-        // We do not otherwise cancel player's turn when they run out of stamina
-        // because stoping the turn is part of the skillcheck
-        if (turn_stamina <= 0) {
-            end_player_turn()
-            return
-        }
-        
-        turn_stamina -= 1
         array_push(collided_tokens, collidee.id)
         collidee.selected = true 
         
