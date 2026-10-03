@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"slay the fashao",
-    "path":"slay the fashao.yyp",
+    "name":"SPRITES",
+    "path":"folders/SPRITES.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

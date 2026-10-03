@@ -10,8 +10,8 @@
   "name":"obj_token",
   "overriddenProperties":[],
   "parent":{
-    "name":"slay the fashao",
-    "path":"slay the fashao.yyp",
+    "name":"OBJECTS",
+    "path":"folders/OBJECTS.yy",
   },
   "parentObjectId":null,
   "persistent":false,

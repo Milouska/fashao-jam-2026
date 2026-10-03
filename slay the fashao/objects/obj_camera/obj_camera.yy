@@ -1,17 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_line",
+  "%Name":"obj_camera",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_line",
+  "name":"obj_camera",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"slay the fashao",
+    "path":"slay the fashao.yyp",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_line",
-    "path":"sprites/spr_line/spr_line.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

@@ -12,10 +12,8 @@ enum EnemyState {
 	APPEAR,
 	IDLE,
 	ATTACK,
+	DEATH
 }
-
-pending_slash = 0
-pending_fireball = 0
 
 // Collection of enemy damage per turn. Damage is displayed by an amount of icons corresponding to the dmg
 enemy_attacks = []
@@ -48,8 +46,9 @@ switch (type) {
 }
 
 
-enemy_attack = 0;
-attacking = false; //SET THIS TO TRUE IF YOU WANT ENEMY TO ATTACK
+enemy_attack = 0; //value of attack
+attacked = false; //if already attacked this is set to true
+
 //attack effect
 attack_a = pi/2;
 enemy_scale = 0.5;
@@ -57,5 +56,14 @@ enemy_rot = 0;
 enemy_a = pi / 4;
 enemy_attack_a = - pi / 4 * 3;
 
+//hit effect
+enemy_shake = 0;
+shake_x = 0;
+shake_y = 0;
+
 //enemy appear effect
 enemy_alpha = 0;
+
+//getting attacked
+pending_slash = 10;
+pending_fireball = 0

@@ -66,8 +66,8 @@ function end_player_turn() {
     // 1. Player finished turn [x]
     // 2. We get the turn data
     // 3. based on that, we change enemy variables
-    enemy.pending_slash = 3
-    enemy.pending_fireball = 5
+    enemy.pending_slash = turn_strength;
+    //enemy.pending_fireball = 5
     // 4. HAPPENS IN ENEMY - enemy DIES attacks BACK or ends its turn aka does nothing
 }
 
@@ -149,7 +149,7 @@ function start_event(state_type) {
         
         case GameState.CHOICE:
             
-            // 1. Spawn choice tokens
+            // 1. Spawn 2-3 choice tokens
             // 2. Allow player to only slash one
             // 3. after some effect / timeout call start_event() based on player choice
             
