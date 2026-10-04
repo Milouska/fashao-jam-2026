@@ -6,7 +6,7 @@ defaults = {
     STRENGHT: 3,
     ENDURANCE: 3,
     STAMINA: 5,
-    WISDOM: 0,
+    WISDOM: 1,
     INTELLIGENCE: 0,
 }
 
