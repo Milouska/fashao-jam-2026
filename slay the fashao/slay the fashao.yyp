@@ -48,6 +48,7 @@
     {"id":{"name":"spr_shield","path":"sprites/spr_shield/spr_shield.yy",},},
     {"id":{"name":"spr_slash","path":"sprites/spr_slash/spr_slash.yy",},},
     {"id":{"name":"spr_token","path":"sprites/spr_token/spr_token.yy",},},
+    {"id":{"name":"Sprite13","path":"sprites/Sprite13/Sprite13.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
