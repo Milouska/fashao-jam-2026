@@ -2,6 +2,7 @@ var damage_offset = 48;
 
 
 // enemy background
+/*
 shape_size = lerp(shape_size, 150, 0.25)
 
 draw_set_colour(c_blue)
@@ -17,7 +18,7 @@ draw_rectangle(
 )
 draw_set_colour(c_white)
 draw_set_alpha(1)
-
+*/
 if (enemy_state != EnemyState.APPEAR) {
 	var damage = enemy_attacks[turn_count]
 	if (damage > 0) {

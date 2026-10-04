@@ -11,6 +11,7 @@ if (selected) {
 		token_flash.image_speed = 0;
 		token_flash.sprite_index = sprite_index;
 		token_flash.image_angle = image_angle;
+		token_flash.parent = id;
 	}
 	if (selected_once = false) {
 		var token_flash = instance_create_depth(x,y,-100,obj_token_quickflash);
@@ -18,6 +19,7 @@ if (selected) {
 		token_flash.image_speed = 0;
 		token_flash.sprite_index = sprite_index;
 		token_flash.image_angle = image_angle;
+		token_flash.parent = id;
 		selected_once = true;
 	}
 }
@@ -28,6 +30,7 @@ if (type < 5) {
 	token_flash.sprite_index = sprite_index;
 	token_flash.image_angle = image_angle;
 	token_flash.image_alpha = 0.02;
+	token_flash.parent = id;
 }
 
 var token_width = 16;

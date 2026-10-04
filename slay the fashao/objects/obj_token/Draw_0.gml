@@ -20,5 +20,3 @@ if (type = TokenType.WISDOM) {
 		draw_sprite_ext(spr_line_end, 0, x + lengthdir_x(len,dir + wisdom_dir_total - i * step * sign(wisdom_dir_total)), y + lengthdir_y(len,dir + wisdom_dir_total - i * step * sign(wisdom_dir_total)), 1, 1, 0, obj_control.wisdom_col, 1);
 	}
 }
-
-draw_text(x,y+32, wisdom_dir_total);

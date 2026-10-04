@@ -7,11 +7,20 @@ if (mouse_check_button(mb_left) && !turn_finished) {
 				wisdom_prev_dir = point_direction(x, y, mouse_x, mouse_y);
 			}
 		}
+		
+		stamina_cd = stamina * stamina_inc;
 	}
 	
     var dist = point_distance(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious);
+	
+	//If we run out of concentration, we stop the movement
+	if (game_state == GameState.COMBAT) stamina_cd = approach(stamina_cd, 0, 1);
+	if (stamina_cd = 0) {
+		end_player_turn();
+		return
+	}
     
-    if (dist < 10) return
+    if (dist < 3) return
     
 	var line = instance_create_depth(mouse_x, mouse_y, -1, obj_line);
 	line.image_angle = point_direction(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious);
@@ -23,7 +32,7 @@ if (mouse_check_button(mb_left) && !turn_finished) {
     // We ignore wisdom tokens, as those have special detection
     if (collidee && !array_contains(collided_tokens, collidee.id) && collidee.type != TokenType.WISDOM) {
         array_push(collided_tokens, collidee.id)
-        collidee.selected = true 
+        collidee.selected = true
         
         // WHile walking, we skip the check
         if (game_state != GameState.COMBAT) {

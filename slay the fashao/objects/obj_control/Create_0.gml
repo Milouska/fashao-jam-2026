@@ -5,7 +5,7 @@ defaults = {
     HP: 5,
     STRENGHT: 2,
     ENDURANCE: 2,
-    STAMINA: 4,
+    STAMINA: 3,
     WISDOM: 0,
     INTELLIGENCE: 2,
 }
@@ -27,6 +27,9 @@ inteligence = defaults.INTELLIGENCE;
 inteligence_col = make_colour_rgb(68, 48, 186);
 player_hp = defaults.HP;
 player_max_hp = defaults.HP
+
+stamina_cd = 0;
+stamina_inc = 15;
 
 function heal(by = 1) {
     player_hp = min(player_hp + by, player_max_hp)    

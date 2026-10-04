@@ -4,7 +4,7 @@ font_add_enable_aa(false)
 var g_col = make_color_rgb(120,120,120);
 
 var t_x = 88
-var t_y = 12
+var t_y = 24
 
 // Turn
 var turn_text = string(global.t("ui.turn"), game_rounds)
@@ -88,6 +88,15 @@ draw_text_color(global.BABYMODE ? t_x - 48 : t_x + 32, t_hp_y, global.t("ui.heal
 	//
 	//draw_text_color(t_x - 64, t_inv_y + 16 + i*16, inv_text, inventory_col, inventory_col, inventory_col, inventory_col, 1);
 //}
+
+//STAMINA
+var cam = view_camera[0];
+var cam_w = camera_get_view_width(cam);
+var cam_h = camera_get_view_height(cam);
+var cam_x = camera_get_view_x(cam);
+var cam_y = camera_get_view_y(cam);
+//draw_sprite_ext(spr_stamina, 0, cam_x + cam_w, cam_y, 1, cam_h, 0, strength_col, 1);
+draw_sprite_ext(spr_stamina, 0, cam_x + cam_w, cam_y, 1, cam_h * stamina_cd / (stamina * stamina_inc), 0, stamina_col, 1);
 
 
 //DRAW CIRCULAR BAR AROUND MOUSE
