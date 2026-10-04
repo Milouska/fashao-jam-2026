@@ -226,7 +226,6 @@ enum GameState {
     FORK,
     // Game over screen
     OVER,
-    BOSS,
 }
 
 balance_turn = 0
