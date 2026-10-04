@@ -1,15 +1,36 @@
 draw_set_font(font_zh)
 font_add_enable_aa(false)
 
+var t_x = 88
+var t_y = 100
+
 if (game_state == GameState.OVER) {
+    var over_text = global.t("event.over.text")
+    draw_text(room_width / 2 -  string_width(over_text) / 2, y + 32, over_text)
     
-    return
+    draw_set_halign(fa_right);
+    
+    draw_text_colour(room_width / 2 - 120, t_y + 20, global.t("event.over.enemies"), c_gray, c_gray, c_gray, c_gray, 1)
+    draw_text_colour(room_width / 2 - 120, t_y + 40, global.t("event.over.tokens"), c_gray, c_gray, c_gray, c_gray, 1)
+    draw_text_colour(room_width / 2 - 120, t_y + 60, global.t("event.over.rounds"), c_gray, c_gray, c_gray, c_gray, 1)
+    draw_text_colour(room_width / 2 - 120, t_y + 80, global.t("event.over.damage"), c_gray, c_gray, c_gray, c_gray, 1)
+    draw_text_colour(room_width / 2 - 120, t_y + 100, global.t("event.over.taken"), c_gray, c_gray, c_gray, c_gray, 1)
+	
+    draw_set_halign(fa_left);
+
+    draw_text_colour(room_width / 2 + 150, t_y + 20, stats.enemies_killed, c_white, c_white, c_white, c_white, 1)
+    draw_text_colour(room_width / 2 + 150, t_y + 40, stats.tokens_sliced, c_white, c_white, c_white, c_white, 1)
+    draw_text_colour(room_width / 2 + 150, t_y + 60, game_rounds - 1, c_white, c_white, c_white, c_white, 1)
+    draw_text_colour(room_width / 2 + 150, t_y + 80, stats.damage_given, c_white, c_white, c_white, c_white, 1)
+    draw_text_colour(room_width / 2 + 150, t_y + 100, stats.damage_taken, c_white, c_white, c_white, c_white, 1)
+	return
 }
 
-var g_col = make_color_rgb(120,120,120);
+t_x = 88
+t_y = 24
 
-var t_x = 88
-var t_y = 24
+
+var g_col = make_color_rgb(120,120,120);
 
 // Turn
 var turn_text = string(global.t("ui.turn"), game_rounds)
@@ -38,9 +59,10 @@ draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 60, string(stamina) + (g
 draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 80, string(wisdom) + (global.BABYMODE ? " : WIS" : (" " + global.t("ui.wisdom"))),wisdom_col,wisdom_col,wisdom_col,wisdom_col,1);
 draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 100, string(inteligence) + (global.BABYMODE ? " : INT" : (" " + global.t("ui.intelligence"))),inteligence_col,inteligence_col,inteligence_col,inteligence_col,1);
 
+draw_set_halign(fa_left);
+
 // Only draw 2nd half in ENGLISH
 if (global.BABYMODE) {
-    draw_set_halign(fa_left);
     draw_text_color(t_x + 2, t_y + 20, "ength", g_col, g_col, g_col, g_col, 1);
     draw_text_color(t_x + 2, t_y + 40, "urance", g_col, g_col, g_col, g_col, 1);
     draw_text_color(t_x + 2, t_y + 60, "centration", g_col, g_col, g_col, g_col, 1);
@@ -75,25 +97,6 @@ repeat(player_max_hp) {
 
 draw_text_color(global.BABYMODE ? t_x - 48 : t_x + 32, t_hp_y, global.t("ui.health") + ":\n" + max_hp_text,c_dkgray,c_dkgray,c_dkgray,c_dkgray,1);
 draw_text_color(global.BABYMODE ? t_x - 48 : t_x + 32, t_hp_y, global.t("ui.health") + ":\n" + hp_text,strength_col,strength_col,strength_col,strength_col,1);
-
-//INVENTORY
-//var t_inv_y = 130 + 48 + 24 * floor(player_hp / 10);
-//
-//draw_text(t_x - 48, t_inv_y, global.t("ui.inventory"));
-//for (var i = 0; i < array_length(inventory); i++) {
-	//var inv_text = "";
-	//switch (inventory[i]) {
-		//case InventoryItems.BOMB:
-			//inv_text = global.t("item.bomb");
-		//break;
-		//case InventoryItems.HEAL_POTION:
-			//inv_text = global.t("item.healing_potion");
-		//break;
-	//}
-	//
-	//draw_text_color(t_x - 64, t_inv_y + 16 + i*16, inv_text, inventory_col, inventory_col, inventory_col, inventory_col, 1);
-//}
-
 
 //STAMINA
 var cam = view_camera[0];

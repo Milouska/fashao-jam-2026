@@ -19,3 +19,4 @@
 - [ ] Add shader effects
 - [x] Add combat timer
 - [ ] Each enemy draws its own simple background
+- [ ] Every X turns buff enemies by some stats

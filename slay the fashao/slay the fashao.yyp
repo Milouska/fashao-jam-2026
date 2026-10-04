@@ -44,6 +44,7 @@
     {"id":{"name":"event_utils","path":"scripts/event_utils/event_utils.yy",},},
     {"id":{"name":"translation","path":"scripts/translation/translation.yy",},},
     {"id":{"name":"utils","path":"scripts/utils/utils.yy",},},
+    {"id":{"name":"sh_effects","path":"shaders/sh_effects/sh_effects.yy",},},
     {"id":{"name":"spr_bg","path":"sprites/spr_bg/spr_bg.yy",},},
     {"id":{"name":"spr_damage_border","path":"sprites/spr_damage_border/spr_damage_border.yy",},},
     {"id":{"name":"spr_damage","path":"sprites/spr_damage/spr_damage.yy",},},

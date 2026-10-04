@@ -216,26 +216,34 @@ function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
 mouse_xprevious = mouse_x;
 mouse_yprevious = mouse_y;
 
+//////////////////////////////////////////
+/// DEATH
+//////////////////////////////////////////
+/// 
+
+application_surface_draw_enable(false);
+
+u_tint   = shader_get_uniform(sh_effects, "u_tint");
+u_amount = shader_get_uniform(sh_effects, "u_amount");
+u_impact = shader_get_uniform(sh_effects, "u_impact");
+
+player_dead = false
+
+death_amount = 0;   // 0 - 1 tint strength
+death_color  = [0.8, 0.0, 0.1]; // rgb
+impact_timer = 0;   // in frames
+
 function take_damage(dmg) {
     player_hp -= dmg
     
     if (player_hp <= 0) {
-        start_event(GameState.OVER)
+        player_dead = true
+        
+        call_later(30, time_source_units_frames, method(self, function() {
+            start_event(GameState.OVER)
+        }))
     }
 }
-
-//////////////////////////////////////////
-/// Inventory
-//////////////////////////////////////////
-//enum InventoryItems {
-    //BOMB,
-    //HEAL_POTION,
-//}
-//
-//inventory = [];
-//array_push(inventory, InventoryItems.BOMB);
-//array_push(inventory, InventoryItems.HEAL_POTION);
-//inventory_col = make_colour_rgb(232, 234, 74);
 
 //////////////////////////////////////////
 /// GAME STATE
@@ -280,6 +288,7 @@ function start_event(state_type) {
             })
 
             start_player_turn()
+            
             break 
         
         case GameState.WALK:
@@ -293,6 +302,7 @@ function start_event(state_type) {
             spawn_token(TokenType.INTELIGENCE, 288, 0)
             
             heal()
+            
             break
         
         case GameState.FORK:
@@ -307,6 +317,7 @@ function start_event(state_type) {
 
             spawn_token(get_event_token(first), 180, 7)
             spawn_token(get_event_token(second), 0, 7)
+            
             break
         
         case GameState.BALANCE:
@@ -327,17 +338,19 @@ function start_event(state_type) {
             turn_finished = false
             spawn_token(TokenType.EVENT_WALK, 180, 7)
             spawn_token(TokenType.EVENT_HEAL, 0, 7)
+            
             break
         
          case GameState.OVER:
             log("=== GAME OVER ===")
-            // TODO: implement game over screen
+            with(obj_token) { instance_destroy() }
+            obj_enemy.enemy_attacks = [0,0,0,0,0,0,0]
+                
             break
         
         default:
             log("=== UNKNOWN EVENT ===")
-            log(game_state)
-            throw ("Bro some unknown state started")
+            throw string("Bro tried to use {0} as an event", game_state)
     }
 }
 
@@ -358,4 +371,5 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME VvvvvV
-start_event(GameState.WALK)
+start_event(GameState.COMBAT)
+take_damage(500)
