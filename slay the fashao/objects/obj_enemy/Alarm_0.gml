@@ -33,6 +33,9 @@ if (pending_slash > 0) {
 						vshake = 64;
 						hshake = 64;
 					}
+            
+                    obj_control.impact_timer = 12;
+        
 					enemy_shake = 32;
                 }))
 	pending_fireball = approach(pending_fireball, 0, 1);

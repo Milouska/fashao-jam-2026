@@ -16,7 +16,7 @@
 - [x] Scale enemies after each bossfight
 - [x] Add max HP
 - [x] Implement wisdom token detection
-- [ ] Add shader effects
+- [x] Add shader effects
 - [x] Add combat timer
 - [ ] Each enemy draws its own simple background
 - [ ] Every X turns buff enemies by some stats
