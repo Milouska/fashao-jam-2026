@@ -50,8 +50,6 @@ enum TokenType {
     EVENT_WALK,
     EVENT_HEAL,
     EVENT_COMBAT,
-    ITEM_BOMB,
-    ITEM_HEALTH_POTION,
 }
 ////////////// DO NOT REORDER THESE ^^^^^^
 
@@ -96,7 +94,7 @@ function end_player_turn() {
                 turn_fireball += token.value
                 break
             case TokenType.STAMINA:
-                turn_fireball += token.value
+                turn_stamina += token.value
                 break
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
