@@ -19,7 +19,7 @@ if (pending_slash > 0) {
 	var fireball = instance_create_depth(x + lengthdir_x(len, ang), y + lengthdir_y(len, ang), -5, obj_fireball);
 	fireball.spd = spd;
 	call_later(len / spd, time_source_units_frames, method(self, function() {
-                    enemy_hp --;
+                    enemy_hp -= 3;
                     if (enemy_hp <= 0) {
 						enemy_state = EnemyState.DEATH;
 					}

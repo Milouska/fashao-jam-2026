@@ -2,7 +2,7 @@ depth = -1
 randomize()
 
 defaults = {
-    HP: 20,
+    HP: 10,
     STRENGHT: 3,
     ENDURANCE: 3,
     STAMINA: 5,
@@ -60,8 +60,6 @@ collided_first_type = -1
 collided_tokens = []
 turn_finished = false
 
-turn_endurance = 0
-
 // Should be called when player can start turn
 function start_player_turn() {
     turn_endurance = 0
@@ -80,7 +78,7 @@ function end_player_turn() {
 
     var turn_strength = 0
     var turn_fireball = 0
-    var turn_endurance_temp = 0
+    var turn_endurance = 0
     var turn_stamina = 0
 
     var token_event_type = -1
@@ -89,7 +87,7 @@ function end_player_turn() {
         var token = collided_tokens[i]
         switch(token.type) {
             case TokenType.ENDUREANCE:
-                turn_endurance_temp += token.value
+                turn_endurance += token.value
                 break
             case TokenType.STRENGTH:
                 turn_strength += token.value
@@ -131,7 +129,7 @@ function end_player_turn() {
     if (game_state == GameState.WALK) {
         strength += turn_strength
         wisdom += turn_fireball
-        endurance += turn_endurance_temp
+        endurance += turn_endurance
         stamina += turn_stamina
         
         // ENDS AND CHANGE STATE
@@ -143,7 +141,6 @@ function end_player_turn() {
     }
     
     // PLACE ALL COMBAT RELATED CODE BELOW VVVVVVVVVVVVVVVVVVVVV
-	
 	var max_shield_row = 9;
 	var shield_count = 0;
 	var row = 0;
@@ -155,9 +152,7 @@ function end_player_turn() {
 		}
 		shield.row = row;
 		shield_count ++;
-	}   
-    
-    turn_endurance = turn_endurance_temp
+	}
 
     enemy.pending_slash = turn_strength;
     enemy.pending_fireball = turn_fireball;
