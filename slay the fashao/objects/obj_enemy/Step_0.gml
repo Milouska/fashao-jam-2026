@@ -67,7 +67,12 @@ switch (enemy_state) {
 	break;
 	case EnemyState.DEATH:
 		enemy_alpha = approach(enemy_alpha, 0, 0.05);
-		if (enemy_alpha = 0) instance_destroy();
+		if (enemy_alpha = 0) {
+			instance_destroy();
+			with(obj_shield) {
+				gone = true;
+			}
+		}
 	break;
 }
 
