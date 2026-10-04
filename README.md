@@ -3,19 +3,19 @@
 - [ ] General gameplay loop (fight -> walk -> XP -> Choice -> bossfight)
 - [ ] Balancing
 - [ ] Music and SFX
-- [ ] Items
-  - [ ] Bomb
-  - [ ] Healing potion - we should delete this if fountains exist
-  - [ ] Come up with something
-  - [ ] or scrap entire inventory 
 - [x] Choice screen
 - [ ] End screen
 - [ ] Collect statistics
 - [x] XP screen
 - [x] Translations
-- [ ] Change to pixel font which supports chinese
-- [ ] Token icons
+  - [ ] Fix chinese text positions
+- [x] Change to pixel font which supports chinese
+- [x] Token icons
 - [x] Scale enemies after each bossfight
+- [x] Add max HP
+- [ ] Implement wisdom token detection
+- [ ] ADd combat timer
+- [ ] Each enemy draws its own simple background
 - [ ] Add bossifight after every X turns
   - [ ] Implement?
   - [ ] Design?

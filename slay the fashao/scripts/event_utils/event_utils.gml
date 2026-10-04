@@ -6,7 +6,7 @@ function get_random_weighted_event() {
     // Combat is always more likely
     if (rand <=0.5) {
         result = GameState.COMBAT
-    } else if (rand > 0.5 && rand <= 0.8) {
+    } else if (rand > 0.5 && rand <= 0.77) {
         // Semi-rare
         result = choose(
             GameState.WALK,
@@ -16,7 +16,7 @@ function get_random_weighted_event() {
     } else {
         // Very rare
         result = choose(
-            GameState.CHEST,
+            //GameState.CHEST,
             GameState.FOUNTAIN,
         )
     }
@@ -33,8 +33,8 @@ function get_event_token(event) {
             return TokenType.EVENT_WALK
         case GameState.BALANCE: 
             return TokenType.EVENT_BALANCE    
-        case GameState.CHEST: 
-            return TokenType.EVENT_CHEST
+        //case GameState.CHEST: 
+            //return TokenType.EVENT_CHEST
         case GameState.FOUNTAIN: 
             return TokenType.EVENT_FOUNTAIN
         case GameState.FORK: 
@@ -54,8 +54,8 @@ function get_token_event(token) {
             return GameState.WALK;
         case TokenType.EVENT_BALANCE:
             return GameState.BALANCE;
-        case TokenType.EVENT_CHEST:
-            return GameState.CHEST;
+        //case TokenType.EVENT_CHEST:
+            //return GameState.CHEST;
         case TokenType.EVENT_FOUNTAIN:
             return GameState.FOUNTAIN;
         case TokenType.EVENT_FORK:
@@ -74,8 +74,8 @@ function get_event_description(event) {
             return TokenType.EVENT_WALK
         case GameState.BALANCE: 
             return TokenType.EVENT_BALANCE    
-        case GameState.CHEST: 
-            return TokenType.EVENT_CHEST
+        /*case GameState.CHEST: 
+            return TokenType.EVENT_CHEST*/
         case GameState.FOUNTAIN: 
             return TokenType.EVENT_FOUNTAIN
         case GameState.FORK: 

@@ -10,7 +10,9 @@ if (mouse_check_button(mb_left) && !turn_finished) {
 	line.image_yscale = 3;
 
     var collidee = collision_line(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious, obj_token, true, true)
-    if (collidee && !array_contains(collided_tokens, collidee.id)) {
+    
+    // We ignore wisdom tokens, as those have special detection
+    if (collidee && !array_contains(collided_tokens, collidee.id) && collidee.type != TokenType.WISDOM) {
         array_push(collided_tokens, collidee.id)
         collidee.selected = true 
         

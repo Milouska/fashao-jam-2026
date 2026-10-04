@@ -44,22 +44,22 @@ repeat(player_hp) {
 draw_text_color(t_x - 64, t_hp_y, global.t("ui.health") + ":\n" + hp_text,strength_col,strength_col,strength_col,strength_col,1);
 
 //INVENTORY
-var t_inv_y = 130 + 48 + 24 * floor(player_hp / 10);
-
-draw_text(t_x - 48, t_inv_y, global.t("ui.inventory"));
-for (var i = 0; i < array_length(inventory); i++) {
-	var inv_text = "";
-	switch (inventory[i]) {
-		case InventoryItems.BOMB:
-			inv_text = global.t("item.bomb");
-		break;
-		case InventoryItems.HEAL_POTION:
-			inv_text = global.t("item.healing_potion");
-		break;
-	}
-	
-	draw_text_color(t_x - 64, t_inv_y + 16 + i*16, inv_text, inventory_col, inventory_col, inventory_col, inventory_col, 1);
-}
+//var t_inv_y = 130 + 48 + 24 * floor(player_hp / 10);
+//
+//draw_text(t_x - 48, t_inv_y, global.t("ui.inventory"));
+//for (var i = 0; i < array_length(inventory); i++) {
+	//var inv_text = "";
+	//switch (inventory[i]) {
+		//case InventoryItems.BOMB:
+			//inv_text = global.t("item.bomb");
+		//break;
+		//case InventoryItems.HEAL_POTION:
+			//inv_text = global.t("item.healing_potion");
+		//break;
+	//}
+	//
+	//draw_text_color(t_x - 64, t_inv_y + 16 + i*16, inv_text, inventory_col, inventory_col, inventory_col, inventory_col, 1);
+//}
 
 
 //DRAW CIRCULAR BAR AROUND MOUSE

@@ -26,8 +26,11 @@ wisdom_col = make_colour_rgb(254, 72, 222);
 inteligence = defaults.INTELLIGENCE;
 inteligence_col = make_colour_rgb(68, 48, 186);
 player_hp = defaults.HP;
-// TODO: add player max hp
+player_max_hp = defaults.HP
 
+function heal(by = 1) {
+    player_hp = min(player_hp + by, player_max_hp)    
+}
 
 game_state = GameState.WALK
 game_rounds = 0
@@ -48,7 +51,7 @@ enum TokenType {
     EVENT_FOUNTAIN,
     EVENT_BALANCE,
     EVENT_FORK,
-    EVENT_CHEST,
+    //EVENT_CHEST,
     EVENT_WALK,
     EVENT_HEAL,
     EVENT_COMBAT,
@@ -100,8 +103,8 @@ function end_player_turn() {
                 break
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
-                // TODO: increase max HP by 1, heal 1
-                player_hp = defaults.HP
+                player_max_hp += 1
+                heal(1)
                 token_event_type = get_random_weighted_event()
                 break
             
@@ -171,15 +174,15 @@ mouse_yprevious = mouse_y;
 //////////////////////////////////////////
 /// Inventory
 //////////////////////////////////////////
-enum InventoryItems {
-    BOMB,
-    HEAL_POTION,
-}
-
-inventory = [];
-array_push(inventory, InventoryItems.BOMB);
-array_push(inventory, InventoryItems.HEAL_POTION);
-inventory_col = make_colour_rgb(232, 234, 74);
+//enum InventoryItems {
+    //BOMB,
+    //HEAL_POTION,
+//}
+//
+//inventory = [];
+//array_push(inventory, InventoryItems.BOMB);
+//array_push(inventory, InventoryItems.HEAL_POTION);
+//inventory_col = make_colour_rgb(232, 234, 74);
 
 //////////////////////////////////////////
 /// GAME STATE
@@ -191,7 +194,7 @@ enum GameState {
     // Combat, normal & boss (boss has its own flag)
     COMBAT,
     // Choose between two random items
-    CHEST,
+    //CHEST,
     // ADD 2 points to something, remove two points from something else
     BALANCE,
     // Choose if you full-heal, or gain a WALK,
@@ -213,12 +216,10 @@ function start_event(state_type) {
             log("=== COMBAT ===")
             // Spawn
             enemy = instance_create_depth(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
-            enemy.on_death = method({ self }, function () {
+            enemy.death_callback = method({ inst: id }, function () {
                 // FOR TESTING: we only start a new combat, but we SHOULD walk first
-                call_later(1, time_source_units_seconds, method(self, function() {
-                    //start_player_turn()
-                    start_event(GameState.WALK)
-                    enemy = noone
+                call_later(1, time_source_units_seconds, method({inst}, function() {
+                    inst.start_event(GameState.WALK)
                 }))
             })
 
@@ -228,11 +229,13 @@ function start_event(state_type) {
         case GameState.WALK:
             log("=== WALK ===")
             turn_finished = false
-            // TODO: heal player by 1 hp
             spawn_token(TokenType.STRENGTH, 180, 7)
-            spawn_token(TokenType.ENDUREANCE, 180, 20)
+            spawn_token(TokenType.ENDUREANCE, 180, 15)
             spawn_token(TokenType.WISDOM, 0, 7)
-            spawn_token(TokenType.STAMINA, 0, 20)
+            spawn_token(TokenType.STAMINA, 0, 15)
+            
+            // TODO: test this or not
+            heal()
             break
         
         case GameState.FORK:
@@ -249,14 +252,15 @@ function start_event(state_type) {
             spawn_token(get_event_token(second), 0, 7)
             break
             
-        case GameState.CHEST:
-            log("=== CHEST ===")
-            // TODO: same as fork, but only selects items
-            break
+        //case GameState.CHEST:
+            //log("=== CHEST ===")
+            //// same as fork, but only selects items
+            //break
         
         case GameState.BALANCE:
             log("=== BALANCE ===")
             // TODO: implement adding and removing
+            // TODO: this has two steps, first what is added, 2nd what is removed
             break
         
         case GameState.FOUNTAIN:
@@ -284,4 +288,6 @@ function start_random_event() {
     start_event(result)
 }
 
-start_event(GameState.FORK)
+// Text to draw
+
+start_event(GameState.COMBAT)
