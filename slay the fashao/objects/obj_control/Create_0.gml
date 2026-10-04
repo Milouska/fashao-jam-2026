@@ -14,6 +14,7 @@ stats = {
     enemies_killed: 0,
     damage_taken: 0,
     damage_given: 0,
+    tokens_sliced: 0,
 }
 
 BABYMODE = false
@@ -258,6 +259,7 @@ function start_event(state_type) {
                 // FOR TESTING: we only start a new combat, but we SHOULD walk first
                 call_later(1, time_source_units_seconds, method({ inst }, function() {
                     inst.start_event(GameState.WALK)
+                    inst.stats.enemies_killed += 1
                 }))
             })
 

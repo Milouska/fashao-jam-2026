@@ -39,6 +39,7 @@ switch (enemy_state) {
 				}
 				
 				obj_control.player_hp -= damage;
+                obj_control.stats.damage_taken += damage
 				with(obj_camera) hshake = 20;
 				attacked = true;
 			}

@@ -5,6 +5,7 @@ if (pending_slash > 0) {
 	slash.image_xscale = choose(-1,1);
 	call_later(10, time_source_units_frames, method(self, function() {
                     enemy_hp --;
+                    obj_control.stats.damage_given += 1
                     if (enemy_hp <= 0) {
 						enemy_state = EnemyState.DEATH;
 					}
@@ -20,6 +21,7 @@ if (pending_slash > 0) {
 	fireball.spd = spd;
 	call_later(len / spd, time_source_units_frames, method(self, function() {
                     enemy_hp -= 3;
+                    obj_control.stats.damage_given += 3
                     if (enemy_hp <= 0) {
 						enemy_state = EnemyState.DEATH;
 					}

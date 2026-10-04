@@ -1,6 +1,11 @@
 draw_set_font(font_zh)
 font_add_enable_aa(false)
 
+if (game_state == GameState.OVER) {
+    
+    return
+}
+
 var g_col = make_color_rgb(120,120,120);
 
 var t_x = 88

@@ -8,6 +8,12 @@ global.en = {
     "event.fork.text": "It appears the road splits into two.",
     "event.over.text": "You died. Again.",
 
+    "event.over.enemies": "Kills",
+    "event.over.damage": "Damage given",
+    "event.over.taken": "Damage taken"
+    "event.over.turns": "Rounds"
+    "event.over.tokens": "Tokens sliced"
+
     "ui.stats": "STATS",
     "ui.strength": "Strength",
     "ui.endurance": "Endurance",
