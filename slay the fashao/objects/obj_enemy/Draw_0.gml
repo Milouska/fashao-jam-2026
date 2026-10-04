@@ -21,7 +21,7 @@ if (enemy_state != EnemyState.APPEAR) {
 		var hp_dir = 210 + min(max_hp_row, max_enemy_hp) / 2 * hp_deg_offset - floor(i/max_hp_row) * max_hp_row * hp_deg_offset + hp_deg_offset / 2;
 		var len = 96 + hp_len_offset * floor(i/max_hp_row);
 		
-		draw_sprite_ext(spr_enemy_hp, 1, x + lengthdir_x(len, hp_dir + i * hp_deg_offset), y + lengthdir_y(len, hp_dir + i * hp_deg_offset), 0.2, 0.2, 0, c_white, enemy_alpha * 0.75);
+		draw_sprite_ext(spr_enemy_hp, 1, x + lengthdir_x(len, hp_dir + i * hp_deg_offset), y + lengthdir_y(len, hp_dir + i * hp_deg_offset), 0.3, 0.3, 0, c_white, enemy_alpha * 0.75);
 		
 		if (i < enemy_hp) {
 			draw_sprite_ext(spr_enemy_hp, 0, x + lengthdir_x(len, hp_dir + i * hp_deg_offset), y + lengthdir_y(len, hp_dir + i * hp_deg_offset), 0.3, 0.3, random(360), c_white, enemy_alpha * 0.75);
