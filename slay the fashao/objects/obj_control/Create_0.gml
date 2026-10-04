@@ -36,6 +36,7 @@ player_max_hp = defaults.HP
 
 stamina_cd = 0;
 stamina_inc = 15;
+stamina_y = 0;
 
 function heal(by = 1) {
     player_hp = min(player_hp + by, player_max_hp)    

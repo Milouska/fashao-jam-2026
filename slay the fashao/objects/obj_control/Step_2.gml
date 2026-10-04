@@ -14,7 +14,10 @@ if (mouse_check_button(mb_left) && !turn_finished) {
     var dist = point_distance(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious);
 	
 	//If we run out of concentration, we stop the movement
-	if (game_state == GameState.COMBAT) stamina_cd = approach(stamina_cd, 0, 1);
+	if (game_state == GameState.COMBAT) {
+		stamina_cd = approach(stamina_cd, 0, 1);
+		stamina_y = lerp(stamina_y, 0, 0.2);
+	}
 	if (stamina_cd = 0) {
 		end_player_turn();
 		return
@@ -53,6 +56,8 @@ if (mouse_check_button(mb_left) && !turn_finished) {
             }
         }
     }
+} else {
+	stamina_y = lerp(stamina_y, -12, 0.2);
 }
 
 if (mouse_check_button_released(mb_left) && !turn_finished) {
