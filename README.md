@@ -23,4 +23,4 @@
 - [ ] Every X turns buff enemies by some stats
 - [ ] If you hit token that you click it and go, it will instantly be clicked, starts a combat and immediately an attack is triggered
 - [ ] Dying does not delete all tokens  (just find out where they are getting spawned)
-- [ ] AFter initial walk, there is ALWAYS combat
+- [x] AFter initial walk, there is ALWAYS combat

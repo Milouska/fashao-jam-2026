@@ -162,9 +162,13 @@ function end_player_turn() {
         stamina += turn_stamina
         inteligence += turn_intelligence
         
-        // ENDS AND CHANGE STATE
         call_later(20, time_source_units_frames, method(self, function() {
-            start_random_event()
+            // Always start combat after the first walk
+            if (game_rounds == 1) {
+                start_event(GameState.COMBAT)
+            } else {
+                start_random_event()
+            }
         }))
         
         return
@@ -386,5 +390,5 @@ function spawn_barier(radius = 144) {
     }
 }
 
-/// START OF THE GAME VvvvvV
-start_event(GameState.COMBAT)
+/// START OF THE GAME - always walk VvvvvV
+start_event(GameState.WALK)

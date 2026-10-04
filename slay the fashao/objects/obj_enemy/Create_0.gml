@@ -31,8 +31,7 @@ type = choose(EnemyType.BABY,
 
 // Always fight this tall ass head baby in first combat
 if (obj_control.stats.enemies_killed == 0) {
-    // type = EnemyType.BABY;
-    type = EnemyType.CLOUD_MONKEY;
+    type = EnemyType.BABY;
 }
 
 var attacks_data = global.enemy_attacks[type]
