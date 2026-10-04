@@ -31,11 +31,17 @@ type = choose(EnemyType.BABY,
 
 // Always fight this tall ass head baby in first combat
 if (obj_control.stats.enemies_killed == 0) {
-    type = EnemyType.BABY;
+    // type = EnemyType.BABY;
+    type = EnemyType.CLOUD_MONKEY;
 }
 
-enemy_attacks = global.enemy_attacks[type].attacks
-enemy_hp = global.enemy_attacks[type].hp
+var attacks_data = global.enemy_attacks[type]
+
+enemy_attacks = attacks_data.attacks
+enemy_hp = attacks_data.hp
+
+tokens_spawn = struct_get(attacks_data, "tokens") ?? 0
+clouds = struct_get(attacks_data, "clouds") ?? 0
 
 max_enemy_hp = enemy_hp;
 

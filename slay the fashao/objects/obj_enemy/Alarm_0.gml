@@ -34,7 +34,7 @@ if (pending_slash > 0) {
 						hshake = 64;
 					}
             
-                    obj_control.impact_timer = 12;
+                    obj_control.impact_timer = 8;
         
 					enemy_shake = 32;
                 }))

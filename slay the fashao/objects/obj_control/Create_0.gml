@@ -87,8 +87,8 @@ function start_player_turn() {
     repeat(wisdom) { spawn_token(TokenType.WISDOM) }
 	
 	with(obj_enemy) {
-		if (type = EnemyType.NIGHTMARE) {
-			repeat(4) {
+		if (type == EnemyType.NIGHTMARE) {
+			repeat(tokens_spawn) {
 				spawn_token(TokenType.NIGHTMARE_TOKEN);
 			}
 		}
@@ -219,7 +219,6 @@ mouse_yprevious = mouse_y;
 //////////////////////////////////////////
 /// DEATH
 //////////////////////////////////////////
-/// 
 
 application_surface_draw_enable(false);
 
@@ -277,6 +276,7 @@ function start_event(state_type) {
     switch(game_state) {
         case GameState.COMBAT:
             log("=== COMBAT ===")
+            
             // Spawn
             enemy = instance_create_depth(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
             enemy.death_callback = method({ inst: id }, function () {
@@ -284,6 +284,14 @@ function start_event(state_type) {
                 call_later(1, time_source_units_seconds, method({ inst }, function() {
                     inst.start_event(GameState.WALK)
                     inst.stats.enemies_killed += 1
+                    
+                    if (inst.stats.enemies_killed > 7 && inst.stats.enemies_killed <= 15) {
+                        // Initial diff increase
+                    } else if (inst.stats.enemies_killed > 15 && inst.stats.enemies_killed <= 25) {
+                        // Mid-game
+                    } else if (inst.stats.enemies_killed > 25) {
+                        // End-game
+                    }
                 }))
             })
 
@@ -371,4 +379,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME VvvvvV
-start_event(GameState.WALK)
+start_event(GameState.COMBAT)

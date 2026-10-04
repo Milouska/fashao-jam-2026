@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] General gameplay loop (fight -> walk -> XP -> Choice)
+- [x] General gameplay loop (fight -> walk -> XP -> Choice)
 - [ ] Balancing
 - [ ] Music and SFX
 - [x] Choice screen
@@ -10,7 +10,7 @@
 - [x] XP screen
 - [x] Translations
   - [x] Fix chinese text positions
-  - [ ] Redo translations when we have all english text in-game + add them to font
+  - [x] Redo translations when we have all english text in-game + add them to font
 - [x] Change to pixel font which supports chinese
 - [x] Token icons
 - [x] Scale enemies after each bossfight
@@ -18,5 +18,11 @@
 - [x] Implement wisdom token detection
 - [x] Add shader effects
 - [x] Add combat timer
+- [ ] Add objects to events
 - [ ] Each enemy draws its own simple background
 - [ ] Every X turns buff enemies by some stats
+- [ ] If you hit token that you click it and go, it will instantly be clicked, starts a combat and immediately an attack is triggered
+- [ ] Dying does not delete all tokens  (just find out where they are getting spawned)
+- [ ] Fix shader application drawing is now stretched - eithe
+  - https://gamemaker.io/en/tutorials/the-basics-of-scaling-the-game-camera
+- [ ] AFter initial walk, there is ALWAYS combat
