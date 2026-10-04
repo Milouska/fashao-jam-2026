@@ -208,6 +208,14 @@ function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
 mouse_xprevious = mouse_x;
 mouse_yprevious = mouse_y;
 
+function take_damage(dmg) {
+    player_hp -= dmg
+    
+    if (player_hp <= 0) {
+        start_event(GameState.OVER)
+    }
+}
+
 //////////////////////////////////////////
 /// Inventory
 //////////////////////////////////////////
@@ -321,6 +329,7 @@ function start_event(state_type) {
         default:
             log("=== UNKNOWN EVENT ===")
             log(game_state)
+            throw ("Bro some unknown state started")
     }
 }
 
@@ -340,5 +349,5 @@ function spawn_barier(radius = 144) {
     }
 }
 
-// Text to draw
+/// START OF THE GAME VvvvvV
 start_event(GameState.WALK)

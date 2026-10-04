@@ -5,19 +5,17 @@
 - [ ] Music and SFX
 - [x] Choice screen
 - [ ] End screen
-- [ ] Collect statistics
+- [x] Collect statistics
 - [x] Screen backgrounds
 - [x] XP screen
 - [x] Translations
   - [x] Fix chinese text positions
-  - [ ] Redo translations when we have all english text in-game
+  - [ ] Redo translations when we have all english text in-game + add them to font
 - [x] Change to pixel font which supports chinese
 - [x] Token icons
 - [x] Scale enemies after each bossfight
 - [x] Add max HP
 - [x] Implement wisdom token detection
-- [ ] Add combat timer
+- [ ] Add shader effects
+- [x] Add combat timer
 - [ ] Each enemy draws its own simple background
-- [ ] Intro screen
-  - [ ] Character choice screen and defaults definitions
-  - [ ] + Dimmed background art
