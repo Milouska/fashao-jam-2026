@@ -12,6 +12,17 @@ switch (enemy_state) {
 			enemy_state = EnemyState.IDLE;
 			enemy_scale = 1;
 			enemy_alpha = 1;
+			if (type = EnemyType.CLOUD_MONKEY) {
+				var target_ang = random(360);
+				var target_len = obj_barier.radius * 0.6;
+				
+				repeat(9) {
+					var cang = random(360);
+					var clen = random_range(0,32);
+					
+					instance_create_depth(x+lengthdir_x(target_len,target_ang)+lengthdir_x(clen,cang),y+lengthdir_y(target_len,target_ang)+lengthdir_y(clen,cang),-1000,obj_cloud);
+				}
+			}
 		}
 	break;
 	case EnemyState.IDLE:

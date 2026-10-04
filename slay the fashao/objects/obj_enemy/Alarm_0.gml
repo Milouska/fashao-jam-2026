@@ -22,6 +22,10 @@ if (pending_slash > 0) {
 	call_later(len / spd, time_source_units_frames, method(self, function() {
                     enemy_hp -= 3;
                     obj_control.stats.damage_given += 3
+					if (type = EnemyType.FIRELORD) {
+						enemy_hp += 3;
+						obj_control.stats.damage_given -= 3;
+					}
                     if (enemy_hp <= 0) {
 						enemy_state = EnemyState.DEATH;
 					}

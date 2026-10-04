@@ -3,7 +3,10 @@ enum EnemyType {
 	BABY,
 	GIANT,
 	MANTICORE,
-	NIGHTMARE
+	NIGHTMARE,
+	FIRELORD,
+	CLOUD_MONKEY,
+	
 } 
 
 death_callback = undefined
@@ -24,11 +27,13 @@ enemy_state = EnemyState.APPEAR;
 type = choose(EnemyType.BABY,
 			  EnemyType.GIANT,
 			  EnemyType.MANTICORE,
-			  EnemyType.NIGHTMARE);
+			  EnemyType.NIGHTMARE,
+			  EnemyType.FIRELORD,
+			  EnemyType.CLOUD_MONKEY);
 
 // Always fight this tall ass head baby in first combat
 if (obj_control.stats.enemies_killed == 0) {
-    type = EnemyType.BABY
+    type = EnemyType.BABY;
 }
 
 switch (type) {
@@ -47,6 +52,14 @@ switch (type) {
 	case EnemyType.NIGHTMARE:
 		enemy_attacks = [0, 0, 3];
 		enemy_hp = 13
+	break;
+	case EnemyType.FIRELORD:
+		enemy_attacks = [2, 3];
+		enemy_hp = 7
+	break;
+	case EnemyType.CLOUD_MONKEY:
+		enemy_attacks = [1, 1, 2, 0];
+		enemy_hp = 6
 	break;
 }
 
