@@ -70,3 +70,6 @@ enemy_alpha = 0;
 // getting attacked
 pending_slash = 0;
 pending_fireball = 0;
+
+// Shape
+shape_size = 0

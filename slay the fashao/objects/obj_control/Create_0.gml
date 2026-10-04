@@ -208,6 +208,8 @@ enum GameState {
 
 // Place code initiating an event HERE, spawning enemy, creating choice, etc
 function start_event(state_type) {
+    spawn_barier( state_type == GameState.COMBAT ? min(144 + game_rounds * 2, 200) : 144)
+    
     game_state = state_type
     game_rounds++
     
@@ -218,7 +220,7 @@ function start_event(state_type) {
             enemy = instance_create_depth(x + window_get_width() / 2, y + window_get_height() / 2, 0, obj_enemy)
             enemy.death_callback = method({ inst: id }, function () {
                 // FOR TESTING: we only start a new combat, but we SHOULD walk first
-                call_later(1, time_source_units_seconds, method({inst}, function() {
+                call_later(1, time_source_units_seconds, method({ inst }, function() {
                     inst.start_event(GameState.WALK)
                 }))
             })
@@ -229,10 +231,14 @@ function start_event(state_type) {
         case GameState.WALK:
             log("=== WALK ===")
             turn_finished = false
+            
             spawn_token(TokenType.STRENGTH, 180, 7)
             spawn_token(TokenType.ENDUREANCE, 180, 15)
             spawn_token(TokenType.WISDOM, 0, 7)
             spawn_token(TokenType.STAMINA, 0, 15)
+            
+            // Increase barrier width by 
+
             
             // TODO: test this or not
             heal()
@@ -278,8 +284,6 @@ function start_event(state_type) {
         default:
             log("=== UNKNOWN EVENT ===")
             log(game_state)
-            
-        
     }
 }
 
@@ -288,30 +292,16 @@ function start_random_event() {
     start_event(result)
 }
 
-// Text to draw
-start_event(GameState.COMBAT)
-
-
-//SPAWN TOKEN BARIER
-var offset = 2;
-barier_radius = 144;
-for (var i = 0; i < 360 / offset; i ++) {
-	var border = instance_create_depth(room_width / 2 + lengthdir_x(barier_radius, i * offset),room_height / 2+lengthdir_y(barier_radius, i * offset),-1000,obj_barier)
-	border.image_angle = i * offset;
+function spawn_barier(radius = 144) {
+    with(obj_barier) instance_destroy()
+    
+    var offset = 2;
+    for (var i = 0; i < 360 / offset; i ++) {
+    	var barier = instance_create_depth(room_width / 2 + lengthdir_x(radius, i * offset),room_height / 2+lengthdir_y(radius, i * offset),-1000,obj_barier)
+    	barier.image_angle = i * offset;
+        barier.radius = radius
+    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Text to draw
+start_event(GameState.COMBAT)

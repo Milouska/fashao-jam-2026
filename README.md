@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] General gameplay loop (fight -> walk -> XP -> Choice -> bossfight)
+- [ ] General gameplay loop (fight -> walk -> XP -> Choice)
 - [ ] Balancing
 - [ ] Music and SFX
 - [x] Choice screen
@@ -16,10 +16,6 @@
 - [ ] Implement wisdom token detection
 - [ ] Add combat timer
 - [ ] Each enemy draws its own simple background
-- [ ] Add bossifight after every X turns
-  - [ ] Implement?
-  - [ ] Design?
-  - [ ] Scale enemies under each bossfight
 - [ ] Intro screen
   - [ ] Character choice screen and defaults definitions
   - [ ] + Dimmed background art

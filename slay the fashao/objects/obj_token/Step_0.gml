@@ -32,7 +32,7 @@ if (type < 5) {
 
 var token_width = 16;
 if (type > 4) token_width = 24;
-if (point_distance(x,y,room_width/2,room_height/2) > obj_control.barier_radius - token_width) {
+if (instance_exists(obj_barier) && point_distance(x,y,room_width/2,room_height/2) > obj_barier.radius - token_width) {
 	direction = direction - 180 - angle_difference(direction-180,point_direction(x,y,room_width/2,room_height/2));
 	motion_add(point_direction(x,y,room_width/2,room_height/2), friction * 2);
 }
