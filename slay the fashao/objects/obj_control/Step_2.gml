@@ -1,5 +1,14 @@
 //drawing
 if (mouse_check_button(mb_left) && !turn_finished) {
+	if (mouse_check_button_pressed(mb_left)) {
+		with(obj_token) {
+			if (type = TokenType.WISDOM) {
+				wisdom_dir_total = 0;
+				wisdom_prev_dir = point_direction(x, y, mouse_x, mouse_y);
+			}
+		}
+	}
+	
     var dist = point_distance(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious);
     
     if (dist < 10) return

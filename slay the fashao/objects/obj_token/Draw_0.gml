@@ -10,4 +10,6 @@ for (var i = 1; i < thickness; i++) {
 
 draw_sprite_ext(spr_token, type, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
 
-image_angle += spin * speed;
+if (type = TokenType.WISDOM) {
+	draw_text_color(x, y + 32, wisdom_dir_total, obj_control.wisdom_col, obj_control.wisdom_col, obj_control.wisdom_col, obj_control.wisdom_col, 1);
+}

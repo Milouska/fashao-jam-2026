@@ -1,6 +1,8 @@
 image_xscale = lerp(image_xscale, 1, 0.2);
 image_yscale = lerp(image_yscale, 1, 0.2);
 
+image_angle += spin * speed;
+
 
 if (selected) {
 	if (type < 5) {

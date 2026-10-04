@@ -9,3 +9,7 @@ image_speed = 0;
 depth = -2;
 
 spin = random_range(-4,4);
+
+//wisdom token select calculation
+wisdom_prev_dir = 0;
+wisdom_dir_total = 0;
