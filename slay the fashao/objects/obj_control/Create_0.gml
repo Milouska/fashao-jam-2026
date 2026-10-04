@@ -285,8 +285,16 @@ function start_event(state_type) {
                     inst.start_event(GameState.WALK)
                     inst.stats.enemies_killed += 1
                     
+                    // VVVVVVV BALANCE HERE VVVVVVVVV
                     if (inst.stats.enemies_killed > 7 && inst.stats.enemies_killed <= 15) {
-                        // Initial diff increase
+                        // Example hp increase from 6 to 8
+                        global.enemy_attacks[EnemyType.BABY].hp = 8
+                        
+                        // Adding a new attack
+                        array_push(global.enemy_attacks[EnemyType.GIANT].attacks, 7)
+
+                        // Modifying an attack that exists, first attack now deals 2 dmg
+                        global.enemy_attacks[EnemyType.BABY].attacks[0] = 2
                     } else if (inst.stats.enemies_killed > 15 && inst.stats.enemies_killed <= 25) {
                         // Mid-game
                     } else if (inst.stats.enemies_killed > 25) {
