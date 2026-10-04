@@ -25,6 +25,7 @@
   "name":"slay the fashao",
   "resources":[
     {"id":{"name":"font_zh","path":"fonts/font_zh/font_zh.yy",},},
+    {"id":{"name":"obj_barier","path":"objects/obj_barier/obj_barier.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"obj_control","path":"objects/obj_control/obj_control.yy",},},
     {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},

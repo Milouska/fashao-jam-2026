@@ -289,5 +289,29 @@ function start_random_event() {
 }
 
 // Text to draw
-
 start_event(GameState.COMBAT)
+
+
+//SPAWN TOKEN BARIER
+var offset = 2;
+barier_radius = 144;
+for (var i = 0; i < 360 / offset; i ++) {
+	var border = instance_create_depth(room_width / 2 + lengthdir_x(barier_radius, i * offset),room_height / 2+lengthdir_y(barier_radius, i * offset),-1000,obj_barier)
+	border.image_angle = i * offset;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
