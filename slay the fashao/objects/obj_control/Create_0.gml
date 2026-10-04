@@ -65,6 +65,9 @@ enum TokenType {
     EVENT_WALK,
     EVENT_HEAL,
     EVENT_COMBAT,
+	
+	// ENEMY TOKENS
+	NIGHTMARE_TOKEN,
 }
 ////////////// DO NOT REORDER THESE ^^^^^^
 
