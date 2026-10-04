@@ -35,6 +35,7 @@
     {"id":{"name":"obj_shield","path":"objects/obj_shield/obj_shield.yy",},},
     {"id":{"name":"obj_slash","path":"objects/obj_slash/obj_slash.yy",},},
     {"id":{"name":"obj_token_flash","path":"objects/obj_token_flash/obj_token_flash.yy",},},
+    {"id":{"name":"obj_token_quickflash","path":"objects/obj_token_quickflash/obj_token_quickflash.yy",},},
     {"id":{"name":"obj_token_select","path":"objects/obj_token_select/obj_token_select.yy",},},
     {"id":{"name":"obj_token","path":"objects/obj_token/obj_token.yy",},},
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},

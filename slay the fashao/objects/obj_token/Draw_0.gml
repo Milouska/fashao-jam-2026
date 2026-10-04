@@ -10,8 +10,4 @@ for (var i = 1; i < thickness; i++) {
 
 draw_sprite_ext(spr_token, type, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
 
-if (selected) {
-    draw_text(x, y, "*")
-}
-
 image_angle += spin * speed;
