@@ -1,11 +1,7 @@
 # TODO
 
 - [x] General gameplay loop (fight -> walk -> XP -> Choice)
-- [ ] Balancing
-- [ ] Music and SFX
 - [x] Choice screen
-- [x] End screen
-  - [ ] Add restart token
 - [x] Collect statistics
 - [x] Screen backgrounds
 - [x] XP screen
@@ -19,9 +15,20 @@
 - [x] Implement wisdom token detection
 - [x] Add shader effects
 - [x] Add combat timer
-- [ ] Add objects to events
-- [ ] Each enemy draws its own simple background
-- [ ] Every X turns buff enemies by some stats
-- [ ] If you hit token that you click it and go, it will instantly be clicked, starts a combat and immediately an attack is triggered
+- [x] If you hit token that you click it and go, it will instantly be clicked, starts a combat and immediately an attack is triggered
 - [x] Dying does not delete all tokens  (just find out where they are getting spawned)
-- [x] AFter initial walk, there is ALWAYS combat
+- [x] After initial walk, there is ALWAYS combat
+- [x] Screen resize stretches game
+- [x] End screen
+- [ ] Add objects to events
+- [ ] Each enemy draws its own simple background. Each background should be super low alpha but with a different color
+- [ ] Add enemy balancing after X turns
+- [ ] Balancing
+- [ ] Music and SFX
+- [ ] Add restart token to end screen. Needs `RESTART` token + sprite
+- [ ] Add leech enemy
+- [ ] Add screen-split enemy
+- [ ] Add cursed tokens
+- [ ] Add enemy that adds spikes to the border (should this be a new one or should an existing one do it?)
+- [ ] Create game artwork
+- [ ] Create itch io page

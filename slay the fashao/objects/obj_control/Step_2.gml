@@ -1,15 +1,19 @@
 //drawing
-if (mouse_check_button(mb_left) && !turn_finished) {
-	if (mouse_check_button_pressed(mb_left)) {
-		with(obj_token) {
-			if (type = TokenType.WISDOM) {
-				wisdom_dir_total = 0;
-				wisdom_prev_dir = point_direction(x, y, mouse_x, mouse_y);
-			}
-		}
-		
-		stamina_cd = stamina * stamina_inc;
-	}
+
+if (mouse_check_button_pressed(mb_left) && !turn_finished) {
+    swipe_started = true;
+    
+    with(obj_token) {
+        if (type = TokenType.WISDOM) {
+            wisdom_dir_total = 0;
+            wisdom_prev_dir = point_direction(x, y, mouse_x, mouse_y);
+        }
+    }
+    
+    stamina_cd = stamina * stamina_inc;
+}
+
+if (mouse_check_button(mb_left) && swipe_started && !turn_finished) {
 	
     var dist = point_distance(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious);
 	
@@ -18,7 +22,7 @@ if (mouse_check_button(mb_left) && !turn_finished) {
 		stamina_cd = approach(stamina_cd, 0, 1);
 		stamina_y = lerp(stamina_y, 0, 0.2);
 	}
-	if (stamina_cd = 0) {
+	if (stamina_cd == 0) {
 		end_player_turn();
 		return
 	}
@@ -76,14 +80,18 @@ if (mouse_check_button(mb_left) && !turn_finished) {
 	stamina_y = lerp(stamina_y, -12, 0.2);
 }
 
-if (mouse_check_button_released(mb_left) && !turn_finished) {
-    if (game_state == GameState.COMBAT) {     
-        end_player_turn()
-    } else {
-        // In other states, we allow free drawing
-        with(obj_line) disappear = true;
-		with(obj_token) wisdom_dir_total = 0;
+if (mouse_check_button_released(mb_left)) {
+    if (!turn_finished) {
+        if (swipe_started && game_state == GameState.COMBAT) {     
+            end_player_turn()
+        } else {
+            // In other states, we allow free drawing
+            with(obj_line) disappear = true;
+    		with(obj_token) wisdom_dir_total = 0;
+        }
     }
+    
+    swipe_started = false;
 }
 
 mouse_xprevious = mouse_x;

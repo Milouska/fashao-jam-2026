@@ -17,7 +17,7 @@ stats = {
     tokens_sliced: 0,
 }
 
-BABYMODE = false
+swipe_started = false;
 
 //////////////////////////////////////////
 /// Tokens
@@ -99,6 +99,7 @@ function end_player_turn() {
     with(obj_line) disappear = true;
 
     turn_finished = true
+    swipe_started = false
     collided_first_type = -1
 
     var turn_strength = 0
@@ -213,7 +214,11 @@ function end_player_turn() {
 }
 
 function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
-    if (player_dead) return
+    if (player_dead) {
+        // TODO: check whether token_type == TokenType.RESTART. That one we can spawn
+        
+        return
+    }
     
     var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
     token.type = token_type
