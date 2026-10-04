@@ -4,7 +4,7 @@
 - [ ] Balancing
 - [ ] Music and SFX
 - [x] Choice screen
-- [ ] End screen
+- [x] End screen
 - [x] Collect statistics
 - [x] Screen backgrounds
 - [x] XP screen

@@ -371,5 +371,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME VvvvvV
-start_event(GameState.COMBAT)
-take_damage(500)
+start_event(GameState.WALK)

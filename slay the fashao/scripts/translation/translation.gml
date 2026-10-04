@@ -31,14 +31,25 @@ global.en = {
 
 global.zh = {
     "event.combat.text": "战斗至死",
-    "event.walk.text": "你可以提升一项属性",
-    "event.balance.text": "为一项属性加2点，但从另一项属性中扣除2点",
-    "event.chest.text": "你偶然发现了一个宝箱。它要求你拿走一件物品",
-    "event.fountain.text": "你在魔法泉水中沐浴。选择完全恢复生命，或提升一项属性",
-    "event.fork.text": "道路似乎分成了两条。你会选择哪一条？",
+    "event.walk.text": "任意属性提升1点",
+    "event.balance.increase.text": "选择一项属性提升2点",
+    "event.balance.decrease.text": "选择一项属性降低2点",
+    "event.chest.text": "你偶然发现了一个宝箱。它要你拿走一件物品",
+    "event.fountain.text": "最大生命值+1并恢复1点生命，还是属性+1？",
+    "event.fork.text": "前方的道路似乎分成了两条。",
     "event.over.text": "你死了。又一次。",
 
-    "ui.stats": "统计数据",
+    "event.over.enemies": "击杀数",
+    "event.over.damage": "造成伤害",
+    "event.over.taken": "承受伤害",
+    "event.over.rounds": "回合数",
+    "event.over.tokens": "已切割代币",
+    "event.over.intelligence": "智力",
+    "event.over.intelligence.high": "天才",
+    "event.over.intelligence.mid": "好奇……",
+    "event.over.intelligence.low": "蠢货",
+
+    "ui.stats": "属性",
     "ui.strength": "力量",
     "ui.endurance": "耐力",
     "ui.stamina": "体力",
@@ -46,6 +57,7 @@ global.zh = {
     "ui.intelligence": "智力",
     "ui.health": "生命值",
     "ui.inventory": "背包",
+    "ui.turn": "第{0}回合"
 }
 
 global.BABYMODE = true
