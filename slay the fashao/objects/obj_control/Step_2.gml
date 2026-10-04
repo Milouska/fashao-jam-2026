@@ -52,6 +52,7 @@ if (mouse_check_button_released(mb_left) && !turn_finished) {
     } else {
         // In other states, we allow free drawing
         with(obj_line) disappear = true;
+		with(obj_token) wisdom_dir_total = 0;
     }
 }
 

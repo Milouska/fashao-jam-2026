@@ -19,4 +19,6 @@ if (type = TokenType.WISDOM) and (selected = false) and (obj_control.turn_finish
 		}
 		selected = true;
 	}
+} else {
+	wisdom_dir_total = 0;
 }
