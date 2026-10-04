@@ -10,9 +10,9 @@ global.en = {
 
     "event.over.enemies": "Kills",
     "event.over.damage": "Damage given",
-    "event.over.taken": "Damage taken"
-    "event.over.turns": "Rounds"
-    "event.over.tokens": "Tokens sliced"
+    "event.over.taken": "Damage taken",
+    "event.over.turns": "Rounds",
+    "event.over.tokens": "Tokens sliced",
 
     "ui.stats": "STATS",
     "ui.strength": "Strength",
