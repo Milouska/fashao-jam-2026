@@ -2,12 +2,18 @@ depth = -1
 randomize()
 
 defaults = {
-    HP: 5,
-    STRENGHT: 2,
-    ENDURANCE: 2,
+    HP: 6,
+    STRENGHT: 1,
+    ENDURANCE: 1,
     STAMINA: 3,
     WISDOM: 0,
     INTELLIGENCE: 2,
+}
+
+stats = {
+    enemies_killed: 0,
+    damage_taken: 0,
+    damage_given: 0,
 }
 
 BABYMODE = false
@@ -160,6 +166,8 @@ function end_player_turn() {
             start_event(GameState.BALANCE)
         } else {
             balance_turn = 0
+            // Balance counts two rounds, remove one here
+            game_rounds--
             call_later(20, time_source_units_frames, method(self, function() {
                 start_random_event()
             }))
@@ -289,7 +297,7 @@ function start_event(state_type) {
             if(balance_turn == 1 || balance_turn == 2 && wisdom >= 2) spawn_token(TokenType.WISDOM, 144, 3)
             if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 216, 5)
             if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 288, 0)
-            
+                
             break
         
         case GameState.FOUNTAIN:
@@ -327,4 +335,4 @@ function spawn_barier(radius = 144) {
 }
 
 // Text to draw
-start_event(GameState.BALANCE)
+start_event(GameState.WALK)

@@ -6,7 +6,7 @@
 - [x] Choice screen
 - [ ] End screen
 - [ ] Collect statistics
-- [ ] Screen backgrounds
+- [x] Screen backgrounds
 - [x] XP screen
 - [x] Translations
   - [x] Fix chinese text positions

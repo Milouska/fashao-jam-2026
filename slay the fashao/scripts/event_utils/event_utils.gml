@@ -1,26 +1,20 @@
 function get_random_weighted_event() {
-    randomise()
-    var rand = random_range(0, 1)
-    var result = undefined
-    
-    // Combat is always more likely
-    if (rand <=0.5) {
-        result = GameState.COMBAT
-    } else if (rand > 0.5 && rand <= 0.8) {
-        // Semi-rare
-        result = choose(
-            GameState.FORK,
-            GameState.BALANCE,
-        )
-    } else {
-        // Very rare
-        result = choose(
-            GameState.WALK,
-            GameState.FOUNTAIN,
-        )
-    }
-    
-    return result
+    return choose(
+        GameState.COMBAT,
+        GameState.COMBAT,
+        GameState.COMBAT,
+        GameState.COMBAT,
+        GameState.COMBAT,
+        GameState.COMBAT,
+        GameState.COMBAT,
+        GameState.COMBAT,
+        GameState.FORK,
+        GameState.FORK,
+        GameState.FORK,
+        GameState.BALANCE,
+        GameState.BALANCE,
+        GameState.FOUNTAIN,
+    )
 }
 
 // Convert GameState event to a TokenType
