@@ -213,6 +213,8 @@ function end_player_turn() {
 }
 
 function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
+    if (player_dead) return
+    
     var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
     token.type = token_type
 }

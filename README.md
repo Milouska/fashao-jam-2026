@@ -5,6 +5,7 @@
 - [ ] Music and SFX
 - [x] Choice screen
 - [x] End screen
+  - [ ] Add restart token
 - [x] Collect statistics
 - [x] Screen backgrounds
 - [x] XP screen
@@ -22,5 +23,5 @@
 - [ ] Each enemy draws its own simple background
 - [ ] Every X turns buff enemies by some stats
 - [ ] If you hit token that you click it and go, it will instantly be clicked, starts a combat and immediately an attack is triggered
-- [ ] Dying does not delete all tokens  (just find out where they are getting spawned)
+- [x] Dying does not delete all tokens  (just find out where they are getting spawned)
 - [x] AFter initial walk, there is ALWAYS combat
