@@ -144,6 +144,24 @@ function end_player_turn() {
         return
     }
     
+    if (game_state == GameState.BALANCE) {
+        strength = balance_turn == 1 ? strength + (turn_strength * 2) : strength - (turn_strength * 2) 
+        wisdom = balance_turn == 1 ? wisdom + (turn_fireball * 2) : wisdom - (turn_fireball * 2) 
+        endurance = balance_turn == 1 ? endurance + (turn_endurance * 2) : endurance - (turn_endurance * 2) 
+        stamina = balance_turn == 1 ? stamina + (turn_stamina * 2) : stamina - (turn_stamina * 2) 
+        
+        if (balance_turn == 1) {
+            start_event(GameState.BALANCE)
+        } else {
+            balance_turn = 0
+            call_later(20, time_source_units_frames, method(self, function() {
+                start_random_event()
+            }))
+        }
+        
+        return
+    }
+    
     // PLACE ALL COMBAT RELATED CODE BELOW VVVVVVVVVVVVVVVVVVVVV
 	var max_shield_row = 9;
 	var shield_count = 0;
@@ -206,6 +224,8 @@ enum GameState {
     BOSS,
 }
 
+balance_turn = 0
+
 // Place code initiating an event HERE, spawning enemy, creating choice, etc
 function start_event(state_type) {
     spawn_barier( state_type == GameState.COMBAT ? min(144 + game_rounds * 2, 200) : 144)
@@ -232,15 +252,12 @@ function start_event(state_type) {
             log("=== WALK ===")
             turn_finished = false
             
-            spawn_token(TokenType.STRENGTH, 180, 7)
-            spawn_token(TokenType.ENDUREANCE, 180, 15)
-            spawn_token(TokenType.WISDOM, 0, 7)
-            spawn_token(TokenType.STAMINA, 0, 15)
+            spawn_token(TokenType.STRENGTH, 0, 3)
+            spawn_token(TokenType.ENDUREANCE, 72, 5)
+            spawn_token(TokenType.WISDOM, 144, 3)
+            spawn_token(TokenType.STAMINA, 216, 5)
+            spawn_token(TokenType.INTELIGENCE, 288, 0)
             
-            // Increase barrier width by 
-
-            
-            // TODO: test this or not
             heal()
             break
         
@@ -265,6 +282,15 @@ function start_event(state_type) {
         
         case GameState.BALANCE:
             log("=== BALANCE ===")
+            turn_finished = false
+            
+            spawn_token(TokenType.STRENGTH, 0, 3)
+            spawn_token(TokenType.ENDUREANCE, 72, 5)
+            spawn_token(TokenType.WISDOM, 144, 3)
+            spawn_token(TokenType.STAMINA, 216, 5)
+            spawn_token(TokenType.INTELIGENCE, 288, 0)
+            
+            balance_turn++
             // TODO: implement adding and removing
             // TODO: this has two steps, first what is added, 2nd what is removed
             break
@@ -304,4 +330,4 @@ function spawn_barier(radius = 144) {
 }
 
 // Text to draw
-start_event(GameState.COMBAT)
+start_event(GameState.BALANCE)

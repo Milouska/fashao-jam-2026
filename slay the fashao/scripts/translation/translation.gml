@@ -1,10 +1,11 @@
 global.en = {
     "event.combat.text": "Fight to the death",
-    "event.walk.text": "You can increment one stat",
-    "event.balance.text": "Add two points to a stat, but remove 2 points from another",
+    "event.walk.text": "Improve one stat by a point",
+    "event.balance.increase.text": "Choose stat to increase by 2",
+    "event.balance.decrease.text": "Choose stat to decrease by 2",
     "event.chest.text": "You stumble upon a chest. It asks you to take one item",
     "event.fountain.text": "You bathe in magical water. Choose if you wish to full heal or increment a single stat",
-    "event.fork.text": "It appears the road splits into two. Which way will you choose?",
+    "event.fork.text": "It appears the road splits into two.",
     "event.over.text": "You died. Again.",
 
     "ui.stats": "STATS",

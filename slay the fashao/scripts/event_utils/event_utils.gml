@@ -6,17 +6,16 @@ function get_random_weighted_event() {
     // Combat is always more likely
     if (rand <=0.5) {
         result = GameState.COMBAT
-    } else if (rand > 0.5 && rand <= 0.77) {
+    } else if (rand > 0.5 && rand <= 0.8) {
         // Semi-rare
         result = choose(
-            GameState.WALK,
             GameState.FORK,
             GameState.BALANCE,
         )
     } else {
         // Very rare
         result = choose(
-            //GameState.CHEST,
+            GameState.WALK,
             GameState.FOUNTAIN,
         )
     }
@@ -72,8 +71,6 @@ function get_event_description(event) {
             return global.t("event.combat.text")
         case GameState.WALK: 
             return global.t("event.walk.text")
-        case GameState.BALANCE: 
-            return global.t("event.balance.text") 
         case GameState.FOUNTAIN: 
             return global.t("event.fountain.text") 
         case GameState.FORK: 

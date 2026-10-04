@@ -10,7 +10,14 @@ var t_y = 12
 draw_text(global.BABYMODE ? t_x - 48 : t_x + 20, t_y, global.t("ui.stats"));
 
 // Draw text at the bottom of the screen saying what is happening
-var desc = get_event_description(game_state)
+var desc = ""
+
+if (game_state == GameState.BALANCE) {
+    desc = balance_turn == 1 ? global.t("event.balance.increase.text") : global.t("event.balance.decrease.text")
+} else {
+    desc = get_event_description(game_state)    
+}
+
 var desc_width = string_width(desc)
 draw_text(x + room_width / 2 - desc_width / 2, y + room_height - 24, desc)
 
@@ -25,11 +32,11 @@ draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 100, string(inteligence)
 // Only draw 2nd half in ENGLISH
 if (global.BABYMODE) {
     draw_set_halign(fa_left);
-    draw_text_color(t_x + 2, t_y + 16, "ength", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 32, "urance", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 48, "centration", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 64, "dom", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 80, "eligence", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 2, t_y + 20, "ength", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 2, t_y + 40, "urance", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 2, t_y + 60, "centration", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 2, t_y + 80, "dom", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 2, t_y + 100, "eligence", g_col, g_col, g_col, g_col, 1);
 }
 
 //HP

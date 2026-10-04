@@ -6,6 +6,7 @@
 - [x] Choice screen
 - [ ] End screen
 - [ ] Collect statistics
+- [ ] Screen backgrounds
 - [x] XP screen
 - [x] Translations
   - [x] Fix chinese text positions
@@ -13,7 +14,8 @@
 - [x] Token icons
 - [x] Scale enemies after each bossfight
 - [x] Add max HP
-- [ ] Implement wisdom token detection
+- [x] Implement wisdom token detection
+- [ ] FIX BALANCE screen
 - [ ] Add combat timer
 - [ ] Each enemy draws its own simple background
 - [ ] Intro screen
