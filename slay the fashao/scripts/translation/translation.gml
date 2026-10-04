@@ -13,6 +13,10 @@ global.en = {
     "event.over.taken": "Damage taken",
     "event.over.rounds": "Rounds",
     "event.over.tokens": "Tokens sliced",
+    "event.over.intelligence": "Intelligence",
+    "event.over.intelligence.high": "brilliant",
+    "event.over.intelligence.mid": "curious...",
+    "event.over.intelligence.low": "dumbass",
 
     "ui.stats": "STATS",
     "ui.strength": "Strength",

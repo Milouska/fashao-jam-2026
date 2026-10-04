@@ -26,6 +26,11 @@ type = choose(EnemyType.BABY,
 			  EnemyType.MANTICORE,
 			  EnemyType.NIGHTMARE);
 
+// Always fight this tall ass head baby in first combat
+if (obj_control.stats.enemies_killed == 0) {
+    type = EnemyType.BABY
+}
+
 switch (type) {
 	case EnemyType.BABY:
 		enemy_attacks = [1, 1];

@@ -15,14 +15,26 @@ if (game_state == GameState.OVER) {
     draw_text_colour(room_width / 2 - 120, t_y + 60, global.t("event.over.rounds"), c_gray, c_gray, c_gray, c_gray, 1)
     draw_text_colour(room_width / 2 - 120, t_y + 80, global.t("event.over.damage"), c_gray, c_gray, c_gray, c_gray, 1)
     draw_text_colour(room_width / 2 - 120, t_y + 100, global.t("event.over.taken"), c_gray, c_gray, c_gray, c_gray, 1)
+    draw_text_colour(room_width / 2 - 120, t_y + 120, global.t("event.over.intelligence"), c_gray, c_gray, c_gray, c_gray, 1)
 	
     draw_set_halign(fa_left);
+
+		var intelligence_comment = ""
+
+		if (inteligence > 6) {
+			intelligence_comment = global.t("event.over.intelligence.high")
+		} else if (inteligence <= 6 && inteligence > 0) {
+			intelligence_comment = global.t("event.over.intelligence.mid")
+		} else {
+			intelligence_comment = global.t("event.over.intelligence.low")
+		}
 
     draw_text_colour(room_width / 2 + 150, t_y + 20, stats.enemies_killed, c_white, c_white, c_white, c_white, 1)
     draw_text_colour(room_width / 2 + 150, t_y + 40, stats.tokens_sliced, c_white, c_white, c_white, c_white, 1)
     draw_text_colour(room_width / 2 + 150, t_y + 60, game_rounds - 1, c_white, c_white, c_white, c_white, 1)
     draw_text_colour(room_width / 2 + 150, t_y + 80, stats.damage_given, c_white, c_white, c_white, c_white, 1)
     draw_text_colour(room_width / 2 + 150, t_y + 100, stats.damage_taken, c_white, c_white, c_white, c_white, 1)
+    draw_text_colour(room_width / 2 + 150, t_y + 120, string("{0}, {1}", inteligence, intelligence_comment), c_white, c_white, c_white, c_white, 1)
 	return
 }
 
