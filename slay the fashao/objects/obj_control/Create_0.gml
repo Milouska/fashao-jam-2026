@@ -26,6 +26,7 @@ wisdom_col = make_colour_rgb(254, 72, 222);
 inteligence = defaults.INTELLIGENCE;
 inteligence_col = make_colour_rgb(68, 48, 186);
 player_hp = defaults.HP;
+// TODO: add player max hp
 
 
 game_state = GameState.WALK
@@ -98,6 +99,7 @@ function end_player_turn() {
                 break
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
+                // TODO: increase max HP by 1, heal 1
                 player_hp = defaults.HP
                 token_event_type = get_random_weighted_event()
                 break
@@ -225,6 +227,7 @@ function start_event(state_type) {
         case GameState.WALK:
             log("=== WALK ===")
             turn_finished = false
+            // TODO: heal player by 1 hp
             spawn_token(TokenType.STRENGTH, 180, 7)
             spawn_token(TokenType.ENDUREANCE, 180, 20)
             spawn_token(TokenType.WISDOM, 0, 7)
