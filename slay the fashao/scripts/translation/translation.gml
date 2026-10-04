@@ -4,7 +4,7 @@ global.en = {
     "event.balance.increase.text": "Choose stat to increase by 2",
     "event.balance.decrease.text": "Choose stat to decrease by 2",
     "event.chest.text": "You stumble upon a chest. It asks you to take one item",
-    "event.fountain.text": "You bathe in magical water. Choose if you wish to full heal or increment a single stat",
+    "event.fountain.text": "Max hp +1 and 1hp heal or stat +1?",
     "event.fork.text": "It appears the road splits into two.",
     "event.over.text": "You died. Again.",
 
@@ -16,9 +16,7 @@ global.en = {
     "ui.intelligence": "Intelligence",
     "ui.health": "Health",
     "ui.inventory": "Inventory",
-
-    "item.bomb": "Bomb",
-    "item.healing_potion": "Healing Potion"
+    "ui.turn": "Turn {0}",
 }
 
 global.zh = {
@@ -38,9 +36,6 @@ global.zh = {
     "ui.intelligence": "智力",
     "ui.health": "生命值",
     "ui.inventory": "背包",
-
-    "item.bomb": "炸弹",
-    "item.healing_potion": "治疗药水"
 }
 
 global.BABYMODE = true

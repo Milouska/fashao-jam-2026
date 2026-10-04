@@ -10,12 +10,12 @@
 - [x] XP screen
 - [x] Translations
   - [x] Fix chinese text positions
+  - [ ] Redo translations when we have all english text in-game
 - [x] Change to pixel font which supports chinese
 - [x] Token icons
 - [x] Scale enemies after each bossfight
 - [x] Add max HP
 - [x] Implement wisdom token detection
-- [ ] FIX BALANCE screen
 - [ ] Add combat timer
 - [ ] Each enemy draws its own simple background
 - [ ] Intro screen

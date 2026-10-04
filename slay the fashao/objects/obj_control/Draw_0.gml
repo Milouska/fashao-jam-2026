@@ -6,6 +6,10 @@ var g_col = make_color_rgb(120,120,120);
 var t_x = 88
 var t_y = 12
 
+// Turn
+var turn_text = string(global.t("ui.turn"), game_rounds)
+draw_text(room_width - string_width(turn_text) - 24, t_y, turn_text)
+
 //STATS
 draw_text(global.BABYMODE ? t_x - 48 : t_x + 20, t_y, global.t("ui.stats"));
 

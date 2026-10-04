@@ -2,12 +2,12 @@ depth = -1
 randomize()
 
 defaults = {
-    HP: 10,
-    STRENGHT: 3,
-    ENDURANCE: 3,
-    STAMINA: 5,
-    WISDOM: 1,
-    INTELLIGENCE: 0,
+    HP: 5,
+    STRENGHT: 2,
+    ENDURANCE: 2,
+    STAMINA: 4,
+    WISDOM: 0,
+    INTELLIGENCE: 2,
 }
 
 BABYMODE = false
@@ -83,7 +83,8 @@ function end_player_turn() {
     var turn_fireball = 0
     var turn_endurance = 0
     var turn_stamina = 0
-
+    var turn_intelligence = 0
+    
     var token_event_type = -1
     
     for (var i = 0; i < array_length(collided_tokens); i++) {
@@ -101,13 +102,15 @@ function end_player_turn() {
             case TokenType.STAMINA:
                 turn_stamina += token.value
                 break
+            case TokenType.INTELIGENCE:
+                turn_intelligence += token.value
+                break
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
                 player_max_hp += 1
                 heal(1)
                 token_event_type = get_random_weighted_event()
                 break
-            
             // All non-value tokens aka EVENT tokens can just be saved
             default:
                 token_event_type = get_token_event(token.type)
@@ -135,6 +138,7 @@ function end_player_turn() {
         wisdom += turn_fireball
         endurance += turn_endurance
         stamina += turn_stamina
+        inteligence += turn_intelligence
         
         // ENDS AND CHANGE STATE
         call_later(20, time_source_units_frames, method(self, function() {
@@ -142,13 +146,12 @@ function end_player_turn() {
         }))
         
         return
-    }
-    
-    if (game_state == GameState.BALANCE) {
+    } else if (game_state == GameState.BALANCE) {
         strength = balance_turn == 1 ? strength + (turn_strength * 2) : strength - (turn_strength * 2) 
         wisdom = balance_turn == 1 ? wisdom + (turn_fireball * 2) : wisdom - (turn_fireball * 2) 
         endurance = balance_turn == 1 ? endurance + (turn_endurance * 2) : endurance - (turn_endurance * 2) 
         stamina = balance_turn == 1 ? stamina + (turn_stamina * 2) : stamina - (turn_stamina * 2) 
+        inteligence = balance_turn == 1 ? inteligence + (turn_intelligence * 2) : inteligence - (turn_intelligence * 2) 
         
         if (balance_turn == 1) {
             start_event(GameState.BALANCE)
@@ -212,7 +215,6 @@ enum GameState {
     // Combat, normal & boss (boss has its own flag)
     COMBAT,
     // Choose between two random items
-    //CHEST,
     // ADD 2 points to something, remove two points from something else
     BALANCE,
     // Choose if you full-heal, or gain a WALK,
@@ -274,25 +276,18 @@ function start_event(state_type) {
             spawn_token(get_event_token(first), 180, 7)
             spawn_token(get_event_token(second), 0, 7)
             break
-            
-        //case GameState.CHEST:
-            //log("=== CHEST ===")
-            //// same as fork, but only selects items
-            //break
         
         case GameState.BALANCE:
             log("=== BALANCE ===")
             turn_finished = false
-            
-            spawn_token(TokenType.STRENGTH, 0, 3)
-            spawn_token(TokenType.ENDUREANCE, 72, 5)
-            spawn_token(TokenType.WISDOM, 144, 3)
-            spawn_token(TokenType.STAMINA, 216, 5)
-            spawn_token(TokenType.INTELIGENCE, 288, 0)
-            
             balance_turn++
-            // TODO: implement adding and removing
-            // TODO: this has two steps, first what is added, 2nd what is removed
+
+            if(balance_turn == 1 || balance_turn == 2 && strength >= 2) spawn_token(TokenType.STRENGTH, 0, 3)
+            if(balance_turn == 1 || balance_turn == 2 && endurance >= 2) spawn_token(TokenType.ENDUREANCE, 72, 5)
+            if(balance_turn == 1 || balance_turn == 2 && wisdom >= 2) spawn_token(TokenType.WISDOM, 144, 3)
+            if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 216, 5)
+            if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 288, 0)
+            
             break
         
         case GameState.FOUNTAIN:
