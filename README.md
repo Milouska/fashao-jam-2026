@@ -8,13 +8,13 @@
 - [ ] Collect statistics
 - [x] XP screen
 - [x] Translations
-  - [ ] Fix chinese text positions
+  - [x] Fix chinese text positions
 - [x] Change to pixel font which supports chinese
 - [x] Token icons
 - [x] Scale enemies after each bossfight
 - [x] Add max HP
 - [ ] Implement wisdom token detection
-- [ ] ADd combat timer
+- [ ] Add combat timer
 - [ ] Each enemy draws its own simple background
 - [ ] Add bossifight after every X turns
   - [ ] Implement?

@@ -7,6 +7,7 @@ global.en = {
     "event.fork.text": "It appears the road splits into two. Which way will you choose?",
     "event.over.text": "You died. Again.",
 
+    "ui.stats": "STATS",
     "ui.strength": "Strength",
     "ui.endurance": "Endurance",
     "ui.stamina": "Stamina",
@@ -28,6 +29,7 @@ global.zh = {
     "event.fork.text": "道路似乎分成了两条。你会选择哪一条？",
     "event.over.text": "你死了。又一次。",
 
+    "ui.stats": "统计数据",
     "ui.strength": "力量",
     "ui.endurance": "耐力",
     "ui.stamina": "体力",

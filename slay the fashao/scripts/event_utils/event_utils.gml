@@ -69,17 +69,17 @@ function get_token_event(token) {
 function get_event_description(event) {
     switch(event) {
         case GameState.COMBAT: 
-            return ""
+            return global.t("event.combat.text")
         case GameState.WALK: 
-            return TokenType.EVENT_WALK
+            return global.t("event.walk.text")
         case GameState.BALANCE: 
-            return TokenType.EVENT_BALANCE    
-        /*case GameState.CHEST: 
-            return TokenType.EVENT_CHEST*/
+            return global.t("event.balance.text") 
         case GameState.FOUNTAIN: 
-            return TokenType.EVENT_FOUNTAIN
+            return global.t("event.fountain.text") 
         case GameState.FORK: 
-            return TokenType.EVENT_FORK
+            return global.t("event.fork.text") 
+        case GameState.OVER: 
+            return global.t("event.over.text") 
         default:
             log("WE GOT UNKNOWN TOKEN FOR EVENT")
             log(event)    
