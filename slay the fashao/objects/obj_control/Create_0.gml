@@ -85,6 +85,14 @@ function start_player_turn() {
     repeat(strength) { spawn_token(TokenType.STRENGTH) }
     repeat(endurance) { spawn_token(TokenType.ENDUREANCE) }
     repeat(wisdom) { spawn_token(TokenType.WISDOM) }
+	
+	with(obj_enemy) {
+		if (type = EnemyType.NIGHTMARE) {
+			repeat(4) {
+				spawn_token(TokenType.NIGHTMARE_TOKEN);
+			}
+		}
+	}
 }
 
 function end_player_turn() {

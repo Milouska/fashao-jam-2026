@@ -34,6 +34,22 @@ if (mouse_check_button(mb_left) && !turn_finished) {
     
     // We ignore wisdom tokens, as those have special detection
     if (collidee && !array_contains(collided_tokens, collidee.id) && collidee.type != TokenType.WISDOM) {
+		if (collidee.type = TokenType.NIGHTMARE_TOKEN) {
+			take_damage(1);
+			with(obj_camera) {
+				hshake = 10;
+				vshake = 10;
+			}
+			var token_flash = instance_create_depth(collidee.x,collidee.y,-100,obj_token_quickflash);
+			token_flash.image_index = collidee.type;
+			token_flash.image_speed = 0;
+			token_flash.sprite_index = collidee.sprite_index;
+			token_flash.image_angle = collidee.image_angle;
+			with(collidee) instance_destroy();
+			
+			return
+		}
+		
         array_push(collided_tokens, collidee.id)
         collidee.selected = true
         
