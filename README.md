@@ -23,6 +23,4 @@
 - [ ] Every X turns buff enemies by some stats
 - [ ] If you hit token that you click it and go, it will instantly be clicked, starts a combat and immediately an attack is triggered
 - [ ] Dying does not delete all tokens  (just find out where they are getting spawned)
-- [ ] Fix shader application drawing is now stretched - eithe
-  - https://gamemaker.io/en/tutorials/the-basics-of-scaling-the-game-camera
 - [ ] AFter initial walk, there is ALWAYS combat
