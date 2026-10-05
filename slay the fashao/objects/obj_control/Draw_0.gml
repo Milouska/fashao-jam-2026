@@ -123,3 +123,4 @@ draw_sprite_ext(spr_stamina, 1, cam_x + cam_w / 2, cam_y + stamina_y, cam_w / 2 
 
 //DRAW CIRCULAR BAR AROUND MOUSE
 //draw_circular_bar(mouse_x,y,value, _max, colour, radius, transparency, width)
+draw_text(room_width / 2, room_height / 2, instance_number(obj_event_bg));

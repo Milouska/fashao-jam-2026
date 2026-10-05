@@ -97,6 +97,8 @@ function start_player_turn() {
 
 function end_player_turn() {
     with(obj_line) disappear = true;
+	with(tunnel_background) fork = false;
+	with(obj_levelup_bg) state = 1;
 
     turn_finished = true
     swipe_started = false
@@ -368,8 +370,10 @@ function start_event(state_type) {
             if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 216, 5)
             if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 288, 0)
 			
-			var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
-			bg.image_index = 0;
+			if (!instance_exists(obj_event_bg)) or (instance_exists(obj_event_bg) and (obj_event_bg.state = 1)) {
+				var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
+				bg.image_index = 0;
+			}
                 
             break
         
@@ -414,4 +418,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.WALK)
+start_event(GameState.BALANCE)

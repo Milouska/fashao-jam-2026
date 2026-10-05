@@ -59,8 +59,6 @@ if (mouse_check_button(mb_left) && swipe_started && !turn_finished) {
         
         // WHile walking, we skip the check
         if (game_state != GameState.COMBAT) {
-			with(tunnel_background) fork = false;
-			with(obj_levelup_bg) state = 1;
             end_player_turn()
             return
         }
