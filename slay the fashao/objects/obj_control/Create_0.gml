@@ -74,6 +74,7 @@ enum TokenType {
     
     BASIC_QUIT,
     BASIC_RESTART,
+    BASIC_SCREENSHOT,
 }
 ////////////// DO NOT REORDER THESE ^^^^^^
 
@@ -150,6 +151,14 @@ function end_player_turn() {
                     game_restart()
                 }))
                 break
+            case TokenType.BASIC_SCREENSHOT:
+                screenshot_prompt()
+                with(obj_token) {
+                    if (type == TokenType.BASIC_SCREENSHOT) {
+                        instance_destroy()
+                    }
+                }
+                return;
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
                 player_max_hp += 1
@@ -413,9 +422,10 @@ function start_event(state_type) {
          case GameState.OVER:
             log("=== GAME OVER ===")
             with(obj_token) { instance_destroy() }
-            obj_enemy.enemy_attacks = [0,0,0,0,0,0,0]
+            with(obj_enemy) { enemy_attacks = [0,0,0,0,0,0,0] }
             spawn_token(TokenType.BASIC_RESTART, 0, 20)
-            spawn_token(TokenType.BASIC_QUIT, 180, 20)
+            spawn_token(TokenType.BASIC_QUIT, 180, 20)            
+            spawn_token(TokenType.BASIC_SCREENSHOT, 270, 20)
                 
             break
         
@@ -446,4 +456,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.WALK)
+start_event(GameState.OVER)

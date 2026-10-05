@@ -76,3 +76,13 @@ function array_choose(array) {
 	
 	return array[floor(irandom_range(0, len - 1))]
 }
+
+// Screenshot stuff
+global.screenshot_path = "";
+
+function screenshot_prompt() {
+    var _path = get_save_filename("PNG image|*.png", "fashao-katana-run.png");
+    if (_path == "") return false;           
+    global.screenshot_path = _path;
+    return true;
+}

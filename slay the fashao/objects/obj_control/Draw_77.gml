@@ -15,4 +15,10 @@ shader_set_uniform_f(u_tint, death_color[0], death_color[1], death_color[2]);
 shader_set_uniform_f(u_amount, death_amount);
 shader_set_uniform_f(u_impact, impact_timer > 0 ? 1.0 : 0.0);
 draw_surface_ext(application_surface, _dx, _dy, _scale, _scale, 0, c_white, 1);
+
+if (global.screenshot_path != "") {
+    screen_save(global.screenshot_path);
+    global.screenshot_path = "";
+}
+
 shader_reset();
