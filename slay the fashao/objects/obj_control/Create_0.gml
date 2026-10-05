@@ -373,11 +373,11 @@ function start_event(state_type) {
             turn_finished = false
             balance_turn++
 
-            if(balance_turn == 1 || balance_turn == 2 && strength >= 2) spawn_token(TokenType.STRENGTH, 45 + (balance_turn - 1) * 180, 24, 3, 45 + (balance_turn - 1) * 180)
-            if(balance_turn == 1 || balance_turn == 2 && endurance >= 2) spawn_token(TokenType.ENDUREANCE, 75 + (balance_turn - 1) * 180, 24, 3, 75 + (balance_turn - 1) * 180)
-            if(balance_turn == 1 || balance_turn == 2 && wisdom >= 2) spawn_token(TokenType.WISDOM, 105 + (balance_turn - 1) * 180, 24, 3, 105 + (balance_turn - 1) * 180)
-            if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 135 + (balance_turn - 1) * 180, 24, 3, 135 + (balance_turn - 1) * 180)
-            if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 165 + (balance_turn - 1) * 180, 24, 3, 165 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && strength >= 2) spawn_token(TokenType.STRENGTH, 0, 100, 3, 90 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && endurance >= 2) spawn_token(TokenType.ENDUREANCE, 0, 50, 3, 90 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && wisdom >= 2) spawn_token(TokenType.WISDOM, 0, 0, 4.5, 90 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 180, 50, 3, 90 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 180, 100, 3, 90 + (balance_turn - 1) * 180)
 			
 			if (!instance_exists(obj_event_bg)) or (instance_exists(obj_event_bg) and (obj_event_bg.state = 1)) {
 				var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
@@ -427,4 +427,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.WALK)
+start_event(GameState.BALANCE)
