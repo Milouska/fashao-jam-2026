@@ -62,7 +62,7 @@ global.zh = {
     "ui.turn": "第{0}回合"
 }
 
-global.BABYMODE = true
+global.BABYMODE = false
 
 global.t = function(key) {
     if (!struct_exists(global.en, key)) {

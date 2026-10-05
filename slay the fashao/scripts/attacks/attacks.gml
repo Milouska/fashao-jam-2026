@@ -6,8 +6,8 @@ global.enemy_attacks = [
   },
   // Giant
   {
-    attacks: [0, 1, 2, 3, 4, 5, 6],
-    hp: 15,
+    attacks: [0, 1, 2, 3, 4],
+    hp: 12,
   },
   // Manticore
   {
@@ -16,35 +16,35 @@ global.enemy_attacks = [
   },
   // Nightmare
   {
-    attacks: [0, 0, 3],
-    hp: 13,
+    attacks: [0, 0, 5],
+    hp: 15,
     tokens: 4,
   },
   // Firelord
   {
-    attacks: [2, 3],
-    hp: 7,
+    attacks: [4, 5],
+    hp: 24,
   },
   // Cloud monkey
   {
-    attacks: [1, 1, 2, 0],
-    hp: 6,
+    attacks: [2, 1, 2, 0],
+    hp: 8,
     clouds: 9,
   },
   // Split screen
   {
-    attacks: [4, 3, 2, 0, 5, 4, 3, 1],
+    attacks: [5, 4, 3, 2, 0, 5, 4, 3, 1],
     hp: 12,
   },
   // Thorns
   {
     attacks: [3, 4, 0],
-    hp: 6,
+    hp: 19,
   },
   // Leech
   {
-    attacks: [1, 1],
-    hp: 8,
+    attacks: [3, 3],
+    hp: 14,
 	  leech: 1, //how many stats does leech take
   }
 ]

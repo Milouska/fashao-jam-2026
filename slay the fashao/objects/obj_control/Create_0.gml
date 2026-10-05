@@ -337,14 +337,50 @@ function start_event(state_type) {
                     inst.stats.enemies_killed += 1
                     
                     // VVVVVVV BALANCE HERE VVVVVVVVV
-                    if (inst.stats.enemies_killed > 7 && inst.stats.enemies_killed <= 15) {
-                        global.enemy_attacks[EnemyType.BABY].hp = 8
-                        global.enemy_attacks[EnemyType.BABY].attacks = [2, 2]
-                    } else if (inst.stats.enemies_killed > 15 && inst.stats.enemies_killed <= 25) {
-                        // Mid-game
-                        array_push(global.enemy_attacks[EnemyType.GIANT].attacks, 7)
-                    } else if (inst.stats.enemies_killed > 25) {
-                        // End-game
+                    if (inst.game_rounds > 10 && inst.game_rounds <= 25) {
+                        global.enemy_pool = [
+                            EnemyType.MANTICORE,
+                            EnemyType.FIRELORD,
+                            EnemyType.CLOUD_MONKEY,
+                            EnemyType.NIGHTMARE
+                        ]
+                    } else if (inst.game_rounds > 25 && inst.game_rounds <= 40) {
+                        global.enemy_attacks[EnemyType.BABY].hp = 12
+                        global.enemy_attacks[EnemyType.BABY].attacks = [3, 3]
+                        global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7]
+                        global.enemy_attacks[EnemyType.GIANT].hp = 20
+
+                        global.enemy_attacks[EnemyType.NIGHTMARE].attacks = [0,0,6]
+                        global.enemy_attacks[EnemyType.NIGHTMARE].hp = 18
+
+                        global.enemy_attacks[EnemyType.CLOUD_MONKEY].clouds = 13
+                        global.enemy_attacks[EnemyType.NIGHTMARE].hp = 16
+                        global.enemy_attacks[EnemyType.NIGHTMARE].attacks = [3, 2, 3, 0]
+
+                        global.enemy_pool = [
+                            EnemyType.BABY,
+                            EnemyType.GIANT,
+                            EnemyType.FIRELORD,
+                            EnemyType.CLOUD_MONKEY,
+                            EnemyType.NIGHTMARE,
+                            EnemyType.LEECH,
+                            EnemyType.THORNS,
+                        ]
+                    } else if (inst.game_rounds > 40) {
+                        global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7, 8, 9]
+                        global.enemy_attacks[EnemyType.GIANT].hp = 33
+
+                        global.enemy_pool = [
+                            EnemyType.BABY,
+                            EnemyType.MANTICORE,
+                            EnemyType.GIANT,
+                            EnemyType.FIRELORD,
+                            EnemyType.CLOUD_MONKEY,
+                            EnemyType.NIGHTMARE,
+                            EnemyType.LEECH,
+                            EnemyType.THORNS,
+                            EnemyType.SPLIT_SCREEN,
+                        ]
                     }
                 }))
             })

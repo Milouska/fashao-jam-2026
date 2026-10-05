@@ -30,6 +30,10 @@ type = array_choose(global.enemy_pool)
 if (obj_control.stats.enemies_killed == 0) {
     type = EnemyType.BABY;
 }
+
+if (obj_control.game_rounds == 30) {
+    type = EnemyType.SPLIT_SCREEN;
+}
 //type = EnemyType.SPLIT_SCREEN;
 
 var attacks_data = global.enemy_attacks[type]
@@ -39,11 +43,17 @@ enemy_hp = attacks_data.hp
 leech = struct_get(attacks_data, "clouds") ?? 0
 thorned = false;
 
+// Special late-game boss
+if (obj_control.game_rounds == 55) {
+    type = EnemyType.GIANT;
+		enemy_attacks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+		enemy_hp = 60
+}
+
 tokens_spawn = struct_get(attacks_data, "tokens") ?? 0
 clouds = struct_get(attacks_data, "clouds") ?? 0
 
 max_enemy_hp = enemy_hp;
-
 
 turn_count = 0; //which attack from enemy_attacks array to use this turn
 attacked = false; //if already attacked this is set to true

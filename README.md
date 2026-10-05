@@ -29,22 +29,4 @@ And listened to [this playlist](https://open.spotify.com/playlist/5jH5YWqYkvVJSB
 ## TODO
 
 - [ ] balance out game progression + enemy changes after X turns
-- [ ] Add screen-split enemy
 - [ ] Animate stats changing
-
-The following text is the itch.io page text
-
----
-
-{capsule image here}
-
-欢迎旅客。你准备好进入地铁了吗？
-
-通过黑暗的<TUBE>，看看里面有什么。每个动作都与<SLICE TOKENS>相关。 
-你只需要用<LEFT MOUSE HOLD>来<PLAY>游戏。 
-
-{gameplay gif}
-
-在死亡界面，你可以<SCREENSHOT TOKEN>你的结果并发送<SEND TO US>。
-
-{screenshot of thorn enemy fight}
