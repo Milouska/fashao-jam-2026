@@ -3,6 +3,7 @@ depth = -10000;
 if (gone = false) {
 	image_xscale = lerp(image_xscale, 1, 0.2);
 	image_yscale = lerp(image_yscale, 1, 0.2);
+	image_alpha = lerp(image_alpha, 1, 0.2);
 } else {
 	image_xscale = approach(image_xscale, 0, 0.05);
 	image_yscale = approach(image_yscale, 0, 0.05);

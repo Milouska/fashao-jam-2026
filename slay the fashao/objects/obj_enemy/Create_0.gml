@@ -33,6 +33,7 @@ type = choose(EnemyType.BABY,
 if (obj_control.stats.enemies_killed == 0) {
     type = EnemyType.BABY;
 }
+//type = EnemyType.CLOUD_MONKEY;
 
 var attacks_data = global.enemy_attacks[type]
 
