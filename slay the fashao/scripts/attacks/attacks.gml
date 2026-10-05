@@ -34,7 +34,7 @@ global.enemy_attacks = [
   // Split screen
   {
     attacks: [5, 4, 3],
-    hp: 6,
+    hp: 12,
   },
   // Thorns
   {
@@ -44,7 +44,7 @@ global.enemy_attacks = [
   // Leech
   {
     attacks: [1, 1],
-    hp: 12,
+    hp: 8,
 	leech: 1, //how many stats does leech take
   }
 ]
