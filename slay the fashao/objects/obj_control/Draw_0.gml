@@ -52,7 +52,7 @@ var turn_text = string(global.t("ui.turn"), game_rounds)
 draw_text(room_width - string_width(turn_text) - 24, t_y, turn_text)
 
 //STATS
-draw_text(global.BABYMODE ? t_x - 48 : t_x + 20, t_y, global.t("ui.stats"));
+draw_text(t_x - 48, t_y, global.t("ui.stats"));
 
 // Draw text at the bottom of the screen saying what is happening
 var desc = ""
@@ -68,21 +68,21 @@ draw_text(x + room_width / 2 - desc_width / 2, y + room_height - 24, desc)
 
 draw_set_halign(fa_right);
 
-draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 20, string(strength) + (global.BABYMODE ? " : STR" : (" " + global.t("ui.strength"))),strength_col,strength_col,strength_col,strength_col,1);
-draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 40, string(endurance) + (global.BABYMODE ? " : END" : (" " + global.t("ui.endurance"))),endurance_col,endurance_col,endurance_col,endurance_col,1);
-draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 60, string(stamina) + (global.BABYMODE ? " : CON" : (" " + global.t("ui.stamina"))),stamina_col,stamina_col,stamina_col,stamina_col,1);
-draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 80, string(wisdom) + (global.BABYMODE ? " : WIS" : (" " + global.t("ui.wisdom"))),wisdom_col,wisdom_col,wisdom_col,wisdom_col,1);
-draw_text_color(global.BABYMODE ? t_x : t_x + 16, t_y + 100, string(inteligence) + (global.BABYMODE ? " : INT" : (" " + global.t("ui.intelligence"))),inteligence_col,inteligence_col,inteligence_col,inteligence_col,1);
+draw_text_color(t_x + 16 + (global.BABYMODE ? 0 : 9), t_y + 20, string(strength) + (global.BABYMODE ? " : STR" : (" : " + global.t("ui.strength"))),strength_col,strength_col,strength_col,strength_col,1);
+draw_text_color(t_x + 16 + (global.BABYMODE ? 0 : 9), t_y + 40, string(endurance) + (global.BABYMODE ? " : END" : (" : " + global.t("ui.endurance"))),endurance_col,endurance_col,endurance_col,endurance_col,1);
+draw_text_color(t_x + 16 + (global.BABYMODE ? 0 : 9), t_y + 60, string(stamina) + (global.BABYMODE ? " : CON" : (" : " + global.t("ui.stamina"))),stamina_col,stamina_col,stamina_col,stamina_col,1);
+draw_text_color(t_x + 16 + (global.BABYMODE ? 0 : 9), t_y + 80, string(wisdom) + (global.BABYMODE ? " : WIS" : (" : " + global.t("ui.wisdom"))),wisdom_col,wisdom_col,wisdom_col,wisdom_col,1);
+draw_text_color(t_x + 16 + (global.BABYMODE ? 0 : 9), t_y + 100, string(inteligence) + (global.BABYMODE ? " : INT" : (" : " + global.t("ui.intelligence"))),inteligence_col,inteligence_col,inteligence_col,inteligence_col,1);
 
 draw_set_halign(fa_left);
 
 // Only draw 2nd half in ENGLISH
 if (global.BABYMODE) {
-    draw_text_color(t_x + 2, t_y + 20, "ength", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 40, "urance", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 60, "centration", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 80, "dom", g_col, g_col, g_col, g_col, 1);
-    draw_text_color(t_x + 2, t_y + 100, "eligence", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 20, t_y + 20, "ength", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 20, t_y + 40, "urance", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 20, t_y + 60, "centration", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 20, t_y + 80, "dom", g_col, g_col, g_col, g_col, 1);
+    draw_text_color(t_x + 20, t_y + 100, "eligence", g_col, g_col, g_col, g_col, 1);
 }
 
 //HP
@@ -110,8 +110,8 @@ repeat(player_max_hp) {
 	}
 }
 
-draw_text_color(global.BABYMODE ? t_x - 48 : t_x + 32, t_hp_y, global.t("ui.health") + ":\n" + max_hp_text,c_dkgray,c_dkgray,c_dkgray,c_dkgray,1);
-draw_text_color(global.BABYMODE ? t_x - 48 : t_x + 32, t_hp_y, global.t("ui.health") + ":\n" + hp_text,strength_col,strength_col,strength_col,strength_col,1);
+draw_text_color(t_x - 48, t_hp_y, global.t("ui.health") + ":\n" + max_hp_text,c_dkgray,c_dkgray,c_dkgray,c_dkgray,1);
+draw_text_color(t_x - 48, t_hp_y, global.t("ui.health") + ":\n" + hp_text,strength_col,strength_col,strength_col,strength_col,1);
 
 //STAMINA
 var cam = view_camera[0];

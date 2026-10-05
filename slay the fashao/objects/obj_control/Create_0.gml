@@ -456,4 +456,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.OVER)
+start_event(GameState.COMBAT)
