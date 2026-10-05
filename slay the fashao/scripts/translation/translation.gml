@@ -3,8 +3,7 @@ global.en = {
     "event.walk.text": "Improve one stat by a point",
     "event.balance.increase.text": "Choose stat to increase by 2",
     "event.balance.decrease.text": "Choose stat to decrease by 2",
-    "event.chest.text": "You stumble upon a chest. It asks you to take one item",
-    "event.fountain.text": "Max hp +1 and 1hp heal or stat +1?",
+    "event.fountain.text": "Max hp +1 and 2hp heal or stat +1?",
     "event.fork.text": "It appears the tube splits into two.",
     "event.over.text": "You died. Again.",
 
@@ -35,8 +34,7 @@ global.zh = {
     "event.walk.text": "任意属性提升1点",
     "event.balance.increase.text": "选择一项属性提升2点",
     "event.balance.decrease.text": "选择一项属性降低2点",
-    "event.chest.text": "你偶然发现了一个宝箱。它要你拿走一件物品",
-    "event.fountain.text": "最大生命值+1并恢复1点生命，还是属性+1？",
+    "event.fountain.text": "最大生命值+1并恢复2点生命，还是属性+1？",
     "event.fork.text": "前方的道路似乎分成了两条。",
     "event.over.text": "你死了。又一次。",
 

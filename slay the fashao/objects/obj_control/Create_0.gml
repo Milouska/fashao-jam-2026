@@ -162,7 +162,7 @@ function end_player_turn() {
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
                 player_max_hp += 1
-                heal(1)
+                heal(2)
                 token_event_type = get_random_weighted_event()
                 break
             // All non-value tokens aka EVENT tokens can just be saved
