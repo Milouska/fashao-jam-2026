@@ -28,14 +28,8 @@ And listened to [this playlist](https://open.spotify.com/playlist/5jH5YWqYkvVJSB
 
 ## TODO
 
-- [ ] Each enemy draws its own simple background. Each background should be super low alpha but with a different color
-- [ ] Add enemy balancing after X turns
-- [ ] Balancing
-- [ ] Add leech enemy
+- [ ] balance out game progression + enemy changes after X turns
 - [ ] Add screen-split enemy
-- [ ] Add cursed tokens
-- [ ] Add enemy that adds spikes to the border (should this be a new one or should an existing one do it?)
-- [ ] Create itch io page
 - [ ] Animate stats changing
 
 The following text is the itch.io page text
