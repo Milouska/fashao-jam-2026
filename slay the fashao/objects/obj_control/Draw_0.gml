@@ -16,7 +16,8 @@ if (game_state == GameState.OVER) {
     draw_text_colour(room_width / 2 - 120, t_y + 80, global.t("event.over.damage"), c_gray, c_gray, c_gray, c_gray, 1)
     draw_text_colour(room_width / 2 - 120, t_y + 100, global.t("event.over.taken"), c_gray, c_gray, c_gray, c_gray, 1)
     draw_text_colour(room_width / 2 - 120, t_y + 120, global.t("event.over.intelligence"), c_gray, c_gray, c_gray, c_gray, 1)
-	
+	draw_text_colour(room_width / 2 - 120, t_y + 140, global.t("event.over.time"), c_gray, c_gray, c_gray, c_gray, 1)
+    
     draw_set_halign(fa_left);
 
 		var intelligence_comment = ""
@@ -35,7 +36,9 @@ if (game_state == GameState.OVER) {
     draw_text_colour(room_width / 2 + 150, t_y + 80, stats.damage_given, c_white, c_white, c_white, c_white, 1)
     draw_text_colour(room_width / 2 + 150, t_y + 100, stats.damage_taken, c_white, c_white, c_white, c_white, 1)
     draw_text_colour(room_width / 2 + 150, t_y + 120, string("{0}, {1}", inteligence, intelligence_comment), c_white, c_white, c_white, c_white, 1)
-	return
+    draw_text_colour(room_width / 2 + 150, t_y + 140, string("{0}s", game_length_seconds), c_white, c_white, c_white, c_white, 1)
+	
+    return
 }
 
 t_x = 88

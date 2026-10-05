@@ -252,11 +252,15 @@ death_amount = 0;   // 0 - 1 tint strength
 death_color  = [0.8, 0.0, 0.1]; // rgb
 impact_timer = 0;   // in frames
 
+game_start_timestamp = current_time
+game_length_seconds = 0
+
 function take_damage(dmg) {
     player_hp -= dmg
     
     if (player_hp <= 0) {
         player_dead = true
+        game_length_seconds = (current_time - game_start_timestamp) / 1000
         
         call_later(30, time_source_units_frames, method(self, function() {
             start_event(GameState.OVER)
@@ -418,4 +422,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.BALANCE)
+start_event(GameState.WALK)

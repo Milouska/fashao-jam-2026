@@ -17,6 +17,7 @@ global.en = {
     "event.over.intelligence.high": "brilliant",
     "event.over.intelligence.mid": "curious...",
     "event.over.intelligence.low": "dumbass",
+    "event.over.time": "Time",
 
     "ui.stats": "STATS",
     "ui.strength": "Strength",
@@ -48,6 +49,7 @@ global.zh = {
     "event.over.intelligence.high": "天才",
     "event.over.intelligence.mid": "好奇……",
     "event.over.intelligence.low": "蠢货",
+    "event.over.time": "时间",
 
     "ui.stats": "属性",
     "ui.strength": "力量",

@@ -32,3 +32,4 @@
 - [ ] Add enemy that adds spikes to the border (should this be a new one or should an existing one do it?)
 - [ ] Create game artwork
 - [ ] Create itch io page
+- [ ] Animate stats changing
