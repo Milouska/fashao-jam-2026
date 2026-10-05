@@ -1,6 +1,6 @@
 # In Japanese, "Katana" means "Chinese Sword"
 
-[Header](/fashaotop.png)
+![Header](/fashaotop.png)
 
 Is a 2026 Fashao Meng game jam entry about slicing tokens in a limited time, which then determine your actions. With many unique enemies and non-combat events. The game is about learning what does what. You will be confused at first. You will die a lot. Slice and find out!
 
