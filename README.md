@@ -6,7 +6,8 @@ Is a 2026 Fashao Meng game jam entry about slicing tokens in a limited time, whi
 
 You are completely deaf and you embark on a journey through a long tube. What lies inside? Nobody knows. 
 
-Game made by [Milouska](https://github.com/Milouska) and [dolanske](https://github.com/dolanske) :3
+Game made by [Milouska](https://github.com/Milouska) and [dolanske](https://github.com/dolanske) :3 
+Check the [Itch.io page](https://fashao-meng.itch.io/in-japanese-katana-means-chinese-sword)
 
 ![Capsule](/fashao2026-capsulev2.png)
 
