@@ -1,4 +1,24 @@
-# TODO
+# In Japanese, "Katana" means "Chinese Sword"
+
+Is a 2026 Fashao Meng game jam entry about slicing tokens in a limited time, which then determine your actions. With many unique enemies and non-combat events. Share screenshots of your death screens with us!
+
+You are deaf and you embark on a journey through a long tube. What lies inside? Nobody knows. 
+
+Game made by [Milouska](https://github.com/Milouska) and [dolanske](https://github.com/dolanske) :3
+
+![Capsule](/fashao2026-capsule.png)
+
+## Tools used
+
+All images and sprites were either drawn or sourced online. With strong dilligence to avoid AI-generated content.
+
+- Gamemaker 2
+- Aseprite
+- SLK Image 2 Pixel tool
+
+
+
+## TODO
 
 - [x] General gameplay loop (fight -> walk -> XP -> Choice)
 - [x] Choice screen
