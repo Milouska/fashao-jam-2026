@@ -22,8 +22,8 @@ global.enemy_attacks = [
   },
   // Firelord
   {
-    attacks: [4, 5],
-    hp: 24,
+    attacks: [3, 4],
+    hp: 11,
   },
   // Cloud monkey
   {

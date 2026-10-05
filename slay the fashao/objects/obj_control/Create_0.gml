@@ -344,14 +344,14 @@ function start_event(state_type) {
                     inst.stats.enemies_killed += 1
                     
                     // VVVVVVV BALANCE HERE VVVVVVVVV
-                    if (inst.game_rounds > 15 && inst.game_rounds <= 30) {
+                    if (inst.game_rounds > 20 && inst.game_rounds <= 35) {
                         global.enemy_pool = [
                             EnemyType.MANTICORE,
                             EnemyType.FIRELORD,
                             EnemyType.CLOUD_MONKEY,
                             EnemyType.NIGHTMARE
                         ]
-                    } else if (inst.game_rounds > 30 && inst.game_rounds <= 50) {
+                    } else if (inst.game_rounds > 35 && inst.game_rounds <= 55) {
                         global.enemy_attacks[EnemyType.BABY].hp = 12
                         global.enemy_attacks[EnemyType.BABY].attacks = [3, 3]
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7]
@@ -373,7 +373,7 @@ function start_event(state_type) {
                             EnemyType.LEECH,
                             EnemyType.THORNS,
                         ]
-                    } else if (inst.game_rounds > 50) {
+                    } else if (inst.game_rounds > 55) {
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7, 8, 9]
                         global.enemy_attacks[EnemyType.GIANT].hp = 33
 
@@ -407,8 +407,6 @@ function start_event(state_type) {
             spawn_token(TokenType.WISDOM, 234, 24, 2, 234)
             spawn_token(TokenType.ENDUREANCE, 162, 24, 2, 162)
             spawn_token(TokenType.INTELIGENCE, 306, 24, 2, 306)
-            
-            //heal(1)
             
             break
         
