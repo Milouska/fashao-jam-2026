@@ -366,6 +366,7 @@ enum GameState {
 }
 
 balance_turn = 0
+queue_bossfight = false
 
 // Place code initiating an event HERE, spawning enemy, creating choice, etc
 function start_event(state_type) {
@@ -373,6 +374,11 @@ function start_event(state_type) {
     
     game_state = state_type
     game_rounds++
+    
+    // First fight after these specific rounds will be a bossfight
+    if (game_rounds == 35 || game_rounds == 65) {
+        queue_bossfight = true
+    }
     
     switch(game_state) {
         case GameState.COMBAT:
@@ -395,13 +401,13 @@ function start_event(state_type) {
                             EnemyType.NIGHTMARE
                         ]
                     } else if (inst.game_rounds > 35 && inst.game_rounds <= 55) {
-                        global.enemy_attacks[EnemyType.BABY].hp = 12
+                        global.enemy_attacks[EnemyType.BABY].hp = 11
                         global.enemy_attacks[EnemyType.BABY].attacks = [3, 3]
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7]
-                        global.enemy_attacks[EnemyType.GIANT].hp = 20
+                        global.enemy_attacks[EnemyType.GIANT].hp = 18
 
                         global.enemy_attacks[EnemyType.NIGHTMARE].attacks = [0,0,6]
-                        global.enemy_attacks[EnemyType.NIGHTMARE].hp = 18
+                        global.enemy_attacks[EnemyType.NIGHTMARE].hp = 14
 
                         global.enemy_attacks[EnemyType.CLOUD_MONKEY].clouds = 13
                         global.enemy_attacks[EnemyType.NIGHTMARE].hp = 16
@@ -418,7 +424,7 @@ function start_event(state_type) {
                         ]
                     } else if (inst.game_rounds > 55) {
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7, 8, 9]
-                        global.enemy_attacks[EnemyType.GIANT].hp = 33
+                        global.enemy_attacks[EnemyType.GIANT].hp = 28
 
                         global.enemy_pool = [
                             EnemyType.BABY,
