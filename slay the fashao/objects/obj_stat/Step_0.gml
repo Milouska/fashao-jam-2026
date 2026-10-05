@@ -7,9 +7,9 @@ if (life > 0) {
 	image_yscale = lerp(image_yscale, 1, 0.2);
 	life --;
 } else {
-	if (instance_exists(obj_enemy) and obj_enemy.type = EnemyType.LEECH) {
-		x += obj_enemy.x-x*0.2;
-		y += obj_enemy.y-y*0.1;
+	if (instance_exists(obj_enemy) and obj_enemy.type = EnemyType.LEECH) and (damage = false) {
+		x = lerp(x, obj_enemy.x, 0.1);
+		y = lerp(y, obj_enemy.y, 0.05);
 		if (point_distance(x,y,obj_enemy.x,obj_enemy.y) < 32) {
 			instance_destroy();
 		}

@@ -61,7 +61,8 @@ switch (enemy_state) {
 				with(obj_camera) hshake = 20;
 				attacked = true;
 				
-				if (type = EnemyType.LEECH) {
+				if (type = EnemyType.LEECH) and (damage > 0) {
+					show_debug_message(leech);
 					repeat(leech) {
 						var stats = [];
 						if (obj_control.strength > 0) array_push(stats, 0);
@@ -70,25 +71,35 @@ switch (enemy_state) {
 						if (obj_control.stamina > 0) array_push(stats, 2);
 						if (obj_control.inteligence > 0) array_push(stats, 4);
 						
-						array_shuffle(stats);
+						stats = array_shuffle(stats);
 						
 						var choice = stats[0];
 						if (choice != undefined) {
 							switch(choice) {
 								case 0:
 									obj_control.strength --;
+									var stat = instance_create_depth(32,55,-4,obj_stat);
+									stat.type = TokenType.STRENGTH;
 								break;
 								case 1:
 									obj_control.endurance --;
+									var stat = instance_create_depth(32,75,-4,obj_stat);
+									stat.type = TokenType.ENDUREANCE;
 								break;
 								case 2:
 									obj_control.stamina --;
+									var stat = instance_create_depth(32,95,-4,obj_stat);
+									stat.type = TokenType.STAMINA;
 								break;
 								case 3:
 									obj_control.wisdom --;
+									var stat = instance_create_depth(32,115,-4,obj_stat);
+									stat.type = TokenType.WISDOM;
 								break;
 								case 4:
 									obj_control.inteligence --;
+									var stat = instance_create_depth(32,135,-4,obj_stat);
+									stat.type = TokenType.INTELIGENCE;
 								break;
 							}
 						}
@@ -119,7 +130,7 @@ switch (enemy_state) {
 			}
             
             // Attack ended. We have to make sure player's turn starts again
-            call_later(1, time_source_units_seconds, method(self, function() {
+            call_later(0.4, time_source_units_seconds, method(self, function() {
                 obj_control.start_player_turn()
 				
 				with(obj_shield) {

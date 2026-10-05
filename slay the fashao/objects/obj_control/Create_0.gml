@@ -5,7 +5,7 @@ defaults = {
     HP: 6,
     STRENGHT: 1,
     ENDURANCE: 1,
-    STAMINA: 3,
+    STAMINA: 5,
     WISDOM: 0,
     INTELLIGENCE: 2,
 }
@@ -36,7 +36,7 @@ player_hp = defaults.HP;
 player_max_hp = defaults.HP
 
 stamina_cd = 0;
-stamina_inc = 15;
+stamina_inc = 9;
 stamina_y = 0;
 
 thorned = false; //for checking thorn interaction
@@ -193,6 +193,27 @@ function end_player_turn() {
         endurance += turn_endurance
         stamina += turn_stamina
         inteligence += turn_intelligence
+		
+		if (turn_strength) {
+			var stat = instance_create_depth(32, 55, -4, obj_stat);
+			stat.type = TokenType.STRENGTH;
+		}
+		if (turn_endurance) {
+			var stat = instance_create_depth(32, 75, -4, obj_stat);
+			stat.type = TokenType.ENDUREANCE;
+		}
+		if (turn_stamina) {
+			var stat = instance_create_depth(32, 95, -4, obj_stat);
+			stat.type = TokenType.STAMINA;
+		}
+		if (turn_fireball) {
+			var stat = instance_create_depth(32, 115, -4, obj_stat);
+			stat.type = TokenType.WISDOM;
+		}
+		if (turn_intelligence) {
+			var stat = instance_create_depth(32, 135, -4, obj_stat);
+			stat.type = TokenType.INTELIGENCE;
+		}
         
         call_later(20, time_source_units_frames, method(self, function() {
             // Always start combat after the first walk
@@ -210,6 +231,27 @@ function end_player_turn() {
         endurance = balance_turn == 1 ? endurance + (turn_endurance * 2) : endurance - (turn_endurance * 2) 
         stamina = balance_turn == 1 ? stamina + (turn_stamina * 2) : stamina - (turn_stamina * 2) 
         inteligence = balance_turn == 1 ? inteligence + (turn_intelligence * 2) : inteligence - (turn_intelligence * 2)
+		
+		if (turn_strength) {
+			var stat = instance_create_depth(32, 55, -4, obj_stat);
+			stat.type = TokenType.STRENGTH;
+		}
+		if (turn_endurance) {
+			var stat = instance_create_depth(32, 75, -4, obj_stat);
+			stat.type = TokenType.ENDUREANCE;
+		}
+		if (turn_stamina) {
+			var stat = instance_create_depth(32, 95, -4, obj_stat);
+			stat.type = TokenType.STAMINA;
+		}
+		if (turn_fireball) {
+			var stat = instance_create_depth(32, 115, -4, obj_stat);
+			stat.type = TokenType.WISDOM;
+		}
+		if (turn_intelligence) {
+			var stat = instance_create_depth(32, 135, -4, obj_stat);
+			stat.type = TokenType.INTELIGENCE;
+		}
         
         if (balance_turn == 1) {
             start_event(GameState.BALANCE)
@@ -289,6 +331,7 @@ function take_damage(dmg) {
 	repeat(dmg) {
 		var stat = instance_create_depth(44 + (player_hp+iteration - 1)%8 * 11, room_height / 2 - 10 + floor((player_hp+iteration - 1)/8) * 20, -4, obj_stat);
 		stat.type = 0;
+		stat.damage = true;
 		iteration --;
 	}
     
@@ -492,4 +535,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.WALK)
+start_event(GameState.BALANCE)

@@ -8,3 +8,5 @@ image_yscale = 0;
 life = random_range(15,30);
 
 col = c_white;
+
+damage = false;
