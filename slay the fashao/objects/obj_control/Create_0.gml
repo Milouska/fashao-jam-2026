@@ -376,7 +376,7 @@ function start_event(state_type) {
     game_rounds++
     
     // First fight after these specific rounds will be a bossfight
-    if (game_rounds == 35 || game_rounds == 65) {
+    if (game_rounds == 35 || game_rounds == 65 || game_rounds == 100) {
         queue_bossfight = true
     }
     
