@@ -217,7 +217,7 @@ function end_player_turn() {
 
 player_dead = false
 
-function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
+function spawn_token(token_type, ang = random(360), len = random_range(0, 22), spd = 0, dir = 0) {
     if (player_dead) {
         // TODO: check whether token_type == TokenType.RESTART. That one we can spawn
         
@@ -226,6 +226,11 @@ function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
     
     var token = instance_create_depth(room_width / 2 + lengthdir_x(len, ang), room_height / 2 + lengthdir_y(len, ang), 0, obj_token);
     token.type = token_type
+	
+	if (spd > 0) {
+		token.speed = spd;
+		token.direction = dir;
+	}
 }
 
 mouse_xprevious = mouse_x;
@@ -326,11 +331,11 @@ function start_event(state_type) {
 			
 			instance_create_depth(room_width / 2, room_height / 2, 100, obj_levelup_bg);
             
-            spawn_token(TokenType.STRENGTH, 0, 3)
-            spawn_token(TokenType.ENDUREANCE, 72, 5)
-            spawn_token(TokenType.WISDOM, 144, 3)
-            spawn_token(TokenType.STAMINA, 216, 5)
-            spawn_token(TokenType.INTELIGENCE, 288, 0)
+            spawn_token(TokenType.STRENGTH, 90, 24, 2, 90)
+            spawn_token(TokenType.STAMINA, 18, 24, 2, 18)
+            spawn_token(TokenType.WISDOM, 234, 24, 2, 234)
+            spawn_token(TokenType.ENDUREANCE, 162, 24, 2, 162)
+            spawn_token(TokenType.INTELIGENCE, 306, 24, 2, 306)
             
             heal()
             
