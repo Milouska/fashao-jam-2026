@@ -249,7 +249,7 @@ function end_player_turn() {
 player_dead = false
 
 function spawn_token(token_type, ang = random(360), len = random_range(0, 22), spd = 0, dir = 0) {
-    if (player_dead && token_type != TokenType.BASIC_QUIT) && (player_dead && token_type != TokenType.BASIC_RESTART) {
+    if (player_dead && token_type != TokenType.BASIC_QUIT) && (player_dead && token_type != TokenType.BASIC_RESTART) && (player_dead && token_type != TokenType.BASIC_SCREENSHOT) {
         return
     }
     
@@ -337,14 +337,14 @@ function start_event(state_type) {
                     inst.stats.enemies_killed += 1
                     
                     // VVVVVVV BALANCE HERE VVVVVVVVV
-                    if (inst.game_rounds > 10 && inst.game_rounds <= 25) {
+                    if (inst.game_rounds > 15 && inst.game_rounds <= 30) {
                         global.enemy_pool = [
                             EnemyType.MANTICORE,
                             EnemyType.FIRELORD,
                             EnemyType.CLOUD_MONKEY,
                             EnemyType.NIGHTMARE
                         ]
-                    } else if (inst.game_rounds > 25 && inst.game_rounds <= 40) {
+                    } else if (inst.game_rounds > 30 && inst.game_rounds <= 50) {
                         global.enemy_attacks[EnemyType.BABY].hp = 12
                         global.enemy_attacks[EnemyType.BABY].attacks = [3, 3]
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7]
@@ -366,7 +366,7 @@ function start_event(state_type) {
                             EnemyType.LEECH,
                             EnemyType.THORNS,
                         ]
-                    } else if (inst.game_rounds > 40) {
+                    } else if (inst.game_rounds > 50) {
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7, 8, 9]
                         global.enemy_attacks[EnemyType.GIANT].hp = 33
 

@@ -31,7 +31,7 @@ if (obj_control.stats.enemies_killed == 0) {
     type = EnemyType.BABY;
 }
 
-if (obj_control.game_rounds == 30) {
+if (obj_control.game_rounds == 40) {
     type = EnemyType.SPLIT_SCREEN;
 }
 //type = EnemyType.SPLIT_SCREEN;
@@ -44,7 +44,7 @@ leech = struct_get(attacks_data, "clouds") ?? 0
 thorned = false;
 
 // Special late-game boss
-if (obj_control.game_rounds == 55) {
+if (obj_control.game_rounds == 65) {
     type = EnemyType.GIANT;
 		enemy_attacks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 		enemy_hp = 60
