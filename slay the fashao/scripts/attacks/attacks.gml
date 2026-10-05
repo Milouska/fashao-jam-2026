@@ -22,7 +22,7 @@ global.enemy_attacks = [
   },
   // Firelord
   {
-    attacks: [3, 4],
+    attacks: [2, 1],
     hp: 11,
   },
   // Cloud monkey
@@ -52,7 +52,6 @@ global.enemy_attacks = [
 // Base enemy pool
 global.enemy_pool = [
     EnemyType.BABY,
-    EnemyType.BABY,
-	  EnemyType.MANTICORE,
+	EnemyType.MANTICORE,
     EnemyType.GIANT,
 ]

@@ -162,7 +162,7 @@ function end_player_turn() {
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
                 player_max_hp += 1
-                heal(2)
+                heal(3)
                 token_event_type = get_random_weighted_event()
                 break
             // All non-value tokens aka EVENT tokens can just be saved
@@ -393,14 +393,14 @@ function start_event(state_type) {
                     inst.stats.enemies_killed += 1
                     
                     // VVVVVVV BALANCE HERE VVVVVVVVV
-                    if (inst.game_rounds > 20 && inst.game_rounds <= 35) {
+                    if (inst.game_rounds > 12 && inst.game_rounds <= 30) {
                         global.enemy_pool = [
                             EnemyType.MANTICORE,
                             EnemyType.FIRELORD,
                             EnemyType.CLOUD_MONKEY,
                             EnemyType.NIGHTMARE
                         ]
-                    } else if (inst.game_rounds > 35 && inst.game_rounds <= 55) {
+                    } else if (inst.game_rounds > 30 && inst.game_rounds <= 55) {
                         global.enemy_attacks[EnemyType.BABY].hp = 11
                         global.enemy_attacks[EnemyType.BABY].attacks = [3, 3]
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7]
