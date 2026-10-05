@@ -6,7 +6,7 @@ You are completely deaf and you embark on a journey through a long tube. What li
 
 Game made by [Milouska](https://github.com/Milouska) and [dolanske](https://github.com/dolanske) :3
 
-![Capsule](/fashao2026-capsule.png)
+![Capsule](/fashao2026-capsulev2.png)
 
 ## Controls
 
