@@ -5,7 +5,7 @@ global.en = {
     "event.balance.decrease.text": "Choose stat to decrease by 2",
     "event.chest.text": "You stumble upon a chest. It asks you to take one item",
     "event.fountain.text": "Max hp +1 and 1hp heal or stat +1?",
-    "event.fork.text": "It appears the road splits into two.",
+    "event.fork.text": "It appears the tube splits into two.",
     "event.over.text": "You died. Again.",
 
     "event.over.enemies": "Kills",

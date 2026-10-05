@@ -33,7 +33,7 @@ global.enemy_attacks = [
   },
   // Split screen
   {
-    attacks: [5, 4, 3],
+    attacks: [4, 3, 2, 0, 5, 4, 3, 1],
     hp: 12,
   },
   // Thorns
@@ -45,6 +45,14 @@ global.enemy_attacks = [
   {
     attacks: [1, 1],
     hp: 8,
-	leech: 1, //how many stats does leech take
+	  leech: 1, //how many stats does leech take
   }
+]
+
+// Base enemy pool
+global.enemy_pool = [
+    EnemyType.BABY,
+    EnemyType.BABY,
+	  EnemyType.MANTICORE,
+    EnemyType.GIANT,
 ]

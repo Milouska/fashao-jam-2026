@@ -6,3 +6,5 @@ vshake = 0;
 
 x = room_width/2;
 y = room_height/2;
+
+window_set_size(1280, 760)

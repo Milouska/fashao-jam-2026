@@ -338,16 +338,11 @@ function start_event(state_type) {
                     
                     // VVVVVVV BALANCE HERE VVVVVVVVV
                     if (inst.stats.enemies_killed > 7 && inst.stats.enemies_killed <= 15) {
-                        // Example hp increase from 6 to 8
                         global.enemy_attacks[EnemyType.BABY].hp = 8
-                        
-                        // Adding a new attack
-                        array_push(global.enemy_attacks[EnemyType.GIANT].attacks, 7)
-
-                        // Modifying an attack that exists, first attack now deals 2 dmg
-                        global.enemy_attacks[EnemyType.BABY].attacks[0] = 2
+                        global.enemy_attacks[EnemyType.BABY].attacks = [2, 2]
                     } else if (inst.stats.enemies_killed > 15 && inst.stats.enemies_killed <= 25) {
                         // Mid-game
+                        array_push(global.enemy_attacks[EnemyType.GIANT].attacks, 7)
                     } else if (inst.stats.enemies_killed > 25) {
                         // End-game
                     }
@@ -370,7 +365,7 @@ function start_event(state_type) {
             spawn_token(TokenType.ENDUREANCE, 162, 24, 2, 162)
             spawn_token(TokenType.INTELIGENCE, 306, 24, 2, 306)
             
-            heal()
+            //heal(1)
             
             break
         
@@ -413,7 +408,7 @@ function start_event(state_type) {
             turn_finished = false
             spawn_token(TokenType.EVENT_WALK, 40, 96, 2, 270)
             spawn_token(TokenType.EVENT_HEAL, 140, 96, 2, 270)
-			
+			//heal(1)
 			var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
 			bg.image_index = 2;
             
@@ -456,4 +451,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.COMBAT)
+start_event(GameState.WALK)

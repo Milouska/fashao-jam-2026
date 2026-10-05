@@ -9,7 +9,6 @@ enum EnemyType {
 	SPLIT_SCREEN,
 	THORNS,
 	LEECH,
-	
 } 
 
 death_callback = undefined
@@ -25,16 +24,7 @@ enum EnemyState {
 enemy_turn_index = 0
 
 enemy_state = EnemyState.APPEAR;
-type = choose(EnemyType.BABY,
-			  EnemyType.GIANT,
-			  EnemyType.MANTICORE,
-			  EnemyType.NIGHTMARE,
-			  EnemyType.FIRELORD,
-			  EnemyType.CLOUD_MONKEY,
-			  EnemyType.SPLIT_SCREEN,
-			  EnemyType.THORNS,
-			  EnemyType.LEECH);
-			  
+type = array_choose(global.enemy_pool)
 
 // Always fight this tall ass head baby in first combat
 if (obj_control.stats.enemies_killed == 0) {
