@@ -29,3 +29,4 @@ And listened to [this playlist](https://open.spotify.com/playlist/5jH5YWqYkvVJSB
 ## TODO
 
 - [ ] balance out game progression + enemy changes after X turns
+- [ ] Build 
