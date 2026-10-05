@@ -8,3 +8,4 @@ alarm[0] = choose(1, 2, 3);
 
 thorned = false;
 thorn_a = 0;
+can_thorn = false;

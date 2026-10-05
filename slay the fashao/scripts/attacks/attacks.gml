@@ -29,7 +29,7 @@ global.enemy_attacks = [
   {
     attacks: [1, 1, 2, 0],
     hp: 6,
-    clouds: 8,
+    clouds: 9,
   },
   // Split screen
   {

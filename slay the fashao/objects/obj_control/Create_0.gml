@@ -39,6 +39,8 @@ stamina_cd = 0;
 stamina_inc = 15;
 stamina_y = 0;
 
+thorned = false; //for checking thorn interaction
+
 function heal(by = 1) {
     player_hp = min(player_hp + by, player_max_hp)    
 }
@@ -436,6 +438,10 @@ function spawn_barier(radius = 144) {
     	var barier = instance_create_depth(room_width / 2 + lengthdir_x(radius, i * offset),room_height / 2+lengthdir_y(radius, i * offset),-1000,obj_barier)
     	barier.image_angle = i * offset;
         barier.radius = radius
+		
+		if (i%30 = 0) {
+			barier.can_thorn = true;
+		}
     }
 }
 

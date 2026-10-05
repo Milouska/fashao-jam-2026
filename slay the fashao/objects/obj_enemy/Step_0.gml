@@ -16,7 +16,7 @@ switch (enemy_state) {
 				var target_ang = random(360);
 				var target_len = obj_barier.radius * 0.6;
 				
-				repeat(9) {
+				repeat(clouds) {
 					var cang = random(360);
 					var clen = random_range(0,32);
 					

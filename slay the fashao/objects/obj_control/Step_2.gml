@@ -26,6 +26,23 @@ if (mouse_check_button(mb_left) && swipe_started && !turn_finished) {
 		end_player_turn();
 		return
 	}
+	
+	//Check if player didnt go through thorns when fighting that enemy
+	if (instance_exists(obj_enemy) and obj_enemy.type = EnemyType.THORNS) and (instance_exists(obj_barier) and point_distance(room_width/2,room_height/2,mouse_x, mouse_y) > obj_barier.radius) {
+		if (thorned = false) {
+			take_damage(1);
+			thorned = true;
+			with(obj_camera) {
+				hshake = 10;
+				vshake = 10;
+			}
+		}
+	}
+	
+	//Reset thorned
+	if (instance_exists(obj_barier) and point_distance(room_width/2,room_height/2,mouse_x, mouse_y) < obj_barier.radius) {
+		thorned = false;
+	}
     
     if (dist < 3) return
     
