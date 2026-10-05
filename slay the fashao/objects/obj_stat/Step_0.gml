@@ -3,8 +3,8 @@ depth = -20;
 image_angle += 18 * spin;
 
 if (life > 0) {
-	image_xscale = lerp(image_xscale, 1, 0.2);
-	image_yscale = lerp(image_yscale, 1, 0.2);
+	image_xscale = lerp(image_xscale, 1.5, 0.2);
+	image_yscale = lerp(image_yscale, 1.5, 0.2);
 	life --;
 } else {
 	if (instance_exists(obj_enemy) and obj_enemy.type = EnemyType.LEECH) and (damage = false) {

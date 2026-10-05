@@ -34,7 +34,7 @@ if (obj_control.stats.enemies_killed == 0) {
 if (obj_control.game_rounds == 35) {
     type = EnemyType.SPLIT_SCREEN;
 }
-type = EnemyType.LEECH;
+//type = EnemyType.LEECH;
 
 var attacks_data = global.enemy_attacks[type]
 
