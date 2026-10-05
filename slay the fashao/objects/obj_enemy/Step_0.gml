@@ -94,6 +94,16 @@ switch (enemy_state) {
 						}
 					}
 				}
+				
+				if (type = EnemyType.SPLIT_SCREEN) {
+					var slash = instance_create_depth(room_width / 2, room_height / 2, -1000, obj_screen_slash);
+					slash.image_angle = random(360);
+					with(obj_camera) {
+						hshake = 40;
+						vshake = 40;
+					}
+					obj_control.impact_timer = 4;
+				}
 			}
 		}
 		

@@ -10,5 +10,11 @@ if (type = EnemyType.THORNS) {
 	}
 }
 
+if (type = EnemyType.SPLIT_SCREEN) {
+	with(obj_screen_slash) {
+		gone = true;
+	}
+}
+
 if (death_callback)
     death_callback()

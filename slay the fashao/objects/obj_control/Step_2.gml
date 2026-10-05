@@ -43,6 +43,20 @@ if (mouse_check_button(mb_left) && swipe_started && !turn_finished) {
 	if (instance_exists(obj_barier) and point_distance(room_width/2,room_height/2,mouse_x, mouse_y) < obj_barier.radius) {
 		thorned = false;
 	}
+	
+	//screen break line collision check
+	if (instance_exists(obj_screen_slash)) {
+		var screen = collision_line(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious, obj_screen_slash, true, true);
+		if (screen) {
+			end_player_turn()
+			with(obj_camera) {
+				hshake = 20;
+				vshake = 20;
+			}
+			with(screen) shake = 20;
+			return
+		}
+	}
     
     if (dist < 3) return
     

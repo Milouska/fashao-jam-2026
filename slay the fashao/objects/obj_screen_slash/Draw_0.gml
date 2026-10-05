@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_index, 0, x+random_range(-shake, shake), y+random_range(-shake, shake), image_xscale, image_yscale, image_angle+random_range(-shake, shake), c_white, 0.25);
