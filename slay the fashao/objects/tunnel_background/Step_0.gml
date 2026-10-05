@@ -1,4 +1,4 @@
-depth = 50;
+depth = 51;
 
 if (fork) {
 	fork_x = lerp(fork_x, fork_x_max, 0.2);

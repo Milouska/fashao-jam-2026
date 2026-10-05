@@ -34,6 +34,7 @@
     {"id":{"name":"obj_explosion","path":"objects/obj_explosion/obj_explosion.yy",},},
     {"id":{"name":"obj_fire","path":"objects/obj_fire/obj_fire.yy",},},
     {"id":{"name":"obj_fireball","path":"objects/obj_fireball/obj_fireball.yy",},},
+    {"id":{"name":"obj_levelup_bg","path":"objects/obj_levelup_bg/obj_levelup_bg.yy",},},
     {"id":{"name":"obj_line","path":"objects/obj_line/obj_line.yy",},},
     {"id":{"name":"obj_shield","path":"objects/obj_shield/obj_shield.yy",},},
     {"id":{"name":"obj_slash","path":"objects/obj_slash/obj_slash.yy",},},

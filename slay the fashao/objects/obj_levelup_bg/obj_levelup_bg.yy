@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_event_bg",
+  "%Name":"obj_levelup_bg",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_event_bg",
+  "name":"obj_levelup_bg",
   "overriddenProperties":[],
   "parent":{
     "name":"OBJECTS",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_event_bg",
-    "path":"sprites/spr_event_bg/spr_event_bg.yy",
+    "name":"spr_levelup",
+    "path":"sprites/spr_levelup/spr_levelup.yy",
   },
   "spriteMaskId":null,
   "visible":true,

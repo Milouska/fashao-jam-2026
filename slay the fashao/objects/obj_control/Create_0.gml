@@ -89,7 +89,7 @@ function start_player_turn() {
 	with(obj_enemy) {
 		if (type == EnemyType.NIGHTMARE) {
 			repeat(tokens_spawn) {
-				spawn_token(TokenType.NIGHTMARE_TOKEN);
+				obj_control.spawn_token(TokenType.NIGHTMARE_TOKEN);
 			}
 		}
 	}
@@ -178,12 +178,14 @@ function end_player_turn() {
         wisdom = balance_turn == 1 ? wisdom + (turn_fireball * 2) : wisdom - (turn_fireball * 2) 
         endurance = balance_turn == 1 ? endurance + (turn_endurance * 2) : endurance - (turn_endurance * 2) 
         stamina = balance_turn == 1 ? stamina + (turn_stamina * 2) : stamina - (turn_stamina * 2) 
-        inteligence = balance_turn == 1 ? inteligence + (turn_intelligence * 2) : inteligence - (turn_intelligence * 2) 
+        inteligence = balance_turn == 1 ? inteligence + (turn_intelligence * 2) : inteligence - (turn_intelligence * 2)
         
         if (balance_turn == 1) {
             start_event(GameState.BALANCE)
+			with(obj_event_bg) image_index = 1;
         } else {
             balance_turn = 0
+			with(obj_event_bg) state = 1;
             // Balance counts two rounds, remove one here
             game_rounds--
             call_later(20, time_source_units_frames, method(self, function() {
@@ -213,6 +215,8 @@ function end_player_turn() {
     enemy.alarm[0] = 15
 }
 
+player_dead = false
+
 function spawn_token(token_type, ang = random(360), len = random_range(0, 22)) {
     if (player_dead) {
         // TODO: check whether token_type == TokenType.RESTART. That one we can spawn
@@ -236,8 +240,6 @@ application_surface_draw_enable(false);
 u_tint   = shader_get_uniform(sh_effects, "u_tint");
 u_amount = shader_get_uniform(sh_effects, "u_amount");
 u_impact = shader_get_uniform(sh_effects, "u_impact");
-
-player_dead = false
 
 death_amount = 0;   // 0 - 1 tint strength
 death_color  = [0.8, 0.0, 0.1]; // rgb
@@ -321,6 +323,8 @@ function start_event(state_type) {
         case GameState.WALK:
             log("=== WALK ===")
             turn_finished = false
+			
+			instance_create_depth(room_width / 2, room_height / 2, 100, obj_levelup_bg);
             
             spawn_token(TokenType.STRENGTH, 0, 3)
             spawn_token(TokenType.ENDUREANCE, 72, 5)
@@ -335,6 +339,7 @@ function start_event(state_type) {
         case GameState.FORK:
             log("=== FORK ===")
             turn_finished = false
+			with(tunnel_background) fork = true;
             var first = get_random_weighted_event();
             var second = get_random_weighted_event()
             
@@ -357,6 +362,9 @@ function start_event(state_type) {
             if(balance_turn == 1 || balance_turn == 2 && wisdom >= 2) spawn_token(TokenType.WISDOM, 144, 3)
             if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 216, 5)
             if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 288, 0)
+			
+			var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
+			bg.image_index = 0;
                 
             break
         
@@ -365,6 +373,9 @@ function start_event(state_type) {
             turn_finished = false
             spawn_token(TokenType.EVENT_WALK, 180, 7)
             spawn_token(TokenType.EVENT_HEAL, 0, 7)
+			
+			var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
+			bg.image_index = 2;
             
             break
         

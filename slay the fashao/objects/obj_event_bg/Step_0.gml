@@ -2,10 +2,14 @@ switch (state) {
 	case 0:
 		len_target = 240;
 		image_alpha = lerp(image_alpha, 0.8, 0.2);
+		image_xscale = lerp(image_xscale, 1, 0.2);
+		image_yscale = lerp(image_yscale, 1, 0.2);
 	break;
 	case 1:
 		len_target = 640;
 		image_alpha = lerp(image_alpha, 0, 0.2);
+		image_xscale = lerp(image_xscale, 1.5, 0.2);
+		image_yscale = lerp(image_yscale, 1.5, 0.2);
 		if (image_alpha < 0.01) instance_destroy();
 	break;
 }
