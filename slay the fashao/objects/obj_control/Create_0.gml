@@ -284,6 +284,13 @@ game_length_seconds = 0
 
 function take_damage(dmg) {
     player_hp -= dmg
+	
+	var iteration = dmg;
+	repeat(dmg) {
+		var stat = instance_create_depth(44 + (player_hp+iteration - 1)%8 * 11, room_height / 2 - 10 + floor((player_hp+iteration - 1)/8) * 20, -4, obj_stat);
+		stat.type = 0;
+		iteration --;
+	}
     
     if (player_hp <= 0) {
         player_dead = true
