@@ -47,16 +47,16 @@ thorned = false;
 // SECOND BOSSFIGHT - queued + after round 60
 if (obj_control.queue_bossfight && obj_control.game_rounds > 60 && obj_control.game_rounds < 100) {
     type = EnemyType.GIANT;
-    enemy_attacks = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-    enemy_hp = 34
+    enemy_attacks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    enemy_hp = 40
     obj_control.queue_bossfight = false
 }
 
 // THIRD BOSSFIGHT - queued + after round 60
 if (obj_control.queue_bossfight && obj_control.game_rounds >= 100) {
     type = EnemyType.BABY;
-    enemy_attacks = [0, 0, 0, 10, 0]
-    enemy_hp = 45
+    enemy_attacks = [0, 0, 0, 12, 0]
+    enemy_hp = 60
     obj_control.queue_bossfight = false
 }
 

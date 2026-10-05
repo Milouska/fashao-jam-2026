@@ -400,7 +400,7 @@ function start_event(state_type) {
                             EnemyType.CLOUD_MONKEY,
                             EnemyType.NIGHTMARE
                         ]
-                    } else if (inst.game_rounds > 30 && inst.game_rounds <= 45) {
+                    } else if (inst.game_rounds > 30 && inst.game_rounds <= 50) {
                         global.enemy_attacks[EnemyType.BABY].hp = 11
                         global.enemy_attacks[EnemyType.BABY].attacks = [3, 3]
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7]
@@ -410,6 +410,7 @@ function start_event(state_type) {
                         global.enemy_attacks[EnemyType.NIGHTMARE].hp = 14
 
                         global.enemy_attacks[EnemyType.CLOUD_MONKEY].clouds = 13
+						global.enemy_attacks[EnemyType.NIGHTMARE].tokens = 7
                         global.enemy_attacks[EnemyType.NIGHTMARE].hp = 16
                         global.enemy_attacks[EnemyType.NIGHTMARE].attacks = [3, 2, 3, 0]
 
@@ -422,10 +423,10 @@ function start_event(state_type) {
                             EnemyType.LEECH,
                             EnemyType.THORNS,
                         ]
-                    } else if (inst.game_rounds > 45) {
+                    } else if (inst.game_rounds > 50) {
                         global.enemy_attacks[EnemyType.GIANT].attacks = [2, 3, 4, 5, 6, 7, 8, 9]
-                        global.enemy_attacks[EnemyType.GIANT].hp = 28
-
+                        global.enemy_attacks[EnemyType.GIANT].hp = 32
+						global.enemy_attacks[EnemyType.NIGHTMARE].tokens = 10
                         global.enemy_pool = [
                             EnemyType.BABY,
                             EnemyType.MANTICORE,

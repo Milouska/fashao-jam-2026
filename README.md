@@ -28,3 +28,27 @@ All images and sprites were either drawn or sourced online. With strong dilligen
 - SLK Image 2 Pixel tool
 
 And listened to [this playlist](https://open.spotify.com/playlist/5jH5YWqYkvVJSB1lJsaQnH?si=369c7d51b77d4b91) the entire weekend.
+
+
+---
+
+#### TODO
+
+error while doing fireball and dying
+
+ERROR in action number 1
+of Create Event for object tunnel_background:
+Variable obj_enemy.type(100124, -2147483648) not set before reading it.
+at gml_Script_start_player_turn@gml_Object_obj_control_Create_0
+
+nuke removes 2
+
+late game scaling needs to go way higher with damage + 
+
+add 4th boss fight
+
+maybe more tokens?
+
+audio
+
+isntead of upgrading / levelling up everything, maybe do two random ones (for -2 show all)
