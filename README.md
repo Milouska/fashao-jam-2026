@@ -20,16 +20,17 @@
 - [x] After initial walk, there is ALWAYS combat
 - [x] Screen resize stretches game
 - [x] End screen
-- [ ] Add objects to events
+- [x] Add objects to events
 - [ ] Each enemy draws its own simple background. Each background should be super low alpha but with a different color
 - [ ] Add enemy balancing after X turns
 - [ ] Balancing
 - [ ] Music and SFX
-- [ ] Add restart token to end screen. Needs `RESTART` token + sprite
+- [x] Add restart token to end screen. Needs `RESTART` token + sprite
 - [ ] Add leech enemy
 - [ ] Add screen-split enemy
 - [ ] Add cursed tokens
 - [ ] Add enemy that adds spikes to the border (should this be a new one or should an existing one do it?)
 - [ ] Create game artwork
+  - Thanos guy with gauntlet
 - [ ] Create itch io page
 - [ ] Animate stats changing

@@ -69,6 +69,9 @@ enum TokenType {
 	
 	// ENEMY TOKENS
 	NIGHTMARE_TOKEN,
+    
+    BASIC_QUIT,
+    BASIC_RESTART,
 }
 ////////////// DO NOT REORDER THESE ^^^^^^
 
@@ -134,6 +137,16 @@ function end_player_turn() {
                 break
             case TokenType.INTELIGENCE:
                 turn_intelligence += token.value
+                break
+            case TokenType.BASIC_QUIT:
+                call_later(20, time_source_units_frames, method({ token_event_type, inst: id }, function() {
+                    game_end()
+                }))
+                break
+            case TokenType.BASIC_RESTART:
+                call_later(20, time_source_units_frames, method({ token_event_type, inst: id }, function() {
+                    game_restart()
+                }))
                 break
             // For heal event. We consume the token, heal player and get a random upcoming event
             case TokenType.EVENT_HEAL:
@@ -225,9 +238,7 @@ function end_player_turn() {
 player_dead = false
 
 function spawn_token(token_type, ang = random(360), len = random_range(0, 22), spd = 0, dir = 0) {
-    if (player_dead) {
-        // TODO: check whether token_type == TokenType.RESTART. That one we can spawn
-        
+    if (player_dead && token_type != TokenType.BASIC_QUIT) && (player_dead && token_type != TokenType.BASIC_RESTART) {
         return
     }
     
@@ -401,6 +412,8 @@ function start_event(state_type) {
             log("=== GAME OVER ===")
             with(obj_token) { instance_destroy() }
             obj_enemy.enemy_attacks = [0,0,0,0,0,0,0]
+            spawn_token(TokenType.BASIC_RESTART, 0, 20)
+            spawn_token(TokenType.BASIC_QUIT, 180, 20)
                 
             break
         
@@ -427,4 +440,4 @@ function spawn_barier(radius = 144) {
 }
 
 /// START OF THE GAME - always walk VvvvvV
-start_event(GameState.BALANCE)
+start_event(GameState.WALK)
