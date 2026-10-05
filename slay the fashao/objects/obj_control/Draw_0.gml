@@ -22,9 +22,9 @@ if (game_state == GameState.OVER) {
 
 		var intelligence_comment = ""
 
-		if (inteligence > 6) {
+		if (inteligence > 10) {
 			intelligence_comment = global.t("event.over.intelligence.high")
-		} else if (inteligence <= 6 && inteligence > 0) {
+		} else if (inteligence <= 10 && inteligence > 4) {
 			intelligence_comment = global.t("event.over.intelligence.mid")
 		} else {
 			intelligence_comment = global.t("event.over.intelligence.low")

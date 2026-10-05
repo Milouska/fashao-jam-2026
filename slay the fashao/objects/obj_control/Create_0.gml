@@ -7,7 +7,7 @@ defaults = {
     ENDURANCE: 1,
     STAMINA: 5,
     WISDOM: 0,
-    INTELLIGENCE: 2,
+    INTELLIGENCE: 4,
 }
 
 stats = {
