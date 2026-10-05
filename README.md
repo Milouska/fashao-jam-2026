@@ -12,7 +12,9 @@ Game made by [Milouska](https://github.com/Milouska) and [dolanske](https://gith
 
 - Use mouse to slice tokens. That is the only user action
 - Press B to activate "Baby mode" aka English translation
+- In the end screen, slice the camera token to take a screenshot of your score and share it with others!
 
+![Gameplay gif](/damage.png)
 
 ## Tools used
 
@@ -22,39 +24,33 @@ All images and sprites were either drawn or sourced online. With strong dilligen
 - Aseprite
 - SLK Image 2 Pixel tool
 
+And listened to [this playlist](https://open.spotify.com/playlist/5jH5YWqYkvVJSB1lJsaQnH?si=369c7d51b77d4b91) the entire weekend.
+
 ## TODO
 
-- [x] General gameplay loop (fight -> walk -> XP -> Choice)
-- [x] Choice screen
-- [x] Collect statistics
-- [x] Screen backgrounds
-- [x] XP screen
-- [x] Translations
-  - [x] Fix chinese text positions
-  - [x] Redo translations when we have all english text in-game + add them to font
-- [x] Change to pixel font which supports chinese
-- [x] Token icons
-- [x] Scale enemies after each bossfight
-- [x] Add max HP
-- [x] Implement wisdom token detection
-- [x] Add shader effects
-- [x] Add combat timer
-- [x] If you hit token that you click it and go, it will instantly be clicked, starts a combat and immediately an attack is triggered
-- [x] Dying does not delete all tokens  (just find out where they are getting spawned)
-- [x] After initial walk, there is ALWAYS combat
-- [x] Screen resize stretches game
-- [x] End screen
-- [x] Add objects to events
 - [ ] Each enemy draws its own simple background. Each background should be super low alpha but with a different color
 - [ ] Add enemy balancing after X turns
 - [ ] Balancing
-- [ ] Music and SFX
-- [x] Add restart token to end screen. Needs `RESTART` token + sprite
 - [ ] Add leech enemy
 - [ ] Add screen-split enemy
 - [ ] Add cursed tokens
 - [ ] Add enemy that adds spikes to the border (should this be a new one or should an existing one do it?)
-- [ ] Create game artwork
-  - Thanos guy with gauntlet
 - [ ] Create itch io page
 - [ ] Animate stats changing
+
+The following text is the itch.io page text
+
+---
+
+{capsule image here}
+
+欢迎旅客。你准备好进入地铁了吗？
+
+通过黑暗的<TUBE>，看看里面有什么。每个动作都与<SLICE TOKENS>相关。 
+你只需要用<LEFT MOUSE HOLD>来<PLAY>游戏。 
+
+{gameplay gif}
+
+在死亡界面，你可以<SCREENSHOT TOKEN>你的结果并发送<SEND TO US>。
+
+{screenshot of thorn enemy fight}
