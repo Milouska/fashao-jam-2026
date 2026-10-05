@@ -23,6 +23,12 @@ switch (enemy_state) {
 					instance_create_depth(x+lengthdir_x(target_len,target_ang)+lengthdir_x(clen,cang),y+lengthdir_y(target_len,target_ang)+lengthdir_y(clen,cang),-1000,obj_cloud);
 				}
 			}
+			
+			if (type = EnemyType.THORNS) {
+				with(obj_barier) {
+					thorned = true;
+				}
+			}
 		}
 	break;
 	case EnemyState.IDLE:
@@ -54,6 +60,40 @@ switch (enemy_state) {
                 obj_control.stats.damage_taken += damage
 				with(obj_camera) hshake = 20;
 				attacked = true;
+				
+				if (type = EnemyType.LEECH) {
+					repeat(leech) {
+						var stats = [];
+						if (obj_control.strength > 0) array_push(stats, 0);
+						if (obj_control.endurance > 0) array_push(stats, 1);
+						if (obj_control.wisdom > 0) array_push(stats, 3);
+						if (obj_control.stamina > 0) array_push(stats, 2);
+						if (obj_control.inteligence > 0) array_push(stats, 4);
+						
+						array_shuffle(stats);
+						
+						var choice = stats[0];
+						if (choice != undefined) {
+							switch(choice) {
+								case 0:
+									obj_control.strength --;
+								break;
+								case 1:
+									obj_control.endurance --;
+								break;
+								case 2:
+									obj_control.stamina --;
+								break;
+								case 3:
+									obj_control.wisdom --;
+								break;
+								case 4:
+									obj_control.inteligence --;
+								break;
+							}
+						}
+					}
+				}
 			}
 		}
 		

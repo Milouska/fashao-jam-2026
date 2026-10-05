@@ -4,5 +4,11 @@ if (type = EnemyType.CLOUD_MONKEY) {
 	}
 }
 
+if (type = EnemyType.THORNS) {
+	with(obj_barier) {
+		thorned = false;
+	}
+}
+
 if (death_callback)
     death_callback()

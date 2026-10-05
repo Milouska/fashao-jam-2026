@@ -6,6 +6,9 @@ enum EnemyType {
 	NIGHTMARE,
 	FIRELORD,
 	CLOUD_MONKEY,
+	SPLIT_SCREEN,
+	THORNS,
+	LEECH,
 	
 } 
 
@@ -27,18 +30,24 @@ type = choose(EnemyType.BABY,
 			  EnemyType.MANTICORE,
 			  EnemyType.NIGHTMARE,
 			  EnemyType.FIRELORD,
-			  EnemyType.CLOUD_MONKEY);
+			  EnemyType.CLOUD_MONKEY,
+			  EnemyType.SPLIT_SCREEN,
+			  EnemyType.THORNS,
+			  EnemyType.LEECH);
+			  
 
 // Always fight this tall ass head baby in first combat
 if (obj_control.stats.enemies_killed == 0) {
     type = EnemyType.BABY;
 }
-type = EnemyType.BABY;
+type = EnemyType.THORNS;
 
 var attacks_data = global.enemy_attacks[type]
 
 enemy_attacks = attacks_data.attacks
 enemy_hp = attacks_data.hp
+leech = 0;
+if (EnemyType.LEECH) leech = attacks_data.leech;
 
 tokens_spawn = struct_get(attacks_data, "tokens") ?? 0
 clouds = struct_get(attacks_data, "clouds") ?? 0
