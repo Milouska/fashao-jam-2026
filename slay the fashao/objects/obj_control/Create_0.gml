@@ -98,6 +98,11 @@ function start_player_turn() {
 function end_player_turn() {
     with(obj_line) disappear = true;
 	with(tunnel_background) fork = false;
+	with(obj_event_bg) {
+		if (image_index = 2) {
+			state = 1;
+		}
+	}
 	with(obj_levelup_bg) state = 1;
 
     turn_finished = true
@@ -358,8 +363,8 @@ function start_event(state_type) {
                 second = get_random_weighted_event()
             }
 
-            spawn_token(get_event_token(first), 180, 7)
-            spawn_token(get_event_token(second), 0, 7)
+            spawn_token(get_event_token(first), 40, 96, 2, 270)
+            spawn_token(get_event_token(second), 140, 96, 2, 270)
             
             break
         
@@ -368,11 +373,11 @@ function start_event(state_type) {
             turn_finished = false
             balance_turn++
 
-            if(balance_turn == 1 || balance_turn == 2 && strength >= 2) spawn_token(TokenType.STRENGTH, 0, 3)
-            if(balance_turn == 1 || balance_turn == 2 && endurance >= 2) spawn_token(TokenType.ENDUREANCE, 72, 5)
-            if(balance_turn == 1 || balance_turn == 2 && wisdom >= 2) spawn_token(TokenType.WISDOM, 144, 3)
-            if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 216, 5)
-            if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 288, 0)
+            if(balance_turn == 1 || balance_turn == 2 && strength >= 2) spawn_token(TokenType.STRENGTH, 45 + (balance_turn - 1) * 180, 24, 3, 45 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && endurance >= 2) spawn_token(TokenType.ENDUREANCE, 75 + (balance_turn - 1) * 180, 24, 3, 75 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && wisdom >= 2) spawn_token(TokenType.WISDOM, 105 + (balance_turn - 1) * 180, 24, 3, 105 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && stamina >= 2) spawn_token(TokenType.STAMINA, 135 + (balance_turn - 1) * 180, 24, 3, 135 + (balance_turn - 1) * 180)
+            if(balance_turn == 1 || balance_turn == 2 && inteligence >= 2) spawn_token(TokenType.INTELIGENCE, 165 + (balance_turn - 1) * 180, 24, 3, 165 + (balance_turn - 1) * 180)
 			
 			if (!instance_exists(obj_event_bg)) or (instance_exists(obj_event_bg) and (obj_event_bg.state = 1)) {
 				var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
@@ -384,8 +389,8 @@ function start_event(state_type) {
         case GameState.FOUNTAIN:
             log("=== FOUNTAIN ===")
             turn_finished = false
-            spawn_token(TokenType.EVENT_WALK, 180, 7)
-            spawn_token(TokenType.EVENT_HEAL, 0, 7)
+            spawn_token(TokenType.EVENT_WALK, 40, 96, 2, 270)
+            spawn_token(TokenType.EVENT_HEAL, 140, 96, 2, 270)
 			
 			var bg = instance_create_depth(room_width / 2, room_height / 2, 100, obj_event_bg);
 			bg.image_index = 2;
