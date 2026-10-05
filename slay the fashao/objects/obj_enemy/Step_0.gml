@@ -55,7 +55,7 @@ switch (enemy_state) {
 					}
 				}
 				
-				obj_control.take_damage(damage);
+				if (damage > 0) obj_control.take_damage(damage);
                 
                 obj_control.stats.damage_taken += damage
 				with(obj_camera) hshake = 20;
